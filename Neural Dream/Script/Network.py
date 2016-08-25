@@ -291,9 +291,9 @@ for i in range(num_iter):
 
     x, min_val, info = fmin_l_bfgs_b(evaluator.loss, x.flatten(), fprime=evaluator.grads, maxfun=20)
 
-    gain = (prev_min_val - min_val) / prev_min_val * 100
+    improvement = (prev_min_val - min_val) / prev_min_val * 100
 
-    print('Current loss value:', min_val, " Gain : %0.3f" % (gain), "%")
+    print('Current loss value:', min_val, " Improvement : %0.3f" % (improvement), "%")
     prev_min_val = min_val
     # save current generated image
     img = deprocess_image(x.copy().reshape((3, img_width, img_height)))
