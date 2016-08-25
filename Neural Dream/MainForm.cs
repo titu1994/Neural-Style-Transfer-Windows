@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Neural_Dream.Properties;
+using Neural_Style_Transfer.Properties;
 using Newtonsoft.Json;
 
 namespace Neural_Dream
@@ -19,7 +19,7 @@ namespace Neural_Dream
     {
         private string desktopPath = "";
 
-        private double contentWeight, styleWeight, tvWeight, styleScale;
+        private double contentWeight, styleWeight, tvWeight, styleScale, minThreshold;
         private int imageSize, noIters;
         private string rescaleAlgo, contentLayer, poolingType;
 
@@ -202,6 +202,20 @@ namespace Neural_Dream
             return true;
         }
 
+        private bool CheckMinThreshold()
+        {
+            try
+            {
+                minThreshold = Convert.ToDouble(MinThresholdText.Text);
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Minimum Threshold must be a Double value.", "Minimum Threshold Value Error");
+                return false;
+            }
+        }
+
         private string GetNetworkPath()
         {
             if (NetworkCheckBox.Checked)
@@ -269,14 +283,13 @@ namespace Neural_Dream
             if (!CheckRescaleAlgo()) return true;
             if (!CheckContentLayer()) return true;
             if (!CheckPoolingLayer()) return true;
+            if (!CheckMinThreshold()) return true;
 
             return false;
         }
 
         private string BuildCommandArgs()
         {
-            string command = "Script/Network.py";
-
             StringBuilder args = new StringBuilder();
             args.Append("\"" + SrcPathLabel.Text + "\" ");
             args.Append("\"" + StylePathLabel.Text + "\" ");
@@ -294,7 +307,8 @@ namespace Neural_Dream
             args.Append("--content_layer \"" + ContentLayerBox.Text + "\" ");
             args.Append("--init_image \"" + InitialLayerComboBox.Text + "\" ");
             args.Append("--pool_type \"" + PoolingTypeBox.Text + "\" ");
-            args.Append("--preserve_color \"" + PreserveColorBox.Checked + "\"");
+            args.Append("--preserve_color \"" + PreserveColorBox.Checked + "\" ");
+            args.Append("--min_improvement " + minThreshold + "");
 
             return args.ToString();
         }

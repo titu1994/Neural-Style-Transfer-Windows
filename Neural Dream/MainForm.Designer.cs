@@ -66,6 +66,8 @@
             this.SrcToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.NetworkCheckBox = new System.Windows.Forms.CheckBox();
             this.PreserveColorBox = new System.Windows.Forms.CheckBox();
+            this.MinThresholdText = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SrcBtn
@@ -124,7 +126,7 @@
             // HorizontalLine
             // 
             this.HorizontalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.HorizontalLine.Location = new System.Drawing.Point(2, 271);
+            this.HorizontalLine.Location = new System.Drawing.Point(2, 241);
             this.HorizontalLine.Name = "HorizontalLine";
             this.HorizontalLine.Size = new System.Drawing.Size(978, 2);
             this.HorizontalLine.TabIndex = 6;
@@ -308,7 +310,7 @@
             this.MaintainAspectRatioCheckBox.AutoSize = true;
             this.MaintainAspectRatioCheckBox.Checked = true;
             this.MaintainAspectRatioCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.MaintainAspectRatioCheckBox.Location = new System.Drawing.Point(650, 477);
+            this.MaintainAspectRatioCheckBox.Location = new System.Drawing.Point(650, 299);
             this.MaintainAspectRatioCheckBox.Name = "MaintainAspectRatioCheckBox";
             this.MaintainAspectRatioCheckBox.Size = new System.Drawing.Size(167, 21);
             this.MaintainAspectRatioCheckBox.TabIndex = 26;
@@ -418,12 +420,31 @@
         "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
             this.PreserveColorBox.UseVisualStyleBackColor = true;
             // 
+            // MinThresholdText
+            // 
+            this.MinThresholdText.Location = new System.Drawing.Point(801, 477);
+            this.MinThresholdText.Name = "MinThresholdText";
+            this.MinThresholdText.Size = new System.Drawing.Size(121, 22);
+            this.MinThresholdText.TabIndex = 37;
+            this.MinThresholdText.Text = "0.0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(647, 478);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(148, 17);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "Minimum Improvement";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(982, 753);
+            this.Controls.Add(this.MinThresholdText);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.PreserveColorBox);
             this.Controls.Add(this.NetworkCheckBox);
             this.Controls.Add(this.PoolingTypeBox);
@@ -505,6 +526,8 @@
         private System.Windows.Forms.ToolTip SrcToolTip;
         private System.Windows.Forms.CheckBox NetworkCheckBox;
         private System.Windows.Forms.CheckBox PreserveColorBox;
+        private System.Windows.Forms.TextBox MinThresholdText;
+        private System.Windows.Forms.Label label12;
     }
 }
 
