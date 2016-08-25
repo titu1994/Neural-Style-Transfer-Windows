@@ -354,6 +354,7 @@ namespace Neural_Dream
                 LogInfo info = new LogInfo()
                 {
                     Time = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss"),
+                    ScriptType = GetNetworkPath(), 
                     ContentFilePath = SrcPathLabel.Text,
                     StyleFilePath = StylePathLabel.Text,
                     OutputFilePrefix = DstPathLabel.Text,
