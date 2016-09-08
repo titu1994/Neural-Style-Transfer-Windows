@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogDoodleData.cs" />
     <Compile Include="LogInfo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -76,6 +77,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Script\improved_neural_doodle.py" />
+    <Content Include="Script\neural_doodle.py" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

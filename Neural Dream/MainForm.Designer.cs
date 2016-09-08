@@ -29,266 +29,376 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.SrcBtn = new System.Windows.Forms.Button();
-            this.StyleBtn = new System.Windows.Forms.Button();
-            this.SrcPathLabel = new System.Windows.Forms.Label();
-            this.StylePathLabel = new System.Windows.Forms.Label();
-            this.ExecuteButton = new System.Windows.Forms.Button();
-            this.HorizontalLine = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ImageSizeBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ContentWeightText = new System.Windows.Forms.TextBox();
-            this.StyleWeightText = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TotalVariationWeightText = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.StyleScaleText = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.NoOfItersText = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.DstBtn = new System.Windows.Forms.Button();
-            this.DstPathLabel = new System.Windows.Forms.Label();
-            this.RescaleCheck = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.RescaleAlgoBox = new System.Windows.Forms.ComboBox();
-            this.MaintainAspectRatioCheckBox = new System.Windows.Forms.CheckBox();
-            this.CopyArgumentsBtn = new System.Windows.Forms.Button();
-            this.ContentLayerBox = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.InitialLayerComboBox = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.PoolingTypeBox = new System.Windows.Forms.ComboBox();
             this.SrcToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.NetworkCheckBox = new System.Windows.Forms.CheckBox();
             this.PreserveColorBox = new System.Windows.Forms.CheckBox();
+            this.NetworkCheckBox = new System.Windows.Forms.CheckBox();
+            this.StyleBtn = new System.Windows.Forms.Button();
+            this.SrcBtn = new System.Windows.Forms.Button();
+            this.StyleImageDoodle = new System.Windows.Forms.Button();
+            this.SourceImageDoodle = new System.Windows.Forms.Button();
+            this.StyleMaskDoodle = new System.Windows.Forms.Button();
+            this.TargetMaskDoodle = new System.Windows.Forms.Button();
+            this.UseImprovedNetworkDoodle = new System.Windows.Forms.CheckBox();
+            this.PreserveColorDoodle = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.MinThresholdText = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.PoolingTypeBox = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.InitialLayerComboBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ContentLayerBox = new System.Windows.Forms.ComboBox();
+            this.CopyArgumentsBtn = new System.Windows.Forms.Button();
+            this.MaintainAspectRatioCheckBox = new System.Windows.Forms.CheckBox();
+            this.RescaleAlgoBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.RescaleCheck = new System.Windows.Forms.CheckBox();
+            this.DstPathLabel = new System.Windows.Forms.Label();
+            this.DstBtn = new System.Windows.Forms.Button();
+            this.NoOfItersText = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.StyleScaleText = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TotalVariationWeightText = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.StyleWeightText = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ContentWeightText = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ImageSizeBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.HorizontalLine = new System.Windows.Forms.Label();
+            this.ExecuteButton = new System.Windows.Forms.Button();
+            this.StylePathLabel = new System.Windows.Forms.Label();
+            this.SrcPathLabel = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.NumColorsText = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.CopyArgsDoodle = new System.Windows.Forms.Button();
+            this.ExecuteDoodle = new System.Windows.Forms.Button();
+            this.NumIterDoodle = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ImageSizeBoxDoodle = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.TVWeightBoxDoodle = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.StyleWeightBoxDoodle = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ContentWeightBoxDoodle = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.DestinationPrefixDoodleLabel = new System.Windows.Forms.Label();
+            this.TargetImageMaskDoodleLabel = new System.Windows.Forms.Label();
+            this.StyleMaskImageDoodleLabel = new System.Windows.Forms.Label();
+            this.DestinationPrefixDoodleBtn = new System.Windows.Forms.Button();
+            this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
+            this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // SrcBtn
-            // 
-            this.SrcBtn.BackColor = System.Drawing.Color.White;
-            this.SrcBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SrcBtn.Location = new System.Drawing.Point(48, 12);
-            this.SrcBtn.Name = "SrcBtn";
-            this.SrcBtn.Size = new System.Drawing.Size(95, 53);
-            this.SrcBtn.TabIndex = 0;
-            this.SrcBtn.Text = "Source Image";
-            this.SrcToolTip.SetToolTip(this.SrcBtn, "Source Image\r\n");
-            this.SrcBtn.UseVisualStyleBackColor = false;
-            this.SrcBtn.Click += new System.EventHandler(this.SrcBtnSrcBtn_Click);
-            // 
-            // StyleBtn
-            // 
-            this.StyleBtn.BackColor = System.Drawing.Color.White;
-            this.StyleBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StyleBtn.Location = new System.Drawing.Point(48, 83);
-            this.StyleBtn.Name = "StyleBtn";
-            this.StyleBtn.Size = new System.Drawing.Size(95, 53);
-            this.StyleBtn.TabIndex = 1;
-            this.StyleBtn.Text = "Style Image";
-            this.SrcToolTip.SetToolTip(this.StyleBtn, "Style Image\r\n");
-            this.StyleBtn.UseVisualStyleBackColor = false;
-            this.StyleBtn.Click += new System.EventHandler(this.StyleBtn_Click);
-            // 
-            // SrcPathLabel
-            // 
-            this.SrcPathLabel.AutoSize = true;
-            this.SrcPathLabel.Location = new System.Drawing.Point(163, 48);
-            this.SrcPathLabel.Name = "SrcPathLabel";
-            this.SrcPathLabel.Size = new System.Drawing.Size(0, 17);
-            this.SrcPathLabel.TabIndex = 2;
-            // 
-            // StylePathLabel
-            // 
-            this.StylePathLabel.AutoSize = true;
-            this.StylePathLabel.Location = new System.Drawing.Point(163, 119);
-            this.StylePathLabel.Name = "StylePathLabel";
-            this.StylePathLabel.Size = new System.Drawing.Size(0, 17);
-            this.StylePathLabel.TabIndex = 3;
-            // 
-            // ExecuteButton
-            // 
-            this.ExecuteButton.BackColor = System.Drawing.Color.White;
-            this.ExecuteButton.Location = new System.Drawing.Point(291, 594);
-            this.ExecuteButton.Name = "ExecuteButton";
-            this.ExecuteButton.Size = new System.Drawing.Size(213, 67);
-            this.ExecuteButton.TabIndex = 4;
-            this.ExecuteButton.Text = "Compute";
-            this.ExecuteButton.UseVisualStyleBackColor = false;
-            this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click);
-            // 
-            // HorizontalLine
-            // 
-            this.HorizontalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.HorizontalLine.Location = new System.Drawing.Point(2, 241);
-            this.HorizontalLine.Name = "HorizontalLine";
-            this.HorizontalLine.Size = new System.Drawing.Size(978, 2);
-            this.HorizontalLine.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(2, 680);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(978, 2);
-            this.label1.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 411);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 17);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Image Size";
-            // 
-            // ImageSizeBox
-            // 
-            this.ImageSizeBox.DisplayMember = "512";
-            this.ImageSizeBox.FormattingEnabled = true;
-            this.ImageSizeBox.Items.AddRange(new object[] {
-            "400",
-            "512",
-            "600"});
-            this.ImageSizeBox.Location = new System.Drawing.Point(153, 411);
-            this.ImageSizeBox.Name = "ImageSizeBox";
-            this.ImageSizeBox.Size = new System.Drawing.Size(121, 24);
-            this.ImageSizeBox.TabIndex = 9;
-            this.ImageSizeBox.Text = "400";
-            this.ImageSizeBox.ValueMember = "512";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 350);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Content Weight";
-            // 
-            // ContentWeightText
-            // 
-            this.ContentWeightText.Location = new System.Drawing.Point(156, 350);
-            this.ContentWeightText.Name = "ContentWeightText";
-            this.ContentWeightText.Size = new System.Drawing.Size(121, 22);
-            this.ContentWeightText.TabIndex = 11;
-            this.ContentWeightText.Text = "0.025";
-            // 
-            // StyleWeightText
-            // 
-            this.StyleWeightText.Location = new System.Drawing.Point(462, 355);
-            this.StyleWeightText.Name = "StyleWeightText";
-            this.StyleWeightText.Size = new System.Drawing.Size(121, 22);
-            this.StyleWeightText.TabIndex = 13;
-            this.StyleWeightText.Text = "1.0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(344, 355);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Style Weight";
-            // 
-            // TotalVariationWeightText
-            // 
-            this.TotalVariationWeightText.Location = new System.Drawing.Point(801, 358);
-            this.TotalVariationWeightText.Name = "TotalVariationWeightText";
-            this.TotalVariationWeightText.Size = new System.Drawing.Size(121, 22);
-            this.TotalVariationWeightText.TabIndex = 15;
-            this.TotalVariationWeightText.Text = "8.5e-5";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(647, 358);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 17);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Total Variation Weight";
-            // 
-            // StyleScaleText
-            // 
-            this.StyleScaleText.Location = new System.Drawing.Point(462, 418);
-            this.StyleScaleText.Name = "StyleScaleText";
-            this.StyleScaleText.Size = new System.Drawing.Size(121, 22);
-            this.StyleScaleText.TabIndex = 17;
-            this.StyleScaleText.Text = "1.0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(344, 418);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 17);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Style Scale";
-            // 
-            // NoOfItersText
-            // 
-            this.NoOfItersText.Location = new System.Drawing.Point(801, 423);
-            this.NoOfItersText.Name = "NoOfItersText";
-            this.NoOfItersText.Size = new System.Drawing.Size(121, 22);
-            this.NoOfItersText.TabIndex = 19;
-            this.NoOfItersText.Text = "10";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(647, 423);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 17);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Number Of Iterations";
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // DstBtn
+            // PreserveColorBox
             // 
-            this.DstBtn.BackColor = System.Drawing.Color.White;
-            this.DstBtn.Location = new System.Drawing.Point(48, 157);
-            this.DstBtn.Name = "DstBtn";
-            this.DstBtn.Size = new System.Drawing.Size(95, 53);
-            this.DstBtn.TabIndex = 20;
-            this.DstBtn.Text = "Destination Image";
-            this.DstBtn.UseVisualStyleBackColor = false;
-            this.DstBtn.Click += new System.EventHandler(this.DstBtn_Click);
+            this.PreserveColorBox.AutoSize = true;
+            this.PreserveColorBox.Location = new System.Drawing.Point(343, 314);
+            this.PreserveColorBox.Name = "PreserveColorBox";
+            this.PreserveColorBox.Size = new System.Drawing.Size(124, 21);
+            this.PreserveColorBox.TabIndex = 71;
+            this.PreserveColorBox.Text = "Preserve Color";
+            this.SrcToolTip.SetToolTip(this.PreserveColorBox, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
+        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
+            this.PreserveColorBox.UseVisualStyleBackColor = true;
             // 
-            // DstPathLabel
+            // NetworkCheckBox
             // 
-            this.DstPathLabel.AutoSize = true;
-            this.DstPathLabel.Location = new System.Drawing.Point(163, 193);
-            this.DstPathLabel.Name = "DstPathLabel";
-            this.DstPathLabel.Size = new System.Drawing.Size(0, 17);
-            this.DstPathLabel.TabIndex = 21;
+            this.NetworkCheckBox.AutoSize = true;
+            this.NetworkCheckBox.Checked = true;
+            this.NetworkCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.NetworkCheckBox.Location = new System.Drawing.Point(37, 314);
+            this.NetworkCheckBox.Name = "NetworkCheckBox";
+            this.NetworkCheckBox.Size = new System.Drawing.Size(172, 21);
+            this.NetworkCheckBox.TabIndex = 70;
+            this.NetworkCheckBox.Text = "Use Improved Network";
+            this.SrcToolTip.SetToolTip(this.NetworkCheckBox, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
+        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
+            this.NetworkCheckBox.UseVisualStyleBackColor = true;
             // 
-            // RescaleCheck
+            // StyleBtn
             // 
-            this.RescaleCheck.AutoSize = true;
-            this.RescaleCheck.Location = new System.Drawing.Point(38, 477);
-            this.RescaleCheck.Name = "RescaleCheck";
-            this.RescaleCheck.Size = new System.Drawing.Size(229, 21);
-            this.RescaleCheck.TabIndex = 23;
-            this.RescaleCheck.Text = "Rescale To Original Dimentions";
-            this.RescaleCheck.UseVisualStyleBackColor = true;
+            this.StyleBtn.BackColor = System.Drawing.Color.White;
+            this.StyleBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StyleBtn.Location = new System.Drawing.Point(44, 98);
+            this.StyleBtn.Name = "StyleBtn";
+            this.StyleBtn.Size = new System.Drawing.Size(95, 53);
+            this.StyleBtn.TabIndex = 39;
+            this.StyleBtn.Text = "Style Image";
+            this.SrcToolTip.SetToolTip(this.StyleBtn, "Style Image\r\n");
+            this.StyleBtn.UseVisualStyleBackColor = false;
+            this.StyleBtn.Click += new System.EventHandler(this.StyleBtn_Click_1);
             // 
-            // label8
+            // SrcBtn
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(347, 477);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 17);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Rescale Algo";
+            this.SrcBtn.BackColor = System.Drawing.Color.White;
+            this.SrcBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SrcBtn.Location = new System.Drawing.Point(44, 27);
+            this.SrcBtn.Name = "SrcBtn";
+            this.SrcBtn.Size = new System.Drawing.Size(95, 53);
+            this.SrcBtn.TabIndex = 38;
+            this.SrcBtn.Text = "Source Image";
+            this.SrcToolTip.SetToolTip(this.SrcBtn, "Source Image\r\n");
+            this.SrcBtn.UseVisualStyleBackColor = false;
+            this.SrcBtn.Click += new System.EventHandler(this.SrcBtn_Click);
+            // 
+            // StyleImageDoodle
+            // 
+            this.StyleImageDoodle.BackColor = System.Drawing.Color.White;
+            this.StyleImageDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StyleImageDoodle.Location = new System.Drawing.Point(42, 91);
+            this.StyleImageDoodle.Name = "StyleImageDoodle";
+            this.StyleImageDoodle.Size = new System.Drawing.Size(95, 53);
+            this.StyleImageDoodle.TabIndex = 60;
+            this.StyleImageDoodle.Text = "Style Image";
+            this.SrcToolTip.SetToolTip(this.StyleImageDoodle, "Style Image\r\n");
+            this.StyleImageDoodle.UseVisualStyleBackColor = false;
+            this.StyleImageDoodle.Click += new System.EventHandler(this.StyleImageDoodle_Click);
+            // 
+            // SourceImageDoodle
+            // 
+            this.SourceImageDoodle.BackColor = System.Drawing.Color.White;
+            this.SourceImageDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SourceImageDoodle.Location = new System.Drawing.Point(42, 20);
+            this.SourceImageDoodle.Name = "SourceImageDoodle";
+            this.SourceImageDoodle.Size = new System.Drawing.Size(95, 53);
+            this.SourceImageDoodle.TabIndex = 59;
+            this.SourceImageDoodle.Text = "Source Image";
+            this.SrcToolTip.SetToolTip(this.SourceImageDoodle, "Source Image\r\n");
+            this.SourceImageDoodle.UseVisualStyleBackColor = false;
+            this.SourceImageDoodle.Click += new System.EventHandler(this.SourceImageDoodle_Click);
+            // 
+            // StyleMaskDoodle
+            // 
+            this.StyleMaskDoodle.BackColor = System.Drawing.Color.White;
+            this.StyleMaskDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StyleMaskDoodle.Location = new System.Drawing.Point(42, 165);
+            this.StyleMaskDoodle.Name = "StyleMaskDoodle";
+            this.StyleMaskDoodle.Size = new System.Drawing.Size(95, 53);
+            this.StyleMaskDoodle.TabIndex = 65;
+            this.StyleMaskDoodle.Text = "Style Mask Image";
+            this.SrcToolTip.SetToolTip(this.StyleMaskDoodle, "Style Image\r\n");
+            this.StyleMaskDoodle.UseVisualStyleBackColor = false;
+            this.StyleMaskDoodle.Click += new System.EventHandler(this.StyleMaskDoodle_Click);
+            // 
+            // TargetMaskDoodle
+            // 
+            this.TargetMaskDoodle.BackColor = System.Drawing.Color.White;
+            this.TargetMaskDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TargetMaskDoodle.Location = new System.Drawing.Point(42, 235);
+            this.TargetMaskDoodle.Name = "TargetMaskDoodle";
+            this.TargetMaskDoodle.Size = new System.Drawing.Size(95, 53);
+            this.TargetMaskDoodle.TabIndex = 66;
+            this.TargetMaskDoodle.Text = "Target Mask Image";
+            this.SrcToolTip.SetToolTip(this.TargetMaskDoodle, "Style Image\r\n");
+            this.TargetMaskDoodle.UseVisualStyleBackColor = false;
+            this.TargetMaskDoodle.Click += new System.EventHandler(this.TargetMaskDoodle_Click);
+            // 
+            // UseImprovedNetworkDoodle
+            // 
+            this.UseImprovedNetworkDoodle.AutoSize = true;
+            this.UseImprovedNetworkDoodle.Checked = true;
+            this.UseImprovedNetworkDoodle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.UseImprovedNetworkDoodle.Location = new System.Drawing.Point(42, 384);
+            this.UseImprovedNetworkDoodle.Name = "UseImprovedNetworkDoodle";
+            this.UseImprovedNetworkDoodle.Size = new System.Drawing.Size(172, 21);
+            this.UseImprovedNetworkDoodle.TabIndex = 71;
+            this.UseImprovedNetworkDoodle.Text = "Use Improved Network";
+            this.SrcToolTip.SetToolTip(this.UseImprovedNetworkDoodle, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
+        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
+            this.UseImprovedNetworkDoodle.UseVisualStyleBackColor = true;
+            // 
+            // PreserveColorDoodle
+            // 
+            this.PreserveColorDoodle.AutoSize = true;
+            this.PreserveColorDoodle.Location = new System.Drawing.Point(411, 384);
+            this.PreserveColorDoodle.Name = "PreserveColorDoodle";
+            this.PreserveColorDoodle.Size = new System.Drawing.Size(124, 21);
+            this.PreserveColorDoodle.TabIndex = 72;
+            this.PreserveColorDoodle.Text = "Preserve Color";
+            this.SrcToolTip.SetToolTip(this.PreserveColorDoodle, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
+        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
+            this.PreserveColorDoodle.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(982, 753);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.MinThresholdText);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.PreserveColorBox);
+            this.tabPage1.Controls.Add(this.NetworkCheckBox);
+            this.tabPage1.Controls.Add(this.PoolingTypeBox);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.InitialLayerComboBox);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.ContentLayerBox);
+            this.tabPage1.Controls.Add(this.CopyArgumentsBtn);
+            this.tabPage1.Controls.Add(this.MaintainAspectRatioCheckBox);
+            this.tabPage1.Controls.Add(this.RescaleAlgoBox);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.RescaleCheck);
+            this.tabPage1.Controls.Add(this.DstPathLabel);
+            this.tabPage1.Controls.Add(this.DstBtn);
+            this.tabPage1.Controls.Add(this.NoOfItersText);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.StyleScaleText);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.TotalVariationWeightText);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.StyleWeightText);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.ContentWeightText);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.ImageSizeBox);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.HorizontalLine);
+            this.tabPage1.Controls.Add(this.ExecuteButton);
+            this.tabPage1.Controls.Add(this.StylePathLabel);
+            this.tabPage1.Controls.Add(this.SrcPathLabel);
+            this.tabPage1.Controls.Add(this.StyleBtn);
+            this.tabPage1.Controls.Add(this.SrcBtn);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(974, 724);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Neural Style Transfer";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // MinThresholdText
+            // 
+            this.MinThresholdText.Location = new System.Drawing.Point(797, 492);
+            this.MinThresholdText.Name = "MinThresholdText";
+            this.MinThresholdText.Size = new System.Drawing.Size(121, 22);
+            this.MinThresholdText.TabIndex = 73;
+            this.MinThresholdText.Text = "0.0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(643, 493);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(148, 17);
+            this.label12.TabIndex = 72;
+            this.label12.Text = "Minimum Improvement";
+            // 
+            // PoolingTypeBox
+            // 
+            this.PoolingTypeBox.BackColor = System.Drawing.Color.White;
+            this.PoolingTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PoolingTypeBox.FormattingEnabled = true;
+            this.PoolingTypeBox.Items.AddRange(new object[] {
+            "max",
+            "ave"});
+            this.PoolingTypeBox.Location = new System.Drawing.Point(797, 543);
+            this.PoolingTypeBox.Name = "PoolingTypeBox";
+            this.PoolingTypeBox.Size = new System.Drawing.Size(121, 24);
+            this.PoolingTypeBox.TabIndex = 69;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(643, 549);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 17);
+            this.label11.TabIndex = 68;
+            this.label11.Text = "Pooling Type";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(347, 546);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 17);
+            this.label10.TabIndex = 67;
+            this.label10.Text = "Initial Layer";
+            // 
+            // InitialLayerComboBox
+            // 
+            this.InitialLayerComboBox.BackColor = System.Drawing.Color.White;
+            this.InitialLayerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InitialLayerComboBox.FormattingEnabled = true;
+            this.InitialLayerComboBox.Items.AddRange(new object[] {
+            "content",
+            "noise"});
+            this.InitialLayerComboBox.Location = new System.Drawing.Point(458, 546);
+            this.InitialLayerComboBox.Name = "InitialLayerComboBox";
+            this.InitialLayerComboBox.Size = new System.Drawing.Size(121, 24);
+            this.InitialLayerComboBox.TabIndex = 66;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(34, 546);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(97, 17);
+            this.label9.TabIndex = 65;
+            this.label9.Text = "Content Layer";
+            // 
+            // ContentLayerBox
+            // 
+            this.ContentLayerBox.BackColor = System.Drawing.Color.White;
+            this.ContentLayerBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ContentLayerBox.FormattingEnabled = true;
+            this.ContentLayerBox.Items.AddRange(new object[] {
+            "conv5_2",
+            "conv4_2"});
+            this.ContentLayerBox.Location = new System.Drawing.Point(152, 546);
+            this.ContentLayerBox.Name = "ContentLayerBox";
+            this.ContentLayerBox.Size = new System.Drawing.Size(121, 24);
+            this.ContentLayerBox.TabIndex = 64;
+            // 
+            // CopyArgumentsBtn
+            // 
+            this.CopyArgumentsBtn.BackColor = System.Drawing.Color.White;
+            this.CopyArgumentsBtn.Location = new System.Drawing.Point(546, 609);
+            this.CopyArgumentsBtn.Name = "CopyArgumentsBtn";
+            this.CopyArgumentsBtn.Size = new System.Drawing.Size(189, 67);
+            this.CopyArgumentsBtn.TabIndex = 63;
+            this.CopyArgumentsBtn.Text = "Copy Arguments to Clipboard";
+            this.CopyArgumentsBtn.UseVisualStyleBackColor = false;
+            this.CopyArgumentsBtn.Click += new System.EventHandler(this.CopyArgumentsBtn_Click_1);
+            // 
+            // MaintainAspectRatioCheckBox
+            // 
+            this.MaintainAspectRatioCheckBox.AutoSize = true;
+            this.MaintainAspectRatioCheckBox.Checked = true;
+            this.MaintainAspectRatioCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.MaintainAspectRatioCheckBox.Location = new System.Drawing.Point(646, 314);
+            this.MaintainAspectRatioCheckBox.Name = "MaintainAspectRatioCheckBox";
+            this.MaintainAspectRatioCheckBox.Size = new System.Drawing.Size(167, 21);
+            this.MaintainAspectRatioCheckBox.TabIndex = 62;
+            this.MaintainAspectRatioCheckBox.Text = "Maintain Aspect Ratio";
+            this.MaintainAspectRatioCheckBox.UseVisualStyleBackColor = true;
             // 
             // RescaleAlgoBox
             // 
@@ -300,142 +410,428 @@
             "bilinear",
             "bicubic",
             "cubic"});
-            this.RescaleAlgoBox.Location = new System.Drawing.Point(462, 475);
+            this.RescaleAlgoBox.Location = new System.Drawing.Point(458, 490);
             this.RescaleAlgoBox.Name = "RescaleAlgoBox";
             this.RescaleAlgoBox.Size = new System.Drawing.Size(121, 24);
-            this.RescaleAlgoBox.TabIndex = 25;
+            this.RescaleAlgoBox.TabIndex = 61;
             // 
-            // MaintainAspectRatioCheckBox
+            // label8
             // 
-            this.MaintainAspectRatioCheckBox.AutoSize = true;
-            this.MaintainAspectRatioCheckBox.Checked = true;
-            this.MaintainAspectRatioCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.MaintainAspectRatioCheckBox.Location = new System.Drawing.Point(650, 299);
-            this.MaintainAspectRatioCheckBox.Name = "MaintainAspectRatioCheckBox";
-            this.MaintainAspectRatioCheckBox.Size = new System.Drawing.Size(167, 21);
-            this.MaintainAspectRatioCheckBox.TabIndex = 26;
-            this.MaintainAspectRatioCheckBox.Text = "Maintain Aspect Ratio";
-            this.MaintainAspectRatioCheckBox.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(343, 492);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 17);
+            this.label8.TabIndex = 60;
+            this.label8.Text = "Rescale Algo";
             // 
-            // CopyArgumentsBtn
+            // RescaleCheck
             // 
-            this.CopyArgumentsBtn.BackColor = System.Drawing.Color.White;
-            this.CopyArgumentsBtn.Location = new System.Drawing.Point(550, 594);
-            this.CopyArgumentsBtn.Name = "CopyArgumentsBtn";
-            this.CopyArgumentsBtn.Size = new System.Drawing.Size(189, 67);
-            this.CopyArgumentsBtn.TabIndex = 27;
-            this.CopyArgumentsBtn.Text = "Copy Arguments to Clipboard";
-            this.CopyArgumentsBtn.UseVisualStyleBackColor = false;
-            this.CopyArgumentsBtn.Click += new System.EventHandler(this.CopyArgumentsBtn_Click);
+            this.RescaleCheck.AutoSize = true;
+            this.RescaleCheck.Location = new System.Drawing.Point(34, 492);
+            this.RescaleCheck.Name = "RescaleCheck";
+            this.RescaleCheck.Size = new System.Drawing.Size(229, 21);
+            this.RescaleCheck.TabIndex = 59;
+            this.RescaleCheck.Text = "Rescale To Original Dimentions";
+            this.RescaleCheck.UseVisualStyleBackColor = true;
             // 
-            // ContentLayerBox
+            // DstPathLabel
             // 
-            this.ContentLayerBox.BackColor = System.Drawing.Color.White;
-            this.ContentLayerBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ContentLayerBox.FormattingEnabled = true;
-            this.ContentLayerBox.Items.AddRange(new object[] {
-            "conv5_2",
-            "conv4_2"});
-            this.ContentLayerBox.Location = new System.Drawing.Point(156, 531);
-            this.ContentLayerBox.Name = "ContentLayerBox";
-            this.ContentLayerBox.Size = new System.Drawing.Size(121, 24);
-            this.ContentLayerBox.TabIndex = 28;
+            this.DstPathLabel.AutoSize = true;
+            this.DstPathLabel.Location = new System.Drawing.Point(159, 208);
+            this.DstPathLabel.Name = "DstPathLabel";
+            this.DstPathLabel.Size = new System.Drawing.Size(0, 17);
+            this.DstPathLabel.TabIndex = 58;
             // 
-            // label9
+            // DstBtn
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(38, 531);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 17);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Content Layer";
+            this.DstBtn.BackColor = System.Drawing.Color.White;
+            this.DstBtn.Location = new System.Drawing.Point(44, 172);
+            this.DstBtn.Name = "DstBtn";
+            this.DstBtn.Size = new System.Drawing.Size(95, 53);
+            this.DstBtn.TabIndex = 57;
+            this.DstBtn.Text = "Destination Image";
+            this.DstBtn.UseVisualStyleBackColor = false;
+            this.DstBtn.Click += new System.EventHandler(this.DstBtn_Click_1);
             // 
-            // InitialLayerComboBox
+            // NoOfItersText
             // 
-            this.InitialLayerComboBox.BackColor = System.Drawing.Color.White;
-            this.InitialLayerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.InitialLayerComboBox.FormattingEnabled = true;
-            this.InitialLayerComboBox.Items.AddRange(new object[] {
-            "content",
-            "noise"});
-            this.InitialLayerComboBox.Location = new System.Drawing.Point(462, 531);
-            this.InitialLayerComboBox.Name = "InitialLayerComboBox";
-            this.InitialLayerComboBox.Size = new System.Drawing.Size(121, 24);
-            this.InitialLayerComboBox.TabIndex = 30;
+            this.NoOfItersText.Location = new System.Drawing.Point(797, 438);
+            this.NoOfItersText.Name = "NoOfItersText";
+            this.NoOfItersText.Size = new System.Drawing.Size(121, 22);
+            this.NoOfItersText.TabIndex = 56;
+            this.NoOfItersText.Text = "10";
             // 
-            // label10
+            // label7
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(351, 531);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 17);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Initial Layer";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(643, 438);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 17);
+            this.label7.TabIndex = 55;
+            this.label7.Text = "Number Of Iterations";
             // 
-            // label11
+            // StyleScaleText
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(647, 534);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(91, 17);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "Pooling Type";
+            this.StyleScaleText.Location = new System.Drawing.Point(458, 433);
+            this.StyleScaleText.Name = "StyleScaleText";
+            this.StyleScaleText.Size = new System.Drawing.Size(121, 22);
+            this.StyleScaleText.TabIndex = 54;
+            this.StyleScaleText.Text = "1.0";
             // 
-            // PoolingTypeBox
+            // label6
             // 
-            this.PoolingTypeBox.BackColor = System.Drawing.Color.White;
-            this.PoolingTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PoolingTypeBox.FormattingEnabled = true;
-            this.PoolingTypeBox.Items.AddRange(new object[] {
-            "max",
-            "ave"});
-            this.PoolingTypeBox.Location = new System.Drawing.Point(801, 528);
-            this.PoolingTypeBox.Name = "PoolingTypeBox";
-            this.PoolingTypeBox.Size = new System.Drawing.Size(121, 24);
-            this.PoolingTypeBox.TabIndex = 33;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(340, 433);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 17);
+            this.label6.TabIndex = 53;
+            this.label6.Text = "Style Scale";
             // 
-            // NetworkCheckBox
+            // TotalVariationWeightText
             // 
-            this.NetworkCheckBox.AutoSize = true;
-            this.NetworkCheckBox.Checked = true;
-            this.NetworkCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.NetworkCheckBox.Location = new System.Drawing.Point(41, 299);
-            this.NetworkCheckBox.Name = "NetworkCheckBox";
-            this.NetworkCheckBox.Size = new System.Drawing.Size(172, 21);
-            this.NetworkCheckBox.TabIndex = 34;
-            this.NetworkCheckBox.Text = "Use Improved Network";
-            this.SrcToolTip.SetToolTip(this.NetworkCheckBox, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
-        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
-            this.NetworkCheckBox.UseVisualStyleBackColor = true;
+            this.TotalVariationWeightText.Location = new System.Drawing.Point(797, 373);
+            this.TotalVariationWeightText.Name = "TotalVariationWeightText";
+            this.TotalVariationWeightText.Size = new System.Drawing.Size(121, 22);
+            this.TotalVariationWeightText.TabIndex = 52;
+            this.TotalVariationWeightText.Text = "8.5e-5";
             // 
-            // PreserveColorBox
+            // label5
             // 
-            this.PreserveColorBox.AutoSize = true;
-            this.PreserveColorBox.Location = new System.Drawing.Point(347, 299);
-            this.PreserveColorBox.Name = "PreserveColorBox";
-            this.PreserveColorBox.Size = new System.Drawing.Size(124, 21);
-            this.PreserveColorBox.TabIndex = 35;
-            this.PreserveColorBox.Text = "Preserve Color";
-            this.SrcToolTip.SetToolTip(this.PreserveColorBox, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
-        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
-            this.PreserveColorBox.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(643, 373);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(148, 17);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Total Variation Weight";
             // 
-            // MinThresholdText
+            // StyleWeightText
             // 
-            this.MinThresholdText.Location = new System.Drawing.Point(801, 477);
-            this.MinThresholdText.Name = "MinThresholdText";
-            this.MinThresholdText.Size = new System.Drawing.Size(121, 22);
-            this.MinThresholdText.TabIndex = 37;
-            this.MinThresholdText.Text = "0.0";
+            this.StyleWeightText.Location = new System.Drawing.Point(458, 370);
+            this.StyleWeightText.Name = "StyleWeightText";
+            this.StyleWeightText.Size = new System.Drawing.Size(121, 22);
+            this.StyleWeightText.TabIndex = 50;
+            this.StyleWeightText.Text = "1.0";
             // 
-            // label12
+            // label4
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(647, 478);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(148, 17);
-            this.label12.TabIndex = 36;
-            this.label12.Text = "Minimum Improvement";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(340, 370);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 17);
+            this.label4.TabIndex = 49;
+            this.label4.Text = "Style Weight";
+            // 
+            // ContentWeightText
+            // 
+            this.ContentWeightText.Location = new System.Drawing.Point(152, 365);
+            this.ContentWeightText.Name = "ContentWeightText";
+            this.ContentWeightText.Size = new System.Drawing.Size(121, 22);
+            this.ContentWeightText.TabIndex = 48;
+            this.ContentWeightText.Text = "0.025";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 365);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 17);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Content Weight";
+            // 
+            // ImageSizeBox
+            // 
+            this.ImageSizeBox.DisplayMember = "512";
+            this.ImageSizeBox.FormattingEnabled = true;
+            this.ImageSizeBox.Items.AddRange(new object[] {
+            "400",
+            "512",
+            "600"});
+            this.ImageSizeBox.Location = new System.Drawing.Point(149, 426);
+            this.ImageSizeBox.Name = "ImageSizeBox";
+            this.ImageSizeBox.Size = new System.Drawing.Size(121, 24);
+            this.ImageSizeBox.TabIndex = 46;
+            this.ImageSizeBox.Text = "400";
+            this.ImageSizeBox.ValueMember = "512";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 426);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 17);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Image Size";
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(-2, 695);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(978, 2);
+            this.label1.TabIndex = 44;
+            // 
+            // HorizontalLine
+            // 
+            this.HorizontalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.HorizontalLine.Location = new System.Drawing.Point(-2, 256);
+            this.HorizontalLine.Name = "HorizontalLine";
+            this.HorizontalLine.Size = new System.Drawing.Size(978, 2);
+            this.HorizontalLine.TabIndex = 43;
+            // 
+            // ExecuteButton
+            // 
+            this.ExecuteButton.BackColor = System.Drawing.Color.White;
+            this.ExecuteButton.Location = new System.Drawing.Point(287, 609);
+            this.ExecuteButton.Name = "ExecuteButton";
+            this.ExecuteButton.Size = new System.Drawing.Size(213, 67);
+            this.ExecuteButton.TabIndex = 42;
+            this.ExecuteButton.Text = "Compute";
+            this.ExecuteButton.UseVisualStyleBackColor = false;
+            this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click_1);
+            // 
+            // StylePathLabel
+            // 
+            this.StylePathLabel.AutoSize = true;
+            this.StylePathLabel.Location = new System.Drawing.Point(159, 134);
+            this.StylePathLabel.Name = "StylePathLabel";
+            this.StylePathLabel.Size = new System.Drawing.Size(0, 17);
+            this.StylePathLabel.TabIndex = 41;
+            // 
+            // SrcPathLabel
+            // 
+            this.SrcPathLabel.AutoSize = true;
+            this.SrcPathLabel.Location = new System.Drawing.Point(159, 63);
+            this.SrcPathLabel.Name = "SrcPathLabel";
+            this.SrcPathLabel.Size = new System.Drawing.Size(0, 17);
+            this.SrcPathLabel.TabIndex = 40;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.NumColorsText);
+            this.tabPage2.Controls.Add(this.label19);
+            this.tabPage2.Controls.Add(this.CopyArgsDoodle);
+            this.tabPage2.Controls.Add(this.ExecuteDoodle);
+            this.tabPage2.Controls.Add(this.NumIterDoodle);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.ImageSizeBoxDoodle);
+            this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.TVWeightBoxDoodle);
+            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.StyleWeightBoxDoodle);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.ContentWeightBoxDoodle);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.PreserveColorDoodle);
+            this.tabPage2.Controls.Add(this.UseImprovedNetworkDoodle);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.DestinationPrefixDoodleLabel);
+            this.tabPage2.Controls.Add(this.TargetImageMaskDoodleLabel);
+            this.tabPage2.Controls.Add(this.TargetMaskDoodle);
+            this.tabPage2.Controls.Add(this.StyleMaskDoodle);
+            this.tabPage2.Controls.Add(this.StyleMaskImageDoodleLabel);
+            this.tabPage2.Controls.Add(this.DestinationPrefixDoodleBtn);
+            this.tabPage2.Controls.Add(this.StyleImageDoodleLabel);
+            this.tabPage2.Controls.Add(this.SrcImageDoodleLabel);
+            this.tabPage2.Controls.Add(this.StyleImageDoodle);
+            this.tabPage2.Controls.Add(this.SourceImageDoodle);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(974, 724);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Neural Doodle";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // NumColorsText
+            // 
+            this.NumColorsText.Location = new System.Drawing.Point(835, 384);
+            this.NumColorsText.Name = "NumColorsText";
+            this.NumColorsText.Size = new System.Drawing.Size(121, 22);
+            this.NumColorsText.TabIndex = 86;
+            this.NumColorsText.Text = "4";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(681, 388);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(81, 17);
+            this.label19.TabIndex = 85;
+            this.label19.Text = "Num Colors";
+            // 
+            // CopyArgsDoodle
+            // 
+            this.CopyArgsDoodle.BackColor = System.Drawing.Color.White;
+            this.CopyArgsDoodle.Location = new System.Drawing.Point(518, 634);
+            this.CopyArgsDoodle.Name = "CopyArgsDoodle";
+            this.CopyArgsDoodle.Size = new System.Drawing.Size(189, 67);
+            this.CopyArgsDoodle.TabIndex = 84;
+            this.CopyArgsDoodle.Text = "Copy Arguments to Clipboard";
+            this.CopyArgsDoodle.UseVisualStyleBackColor = false;
+            this.CopyArgsDoodle.Click += new System.EventHandler(this.CopyArgsDoodle_Click);
+            // 
+            // ExecuteDoodle
+            // 
+            this.ExecuteDoodle.BackColor = System.Drawing.Color.White;
+            this.ExecuteDoodle.Location = new System.Drawing.Point(259, 634);
+            this.ExecuteDoodle.Name = "ExecuteDoodle";
+            this.ExecuteDoodle.Size = new System.Drawing.Size(213, 67);
+            this.ExecuteDoodle.TabIndex = 83;
+            this.ExecuteDoodle.Text = "Compute";
+            this.ExecuteDoodle.UseVisualStyleBackColor = false;
+            this.ExecuteDoodle.Click += new System.EventHandler(this.ExecuteDoodle_Click);
+            // 
+            // NumIterDoodle
+            // 
+            this.NumIterDoodle.Location = new System.Drawing.Point(553, 495);
+            this.NumIterDoodle.Name = "NumIterDoodle";
+            this.NumIterDoodle.Size = new System.Drawing.Size(121, 22);
+            this.NumIterDoodle.TabIndex = 82;
+            this.NumIterDoodle.Text = "10";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(408, 495);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(139, 17);
+            this.label17.TabIndex = 81;
+            this.label17.Text = "Number Of Iterations";
+            // 
+            // ImageSizeBoxDoodle
+            // 
+            this.ImageSizeBoxDoodle.DisplayMember = "512";
+            this.ImageSizeBoxDoodle.FormattingEnabled = true;
+            this.ImageSizeBoxDoodle.Items.AddRange(new object[] {
+            "-1",
+            "400",
+            "512",
+            "600"});
+            this.ImageSizeBoxDoodle.Location = new System.Drawing.Point(157, 492);
+            this.ImageSizeBoxDoodle.Name = "ImageSizeBoxDoodle";
+            this.ImageSizeBoxDoodle.Size = new System.Drawing.Size(121, 24);
+            this.ImageSizeBoxDoodle.TabIndex = 80;
+            this.ImageSizeBoxDoodle.Text = "-1";
+            this.ImageSizeBoxDoodle.ValueMember = "512";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(39, 492);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(77, 17);
+            this.label18.TabIndex = 79;
+            this.label18.Text = "Image Size";
+            // 
+            // TVWeightBoxDoodle
+            // 
+            this.TVWeightBoxDoodle.Location = new System.Drawing.Point(835, 439);
+            this.TVWeightBoxDoodle.Name = "TVWeightBoxDoodle";
+            this.TVWeightBoxDoodle.Size = new System.Drawing.Size(121, 22);
+            this.TVWeightBoxDoodle.TabIndex = 78;
+            this.TVWeightBoxDoodle.Text = "8.5e-5";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(681, 439);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(148, 17);
+            this.label16.TabIndex = 77;
+            this.label16.Text = "Total Variation Weight";
+            // 
+            // StyleWeightBoxDoodle
+            // 
+            this.StyleWeightBoxDoodle.Location = new System.Drawing.Point(554, 439);
+            this.StyleWeightBoxDoodle.Name = "StyleWeightBoxDoodle";
+            this.StyleWeightBoxDoodle.Size = new System.Drawing.Size(121, 22);
+            this.StyleWeightBoxDoodle.TabIndex = 76;
+            this.StyleWeightBoxDoodle.Text = "1.0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(408, 439);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(87, 17);
+            this.label15.TabIndex = 75;
+            this.label15.Text = "Style Weight";
+            // 
+            // ContentWeightBoxDoodle
+            // 
+            this.ContentWeightBoxDoodle.Location = new System.Drawing.Point(157, 436);
+            this.ContentWeightBoxDoodle.Name = "ContentWeightBoxDoodle";
+            this.ContentWeightBoxDoodle.Size = new System.Drawing.Size(121, 22);
+            this.ContentWeightBoxDoodle.TabIndex = 74;
+            this.ContentWeightBoxDoodle.Text = "0.1";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(39, 436);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 17);
+            this.label14.TabIndex = 73;
+            this.label14.Text = "Content Weight";
+            // 
+            // label13
+            // 
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label13.Location = new System.Drawing.Point(0, 369);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(978, 2);
+            this.label13.TabIndex = 69;
+            // 
+            // DestinationPrefixDoodleLabel
+            // 
+            this.DestinationPrefixDoodleLabel.AutoSize = true;
+            this.DestinationPrefixDoodleLabel.Location = new System.Drawing.Point(165, 327);
+            this.DestinationPrefixDoodleLabel.Name = "DestinationPrefixDoodleLabel";
+            this.DestinationPrefixDoodleLabel.Size = new System.Drawing.Size(0, 17);
+            this.DestinationPrefixDoodleLabel.TabIndex = 68;
+            // 
+            // TargetImageMaskDoodleLabel
+            // 
+            this.TargetImageMaskDoodleLabel.AutoSize = true;
+            this.TargetImageMaskDoodleLabel.Location = new System.Drawing.Point(165, 253);
+            this.TargetImageMaskDoodleLabel.Name = "TargetImageMaskDoodleLabel";
+            this.TargetImageMaskDoodleLabel.Size = new System.Drawing.Size(0, 17);
+            this.TargetImageMaskDoodleLabel.TabIndex = 67;
+            // 
+            // StyleMaskImageDoodleLabel
+            // 
+            this.StyleMaskImageDoodleLabel.AutoSize = true;
+            this.StyleMaskImageDoodleLabel.Location = new System.Drawing.Point(165, 183);
+            this.StyleMaskImageDoodleLabel.Name = "StyleMaskImageDoodleLabel";
+            this.StyleMaskImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
+            this.StyleMaskImageDoodleLabel.TabIndex = 64;
+            // 
+            // DestinationPrefixDoodleBtn
+            // 
+            this.DestinationPrefixDoodleBtn.BackColor = System.Drawing.Color.White;
+            this.DestinationPrefixDoodleBtn.Location = new System.Drawing.Point(42, 303);
+            this.DestinationPrefixDoodleBtn.Name = "DestinationPrefixDoodleBtn";
+            this.DestinationPrefixDoodleBtn.Size = new System.Drawing.Size(95, 53);
+            this.DestinationPrefixDoodleBtn.TabIndex = 63;
+            this.DestinationPrefixDoodleBtn.Text = "Destination Image";
+            this.DestinationPrefixDoodleBtn.UseVisualStyleBackColor = false;
+            this.DestinationPrefixDoodleBtn.Click += new System.EventHandler(this.DestinationPathDoodle_Click);
+            // 
+            // StyleImageDoodleLabel
+            // 
+            this.StyleImageDoodleLabel.AutoSize = true;
+            this.StyleImageDoodleLabel.Location = new System.Drawing.Point(165, 109);
+            this.StyleImageDoodleLabel.Name = "StyleImageDoodleLabel";
+            this.StyleImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
+            this.StyleImageDoodleLabel.TabIndex = 62;
+            // 
+            // SrcImageDoodleLabel
+            // 
+            this.SrcImageDoodleLabel.AutoSize = true;
+            this.SrcImageDoodleLabel.Location = new System.Drawing.Point(165, 38);
+            this.SrcImageDoodleLabel.Name = "SrcImageDoodleLabel";
+            this.SrcImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
+            this.SrcImageDoodleLabel.TabIndex = 61;
             // 
             // MainForm
             // 
@@ -443,91 +839,89 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(982, 753);
-            this.Controls.Add(this.MinThresholdText);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.PreserveColorBox);
-            this.Controls.Add(this.NetworkCheckBox);
-            this.Controls.Add(this.PoolingTypeBox);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.InitialLayerComboBox);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.ContentLayerBox);
-            this.Controls.Add(this.CopyArgumentsBtn);
-            this.Controls.Add(this.MaintainAspectRatioCheckBox);
-            this.Controls.Add(this.RescaleAlgoBox);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.RescaleCheck);
-            this.Controls.Add(this.DstPathLabel);
-            this.Controls.Add(this.DstBtn);
-            this.Controls.Add(this.NoOfItersText);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.StyleScaleText);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.TotalVariationWeightText);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.StyleWeightText);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.ContentWeightText);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.ImageSizeBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.HorizontalLine);
-            this.Controls.Add(this.ExecuteButton);
-            this.Controls.Add(this.StylePathLabel);
-            this.Controls.Add(this.SrcPathLabel);
-            this.Controls.Add(this.StyleBtn);
-            this.Controls.Add(this.SrcBtn);
+            this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neural Art";
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button SrcBtn;
-        private System.Windows.Forms.Button StyleBtn;
-        private System.Windows.Forms.Label SrcPathLabel;
-        private System.Windows.Forms.Label StylePathLabel;
-        private System.Windows.Forms.Button ExecuteButton;
-        private System.Windows.Forms.Label HorizontalLine;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox ImageSizeBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox ContentWeightText;
-        private System.Windows.Forms.TextBox StyleWeightText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TotalVariationWeightText;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox StyleScaleText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox NoOfItersText;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button DstBtn;
-        private System.Windows.Forms.Label DstPathLabel;
-        private System.Windows.Forms.CheckBox RescaleCheck;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox RescaleAlgoBox;
-        private System.Windows.Forms.CheckBox MaintainAspectRatioCheckBox;
-        private System.Windows.Forms.Button CopyArgumentsBtn;
-        private System.Windows.Forms.ComboBox ContentLayerBox;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox InitialLayerComboBox;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox PoolingTypeBox;
         private System.Windows.Forms.ToolTip SrcToolTip;
-        private System.Windows.Forms.CheckBox NetworkCheckBox;
-        private System.Windows.Forms.CheckBox PreserveColorBox;
         private System.Windows.Forms.TextBox MinThresholdText;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox PreserveColorBox;
+        private System.Windows.Forms.CheckBox NetworkCheckBox;
+        private System.Windows.Forms.ComboBox PoolingTypeBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox InitialLayerComboBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox ContentLayerBox;
+        private System.Windows.Forms.Button CopyArgumentsBtn;
+        private System.Windows.Forms.CheckBox MaintainAspectRatioCheckBox;
+        private System.Windows.Forms.ComboBox RescaleAlgoBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox RescaleCheck;
+        private System.Windows.Forms.Label DstPathLabel;
+        private System.Windows.Forms.Button DstBtn;
+        private System.Windows.Forms.TextBox NoOfItersText;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox StyleScaleText;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TotalVariationWeightText;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox StyleWeightText;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox ContentWeightText;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox ImageSizeBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label HorizontalLine;
+        private System.Windows.Forms.Button ExecuteButton;
+        private System.Windows.Forms.Label StylePathLabel;
+        private System.Windows.Forms.Label SrcPathLabel;
+        private System.Windows.Forms.Button StyleBtn;
+        private System.Windows.Forms.Button SrcBtn;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Button StyleMaskDoodle;
+        private System.Windows.Forms.Button DestinationPrefixDoodleBtn;
+        private System.Windows.Forms.Button StyleImageDoodle;
+        private System.Windows.Forms.Button SourceImageDoodle;
+        private System.Windows.Forms.Button TargetMaskDoodle;
+        private System.Windows.Forms.Label DestinationPrefixDoodleLabel;
+        private System.Windows.Forms.Label TargetImageMaskDoodleLabel;
+        private System.Windows.Forms.Label StyleMaskImageDoodleLabel;
+        private System.Windows.Forms.Label StyleImageDoodleLabel;
+        private System.Windows.Forms.Label SrcImageDoodleLabel;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox UseImprovedNetworkDoodle;
+        private System.Windows.Forms.CheckBox PreserveColorDoodle;
+        private System.Windows.Forms.TextBox TVWeightBoxDoodle;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox StyleWeightBoxDoodle;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox ContentWeightBoxDoodle;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox NumIterDoodle;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox ImageSizeBoxDoodle;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button CopyArgsDoodle;
+        private System.Windows.Forms.Button ExecuteDoodle;
+        private System.Windows.Forms.TextBox NumColorsText;
+        private System.Windows.Forms.Label label19;
     }
 }
 

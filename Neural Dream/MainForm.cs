@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Neural_Style_Transfer;
 using Neural_Style_Transfer.Properties;
 using Newtonsoft.Json;
 
@@ -19,14 +20,21 @@ namespace Neural_Dream
     {
         private string desktopPath = "";
 
+        // Neural Style region
         private double contentWeight, styleWeight, tvWeight, styleScale, minThreshold;
         private int imageSize, noIters;
         private string rescaleAlgo, contentLayer, poolingType;
+        
+        // Neural Doodle region
+        private double contentWeightDoodle, styleWeightDoodle, tvWeightDoodle;
+        private int imageSizeDoodle, noItersDoodle;
 
         private string lastArgumentList;
 
         private const string NETWORK_PATH = "Network.py";
         private const string INETWORK_PATH = "INetwork.py";
+        private const string NEURAL_DOODLE_PATH = "neural_doodle.py";
+        private const string INEURAL_DOODLE_PATH = "improved_neural_doodle.py";
 
         public MainForm()
         {
@@ -38,7 +46,7 @@ namespace Neural_Dream
             PoolingTypeBox.Text = "max";
         }
 
-        private void SrcBtnSrcBtn_Click(object sender, EventArgs e)
+        private void SrcBtn_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "";
             openFileDialog1.InitialDirectory = desktopPath;
@@ -52,10 +60,9 @@ namespace Neural_Dream
                 SrcBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
                 SrcBtn.Text = "";
             }
-
         }
 
-        private void StyleBtn_Click(object sender, EventArgs e)
+        private void StyleBtn_Click_1(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "";
             openFileDialog1.InitialDirectory = desktopPath;
@@ -71,7 +78,7 @@ namespace Neural_Dream
             }
         }
 
-        private void DstBtn_Click(object sender, EventArgs e)
+        private void DstBtn_Click_1(object sender, EventArgs e)
         {
             saveFileDialog1.FileName = "";
             saveFileDialog1.InitialDirectory = desktopPath;
@@ -81,7 +88,84 @@ namespace Neural_Dream
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 DstPathLabel.Text = saveFileDialog1.FileName;
-                //Path.GetFileNameWithoutExtension(saveFileDialog1.FileName);
+            }
+        }
+
+
+        private void SourceImageDoodle_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = desktopPath;
+            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                SrcImageDoodleLabel.Text = openFileDialog1.FileName;
+                SourceImageDoodle.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                SourceImageDoodle.Text = "";
+            }
+        }
+        
+        private void StyleImageDoodle_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = desktopPath;
+            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StyleImageDoodleLabel.Text = openFileDialog1.FileName;
+                StyleImageDoodle.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                StyleImageDoodle.Text = "";
+            }
+        }
+
+        private void StyleMaskDoodle_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = desktopPath;
+            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StyleMaskImageDoodleLabel.Text = openFileDialog1.FileName;
+                StyleMaskDoodle.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                StyleMaskDoodle.Text = "";
+            }
+        }
+        
+        private void TargetMaskDoodle_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = desktopPath;
+            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                TargetImageMaskDoodleLabel.Text = openFileDialog1.FileName;
+                TargetMaskDoodle.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                TargetMaskDoodle.Text = "";
+            }
+        }
+
+        private void DestinationPathDoodle_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = "";
+            saveFileDialog1.InitialDirectory = desktopPath;
+            saveFileDialog1.Filter = "";
+            saveFileDialog1.FilterIndex = 1;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                DestinationPrefixDoodleLabel.Text = saveFileDialog1.FileName;
             }
         }
 
@@ -190,7 +274,6 @@ namespace Neural_Dream
             }
             return true;
         }
-
         private bool CheckPoolingLayer()
         {
             poolingType = PoolingTypeBox.Text;
@@ -201,7 +284,6 @@ namespace Neural_Dream
             }
             return true;
         }
-
         private bool CheckMinThreshold()
         {
             try
@@ -216,6 +298,7 @@ namespace Neural_Dream
             }
         }
 
+
         private string GetNetworkPath()
         {
             if (NetworkCheckBox.Checked)
@@ -225,6 +308,18 @@ namespace Neural_Dream
             else
             {
                 return NETWORK_PATH;
+            }
+        }
+
+        private string GetDoodlePath()
+        {
+            if (UseImprovedNetworkDoodle.Checked)
+            {
+                return NEURAL_DOODLE_PATH;
+            }
+            else
+            {
+                return INEURAL_DOODLE_PATH;
             }
         }
 
@@ -313,7 +408,30 @@ namespace Neural_Dream
             return args.ToString();
         }
 
-        private void ExecuteButton_Click(object sender, EventArgs e)
+        private string BuildDoodleCommandArgs()
+        {
+            StringBuilder args = new StringBuilder();
+            if (!string.IsNullOrEmpty(SrcImageDoodleLabel.Text))
+                args.Append("--content-image \"" + SrcImageDoodleLabel.Text + "\" ");
+            args.Append("--style-image \"" + StyleImageDoodleLabel.Text + "\" ");
+            args.Append("--style-mask \"" + StyleMaskImageDoodleLabel.Text + "\" ");
+            args.Append("--target-mask \"" + TargetImageMaskDoodleLabel.Text + "\" ");
+            args.Append("--target-image-prefix \"" + DestinationPrefixDoodleLabel.Text + "\" ");
+
+            args.Append("--nlabels " + NumColorsText.Text + " ");
+            args.Append("--img_size " + ImageSizeBoxDoodle.Text + " ");
+
+            args.Append("--content_weight " + ContentWeightBoxDoodle.Text + " ");
+            args.Append("--style_weight " + StyleWeightBoxDoodle.Text + " ");
+            args.Append("--total_variation_weight " + TVWeightBoxDoodle.Text + " ");
+            
+            args.Append("--num_iter " + NumIterDoodle.Text + " ");
+            args.Append("--preserve_color \"" + PreserveColorDoodle.Checked + "\" ");
+
+            return args.ToString();
+        }
+
+        private void ExecuteButton_Click_1(object sender, EventArgs e)
         {
             if (PerformChecks()) return;
 
@@ -326,17 +444,39 @@ namespace Neural_Dream
             RunScript(command, args);
         }
 
-       
-        private void CopyArgumentsBtn_Click(object sender, EventArgs e)
+        private void ExecuteDoodle_Click(object sender, EventArgs e)
+        {
+            string command = "Script/" + GetDoodlePath();
+            string args = BuildDoodleCommandArgs();
+
+            Console.WriteLine(args);
+            LogDoodleData(args);
+
+            RunScript(command, args);
+        }
+
+
+        private void CopyArgumentsBtn_Click_1(object sender, EventArgs e)
         {
             if (PerformChecks()) return;
-            
+
             string args = BuildCommandArgs();
 
             lastArgumentList = args;
-            
+
             Clipboard.SetText(lastArgumentList);
         }
+
+
+        private void CopyArgsDoodle_Click(object sender, EventArgs e)
+        {
+            string args = BuildDoodleCommandArgs();
+
+            lastArgumentList = args;
+
+            Clipboard.SetText(lastArgumentList);
+        }
+
 
         private void LogData(string args)
         {
@@ -358,6 +498,36 @@ namespace Neural_Dream
                     ContentFilePath = SrcPathLabel.Text,
                     StyleFilePath = StylePathLabel.Text,
                     OutputFilePrefix = DstPathLabel.Text,
+                    ParameterList = args
+                };
+
+                writer.WriteLine(JsonConvert.SerializeObject(info, Formatting.Indented));
+            }
+
+        }
+
+        private void LogDoodleData(string args)
+        {
+            string basePath = "Logs-Doodle/";
+            string folderName = DateTime.Now.ToString("dd-MMM-yyyy");
+
+            if (!Directory.Exists(basePath + folderName))
+                Directory.CreateDirectory(basePath + folderName);
+
+            string fileName = DateTime.Now.ToString("hh-mm-ss tt");
+            fileName = basePath + folderName + "/" + fileName + ".json";
+
+            using (StreamWriter writer = new StreamWriter(fileName, true))
+            {
+                LogDoodleData info = new LogDoodleData()
+                {
+                    Time = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss"),
+                    ScriptType = GetDoodlePath(),
+                    ContentFilePath = SrcImageDoodleLabel.Text,
+                    StyleFilePath = StyleImageDoodleLabel.Text,
+                    OutputFilePrefix = DestinationPrefixDoodleLabel.Text,
+                    StyleMaskPath = StyleMaskImageDoodleLabel.Text,
+                    TargetMaskPath = TargetImageMaskDoodleLabel.Text,
                     ParameterList = args
                 };
 
