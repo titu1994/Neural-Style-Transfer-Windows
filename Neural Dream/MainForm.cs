@@ -315,11 +315,11 @@ namespace Neural_Dream
         {
             if (UseImprovedNetworkDoodle.Checked)
             {
-                return NEURAL_DOODLE_PATH;
+                return INEURAL_DOODLE_PATH;
             }
             else
             {
-                return INEURAL_DOODLE_PATH;
+                return NEURAL_DOODLE_PATH;
             }
         }
 
