@@ -423,7 +423,7 @@ namespace Neural_Dream
 
             args.Append("--content_weight " + ContentWeightBoxDoodle.Text + " ");
             args.Append("--style_weight " + StyleWeightBoxDoodle.Text + " ");
-            args.Append("--total_variation_weight " + TVWeightBoxDoodle.Text + " ");
+            args.Append("--tv_weight " + TVWeightBoxDoodle.Text + " ");
             
             args.Append("--num_iter " + NumIterDoodle.Text + " ");
             args.Append("--preserve_color \"" + PreserveColorDoodle.Checked + "\" ");
