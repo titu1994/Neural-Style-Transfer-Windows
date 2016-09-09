@@ -98,6 +98,8 @@
             this.DestinationPrefixDoodleBtn = new System.Windows.Forms.Button();
             this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
             this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.RegionWeightDoodleText = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -607,6 +609,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.RegionWeightDoodleText);
+            this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.NumColorsText);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.CopyArgsDoodle);
@@ -833,6 +837,23 @@
             this.SrcImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.SrcImageDoodleLabel.TabIndex = 61;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(681, 498);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(101, 17);
+            this.label20.TabIndex = 87;
+            this.label20.Text = "Region Weight";
+            // 
+            // RegionWeightDoodleText
+            // 
+            this.RegionWeightDoodleText.Location = new System.Drawing.Point(835, 493);
+            this.RegionWeightDoodleText.Name = "RegionWeightDoodleText";
+            this.RegionWeightDoodleText.Size = new System.Drawing.Size(121, 22);
+            this.RegionWeightDoodleText.TabIndex = 88;
+            this.RegionWeightDoodleText.Text = "1.";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -922,6 +943,8 @@
         private System.Windows.Forms.Button ExecuteDoodle;
         private System.Windows.Forms.TextBox NumColorsText;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox RegionWeightDoodleText;
     }
 }
 

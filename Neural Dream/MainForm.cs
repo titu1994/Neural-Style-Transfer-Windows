@@ -26,7 +26,7 @@ namespace Neural_Dream
         private string rescaleAlgo, contentLayer, poolingType;
         
         // Neural Doodle region
-        private double contentWeightDoodle, styleWeightDoodle, tvWeightDoodle;
+        private double contentWeightDoodle, styleWeightDoodle, tvWeightDoodle, regionWeightDoodle;
         private int imageSizeDoodle, noItersDoodle;
 
         private string lastArgumentList;
@@ -424,7 +424,8 @@ namespace Neural_Dream
             args.Append("--content_weight " + ContentWeightBoxDoodle.Text + " ");
             args.Append("--style_weight " + StyleWeightBoxDoodle.Text + " ");
             args.Append("--tv_weight " + TVWeightBoxDoodle.Text + " ");
-            
+            args.Append("--region_style_weight " + RegionWeightDoodleText.Text + " ");
+
             args.Append("--num_iter " + NumIterDoodle.Text + " ");
             args.Append("--preserve_color \"" + PreserveColorDoodle.Checked + "\" ");
 
