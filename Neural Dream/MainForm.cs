@@ -345,13 +345,13 @@ namespace Neural_Dream
                     string pythonName;
                     // Unix/Linux pyton name. Used if run with mono.
                     // From the mono FAQ: http://www.mono-project.com/docs/faq/technical/
-                    if ((p == 4) || (p == 6) || (p == 128)) 
+                    if ((p == 4) || (p == 6) || (p == 128))
                     {
-                        pythonName = "python"
+                        pythonName = "python";
                     }
-                    else 
+                    else
                     {
-                        pythonName = "python.exe"
+                        pythonName = "python.exe";
                     }
                     
                     if (fp.Contains(pythonName))
