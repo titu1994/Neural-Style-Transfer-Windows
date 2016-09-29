@@ -332,14 +332,29 @@ namespace Neural_Dream
             {
                 openFileDialog1.FileName = "";
                 openFileDialog1.InitialDirectory = desktopPath;
-                openFileDialog1.Filter = "Python Exe (python.exe)|*.exe";
+                openFileDialog1.Filter = "Python Exe (python.exe)|*.exe|All files (*.*)|*.*";
                 openFileDialog1.FilterIndex = 1;
                 openFileDialog1.RestoreDirectory = true;
 
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string fp = openFileDialog1.FileName;
-                    if (fp.Contains("python.exe"))
+                    
+                    int p = (int) Environment.OSVersion.Platform;
+                    
+                    string pythonName;
+                    // Unix/Linux pyton name. Used if run with mono.
+                    // From the mono FAQ: http://www.mono-project.com/docs/faq/technical/
+                    if ((p == 4) || (p == 6) || (p == 128)) 
+                    {
+                        pythonName = "python"
+                    }
+                    else 
+                    {
+                        pythonName = "python.exe"
+                    }
+                    
+                    if (fp.Contains(pythonName))
                     {
                         Settings.Default.PythonPath = fp;
                         Settings.Default.Save();
