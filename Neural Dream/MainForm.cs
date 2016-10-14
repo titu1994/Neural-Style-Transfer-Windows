@@ -45,6 +45,7 @@ namespace Neural_Dream
             InitialLayerComboBox.Text = "content";
             PoolingTypeBox.Text = "max";
             ModelTypeBox.Text = "vgg16";
+            ContentLossTypeBox.Text = "0";
         }
 
         private void SrcBtn_Click(object sender, EventArgs e)
@@ -434,7 +435,8 @@ namespace Neural_Dream
             args.Append("--pool_type \"" + PoolingTypeBox.Text + "\" ");
             args.Append("--preserve_color \"" + PreserveColorBox.Checked + "\" ");
             args.Append("--min_improvement " + minThreshold + " ");
-            args.Append("--model \"" + ModelTypeBox.Text + "\"");
+            args.Append("--model \"" + ModelTypeBox.Text + "\" ");
+            args.Append("--content_loss_type " + ContentLossTypeBox.Text + "");
 
             return args.ToString();
         }
