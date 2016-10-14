@@ -77,6 +77,8 @@
             this.StylePathLabel = new System.Windows.Forms.Label();
             this.SrcPathLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.RegionWeightDoodleText = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.NumColorsText = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.CopyArgsDoodle = new System.Windows.Forms.Button();
@@ -98,8 +100,6 @@
             this.DestinationPrefixDoodleBtn = new System.Windows.Forms.Button();
             this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
             this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.RegionWeightDoodleText = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -143,7 +143,7 @@
             this.StyleBtn.Name = "StyleBtn";
             this.StyleBtn.Size = new System.Drawing.Size(95, 53);
             this.StyleBtn.TabIndex = 39;
-            this.StyleBtn.Text = "Style Image";
+            this.StyleBtn.Text = "Style Images";
             this.SrcToolTip.SetToolTip(this.StyleBtn, "Style Image\r\n");
             this.StyleBtn.UseVisualStyleBackColor = false;
             this.StyleBtn.Click += new System.EventHandler(this.StyleBtn_Click_1);
@@ -351,7 +351,8 @@
             this.InitialLayerComboBox.FormattingEnabled = true;
             this.InitialLayerComboBox.Items.AddRange(new object[] {
             "content",
-            "noise"});
+            "noise",
+            "gray"});
             this.InitialLayerComboBox.Location = new System.Drawing.Point(458, 546);
             this.InitialLayerComboBox.Name = "InitialLayerComboBox";
             this.InitialLayerComboBox.Size = new System.Drawing.Size(121, 24);
@@ -519,9 +520,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(340, 370);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 17);
+            this.label4.Size = new System.Drawing.Size(94, 17);
             this.label4.TabIndex = 49;
-            this.label4.Text = "Style Weight";
+            this.label4.Text = "Style Weights";
             // 
             // ContentWeightText
             // 
@@ -645,6 +646,23 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Neural Doodle";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // RegionWeightDoodleText
+            // 
+            this.RegionWeightDoodleText.Location = new System.Drawing.Point(835, 493);
+            this.RegionWeightDoodleText.Name = "RegionWeightDoodleText";
+            this.RegionWeightDoodleText.Size = new System.Drawing.Size(121, 22);
+            this.RegionWeightDoodleText.TabIndex = 88;
+            this.RegionWeightDoodleText.Text = "1.";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(681, 498);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(101, 17);
+            this.label20.TabIndex = 87;
+            this.label20.Text = "Region Weight";
             // 
             // NumColorsText
             // 
@@ -836,23 +854,6 @@
             this.SrcImageDoodleLabel.Name = "SrcImageDoodleLabel";
             this.SrcImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.SrcImageDoodleLabel.TabIndex = 61;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(681, 498);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(101, 17);
-            this.label20.TabIndex = 87;
-            this.label20.Text = "Region Weight";
-            // 
-            // RegionWeightDoodleText
-            // 
-            this.RegionWeightDoodleText.Location = new System.Drawing.Point(835, 493);
-            this.RegionWeightDoodleText.Name = "RegionWeightDoodleText";
-            this.RegionWeightDoodleText.Size = new System.Drawing.Size(121, 22);
-            this.RegionWeightDoodleText.TabIndex = 88;
-            this.RegionWeightDoodleText.Text = "1.";
             // 
             // MainForm
             // 

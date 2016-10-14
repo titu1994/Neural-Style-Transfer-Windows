@@ -283,7 +283,7 @@ namespace Neural_Dream
             contentLayer = ContentWeightText.Text;
             if (string.IsNullOrEmpty(contentLayer))
             {
-                MessageBox.Show("Content Must be selected from one of the two options", "Content Layer");
+                MessageBox.Show("Content Must be selected from one of the three options", "Content Layer");
                 return false;
             }
             return true;
