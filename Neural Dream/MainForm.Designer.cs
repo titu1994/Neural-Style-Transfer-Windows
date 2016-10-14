@@ -100,6 +100,8 @@
             this.DestinationPrefixDoodleBtn = new System.Windows.Forms.Button();
             this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
             this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ModelTypeBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -247,11 +249,13 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(982, 753);
+            this.tabControl1.Size = new System.Drawing.Size(982, 853);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ModelTypeBox);
+            this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.MinThresholdText);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.PreserveColorBox);
@@ -291,7 +295,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(974, 724);
+            this.tabPage1.Size = new System.Drawing.Size(974, 824);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Neural Style Transfer";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -383,7 +387,7 @@
             // CopyArgumentsBtn
             // 
             this.CopyArgumentsBtn.BackColor = System.Drawing.Color.White;
-            this.CopyArgumentsBtn.Location = new System.Drawing.Point(546, 609);
+            this.CopyArgumentsBtn.Location = new System.Drawing.Point(540, 679);
             this.CopyArgumentsBtn.Name = "CopyArgumentsBtn";
             this.CopyArgumentsBtn.Size = new System.Drawing.Size(189, 67);
             this.CopyArgumentsBtn.TabIndex = 63;
@@ -568,7 +572,7 @@
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(-2, 695);
+            this.label1.Location = new System.Drawing.Point(-12, 781);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(978, 2);
             this.label1.TabIndex = 44;
@@ -584,7 +588,7 @@
             // ExecuteButton
             // 
             this.ExecuteButton.BackColor = System.Drawing.Color.White;
-            this.ExecuteButton.Location = new System.Drawing.Point(287, 609);
+            this.ExecuteButton.Location = new System.Drawing.Point(281, 679);
             this.ExecuteButton.Name = "ExecuteButton";
             this.ExecuteButton.Size = new System.Drawing.Size(213, 67);
             this.ExecuteButton.TabIndex = 42;
@@ -855,12 +859,34 @@
             this.SrcImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.SrcImageDoodleLabel.TabIndex = 61;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(347, 607);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(82, 17);
+            this.label21.TabIndex = 74;
+            this.label21.Text = "Model Type";
+            // 
+            // ModelTypeBox
+            // 
+            this.ModelTypeBox.BackColor = System.Drawing.Color.White;
+            this.ModelTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ModelTypeBox.FormattingEnabled = true;
+            this.ModelTypeBox.Items.AddRange(new object[] {
+            "vgg16",
+            "vgg19"});
+            this.ModelTypeBox.Location = new System.Drawing.Point(458, 604);
+            this.ModelTypeBox.Name = "ModelTypeBox";
+            this.ModelTypeBox.Size = new System.Drawing.Size(121, 24);
+            this.ModelTypeBox.TabIndex = 75;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(982, 753);
+            this.ClientSize = new System.Drawing.Size(982, 853);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -946,6 +972,8 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox RegionWeightDoodleText;
+        private System.Windows.Forms.ComboBox ModelTypeBox;
+        private System.Windows.Forms.Label label21;
     }
 }
 

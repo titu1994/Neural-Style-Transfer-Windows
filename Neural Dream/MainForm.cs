@@ -23,7 +23,7 @@ namespace Neural_Dream
         // Neural Style region
         private double contentWeight, tvWeight, styleScale, minThreshold;
         private int imageSize, noIters;
-        private string rescaleAlgo, contentLayer, poolingType, styleWeight;
+        private string rescaleAlgo, contentLayer, poolingType, styleWeight, modelType;
         
         // Neural Doodle region
         private double contentWeightDoodle, styleWeightDoodle, tvWeightDoodle, regionWeightDoodle;
@@ -44,6 +44,7 @@ namespace Neural_Dream
             ContentLayerBox.Text = "conv5_2";
             InitialLayerComboBox.Text = "content";
             PoolingTypeBox.Text = "max";
+            ModelTypeBox.Text = "vgg16";
         }
 
         private void SrcBtn_Click(object sender, EventArgs e)
@@ -432,7 +433,8 @@ namespace Neural_Dream
             args.Append("--init_image \"" + InitialLayerComboBox.Text + "\" ");
             args.Append("--pool_type \"" + PoolingTypeBox.Text + "\" ");
             args.Append("--preserve_color \"" + PreserveColorBox.Checked + "\" ");
-            args.Append("--min_improvement " + minThreshold + "");
+            args.Append("--min_improvement " + minThreshold + " ");
+            args.Append("--model \"" + ModelTypeBox.Text + "\"");
 
             return args.ToString();
         }
