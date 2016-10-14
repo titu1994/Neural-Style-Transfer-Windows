@@ -3,14 +3,16 @@ from scipy.optimize import fmin_l_bfgs_b
 import numpy as np
 import time
 import argparse
+import warnings
 
 from keras.models import Sequential
-from keras.layers.convolutional import Convolution2D, ZeroPadding2D, AveragePooling2D, MaxPooling2D
+from keras.layers.convolutional import Convolution2D, AveragePooling2D, MaxPooling2D
 from keras import backend as K
 from keras.utils.data_utils import get_file
+from keras.utils.layer_utils import convert_all_kernels_in_model
 
 """
-Neural Style Transfer with Keras 1.0.8
+Neural Style Transfer with Keras 1.1.0
 
 Based on:
 https://github.com/fchollet/keras/blob/master/examples/neural_style_transfer.py
@@ -24,7 +26,7 @@ TF_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/relea
 parser = argparse.ArgumentParser(description='Neural style transfer with Keras.')
 parser.add_argument('base_image_path', metavar='base', type=str,
                     help='Path to the image to transform.')
-parser.add_argument('style_reference_image_path', metavar='ref', type=str,
+parser.add_argument('syle_image_paths', metavar='ref', nargs='+', type=str,
                     help='Path to the style reference image.')
 parser.add_argument('result_prefix', metavar='res_prefix', type=str,
                     help='Prefix for the saved results.')
@@ -32,18 +34,20 @@ parser.add_argument('result_prefix', metavar='res_prefix', type=str,
 parser.add_argument("--image_size", dest="img_size", default=400, type=int, help='Output Image size')
 parser.add_argument("--content_weight", dest="content_weight", default=0.025, type=float,
                     help="Weight of content")  # 0.025
-parser.add_argument("--style_weight", dest="style_weight", default=1, type=float, help="Weight of content")  # 1.0
+parser.add_argument("--style_weight", dest="style_weight", nargs='+', default=1, type=float, help="Weight of content")  # 1.0
 parser.add_argument("--style_scale", dest="style_scale", default=1.0, type=float,
                     help="Scale the weightage of the style")  # 1, 0.5, 2
 parser.add_argument("--total_variation_weight", dest="tv_weight", default=8.5e-5, type=float,
                     help="Total Variation in the Weights")  # 1.0
+
 parser.add_argument("--num_iter", dest="num_iter", default=10, type=int, help="Number of iterations")
-parser.add_argument("--rescale_image", dest="rescale_image", default="True", type=str,
+parser.add_argument("--rescale_image", dest="rescale_image", default="False", type=str,
                     help="Rescale image after execution to original dimentions")
 parser.add_argument("--rescale_method", dest="rescale_method", default="bilinear", type=str,
                     help="Rescale image algorithm")
 parser.add_argument("--maintain_aspect_ratio", dest="maintain_aspect_ratio", default="True", type=str,
                     help="Maintain aspect ratio of image")
+
 parser.add_argument("--content_layer", dest="content_layer", default="conv5_2", type=str, help="Optional 'conv4_2'")
 parser.add_argument("--init_image", dest="init_image", default="content", type=str,
                     help="Initial image used to generate the final image. Options are 'content' or 'noise")
@@ -57,8 +61,12 @@ parser.add_argument('--min_improvement', default=0.0, type=float,
 
 args = parser.parse_args()
 base_image_path = args.base_image_path
-style_reference_image_path = args.style_reference_image_path
+style_reference_image_paths = args.syle_image_paths
 result_prefix = args.result_prefix
+
+style_image_paths = []
+for style_image_path in style_reference_image_paths:
+    style_image_paths.append(style_image_path)
 
 
 def str_to_bool(v):
@@ -70,9 +78,25 @@ maintain_aspect_ratio = str_to_bool(args.maintain_aspect_ratio)
 preserve_color = str_to_bool(args.color)
 
 # these are the weights of the different loss components
-total_variation_weight = args.tv_weight
-style_weight = args.style_weight * args.style_scale
 content_weight = args.content_weight
+total_variation_weight = args.tv_weight
+
+style_weights = []
+
+if len(style_image_paths) != len(args.style_weight):
+    print("Mismatch in number of style images provided and number of style weights provided. \n"
+          "Found %d style images and %d style weights. \n"
+          "Equally distributing weights to all other styles." % (len(style_image_paths), len(args.style_weight)))
+
+    weight_sum = sum(args.style_weight) * args.style_scale
+    count = len(style_image_paths)
+
+    for i in range(len(style_image_paths)):
+        style_weights.append(weight_sum / count)
+    style_weights[0] = 1.0
+else:
+    for style_weight in args.style_weight:
+        style_weights.append(style_weight * args.style_scale)
 
 # dimensions of the generated picture.
 img_width = img_height = args.img_size
@@ -92,8 +116,11 @@ def preprocess_image(image_path, load_dims=False):
         img_HEIGHT = img.shape[1]
         aspect_ratio = img_HEIGHT / img_WIDTH
 
-    img = imresize(img, (img_width, img_height))
-    img = img[:, :, ::-1].astype('float32')
+    img = imresize(img, (img_width, img_height)).astype('float32')
+
+    # RGB -> BGR
+    img = img[:, :, ::-1]
+
     img[:, :, 0] -= 103.939
     img[:, :, 1] -= 116.779
     img[:, :, 2] -= 123.68
@@ -108,12 +135,18 @@ def preprocess_image(image_path, load_dims=False):
 # util function to convert a tensor into a valid image
 def deprocess_image(x):
     if K.image_dim_ordering() == "th":
+        x = x.reshape((3, img_width, img_height))
         x = x.transpose((1, 2, 0))
+    else:
+        x = x.reshape((img_width, img_height, 3))
 
     x[:, :, 0] += 103.939
     x[:, :, 1] += 116.779
     x[:, :, 2] += 123.68
+
+    # BGR -> RGB
     x = x[:, :, ::-1]
+
     x = np.clip(x, 0, 255).astype('uint8')
     return x
 
@@ -142,7 +175,10 @@ def pooling_func():
 
 # get tensor representations of our images
 base_image = K.variable(preprocess_image(base_image_path, True))
-style_reference_image = K.variable(preprocess_image(style_reference_image_path))
+
+style_reference_images = []
+for style_path in style_image_paths:
+    style_reference_images.append(K.variable(preprocess_image(style_path)))
 
 # this will contain our generated image
 if K.image_dim_ordering() == 'th':
@@ -150,15 +186,21 @@ if K.image_dim_ordering() == 'th':
 else:
     combination_image = K.placeholder((1, img_width, img_height, 3))
 
-# combine the 3 images into a single Keras tensor
-input_tensor = K.concatenate([base_image,
-                              style_reference_image,
-                              combination_image], axis=0)
+image_tensors = [base_image]
+for style_image_tensor in style_reference_images:
+    image_tensors.append(style_image_tensor)
+image_tensors.append(combination_image)
+
+nb_tensors = len(image_tensors)
+nb_style_images = nb_tensors - 2 # Content and Output image not considered
+
+# combine the various images into a single Keras tensor
+input_tensor = K.concatenate(image_tensors, axis=0)
 
 if K.image_dim_ordering() == "th":
-    shape = (3, 3, img_width, img_height)
+    shape = (nb_tensors, 3, img_width, img_height)
 else:
-    shape = (3, img_width, img_height, 3)
+    shape = (nb_tensors, img_width, img_height, 3)
 
 # build the VGG16 network with our 3 images as input
 first_layer = Convolution2D(64, 3, 3, activation='relu', name='conv1_1')
@@ -194,6 +236,18 @@ else:
     weights = get_file('vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5', TF_WEIGHTS_PATH_NO_TOP, cache_subdir='models')
 
 model.load_weights(weights)
+
+if K.backend() == 'tensorflow' and K.image_dim_ordering() == "th":
+    warnings.warn('You are using the TensorFlow backend, yet you '
+                  'are using the Theano '
+                  'image dimension ordering convention '
+                  '(`image_dim_ordering="th"`). '
+                  'For best performance, set '
+                  '`image_dim_ordering="tf"` in '
+                  'your Keras config '
+                  'at ~/.keras/keras.json.')
+    convert_all_kernels_in_model(model)
+
 print('Model loaded.')
 
 # get the symbolic outputs of each "key" layer (we gave them unique names).
@@ -253,17 +307,22 @@ def total_variation_loss(x):
 loss = K.variable(0.)
 layer_features = outputs_dict[args.content_layer]  # 'conv5_2' or 'conv4_2'
 base_image_features = layer_features[0, :, :, :]
-combination_features = layer_features[2, :, :, :]
+combination_features = layer_features[nb_tensors - 1, :, :, :]
 loss += content_weight * content_loss(base_image_features,
                                       combination_features)
 
 feature_layers = ['conv1_1', 'conv2_1', 'conv3_1', 'conv4_1', 'conv5_1']
 for layer_name in feature_layers:
     layer_features = outputs_dict[layer_name]
-    style_reference_features = layer_features[1, :, :, :]
-    combination_features = layer_features[2, :, :, :]
-    sl = style_loss(style_reference_features, combination_features)
-    loss += (style_weight / len(feature_layers)) * sl
+    combination_features = layer_features[nb_tensors - 1, :, :, :]
+
+    style_reference_features = layer_features[1:nb_tensors - 1, :, :, :]
+    sl = []
+    for j in range(nb_style_images):
+        sl.append(style_loss(style_reference_features[j], combination_features))
+
+    for j in range(nb_style_images):
+        loss += (style_weights[j] / len(feature_layers)) * sl
 loss += total_variation_weight * total_variation_loss(combination_image)
 
 # get the gradients of the generated image wrt the loss
@@ -327,11 +386,7 @@ assert args.init_image in ["content", "noise"], "init_image must be one of ['con
 if "content" in args.init_image:
     x = preprocess_image(base_image_path, True)
 else:
-    x = np.random.uniform(0, 255, (1, img_width, img_height, 3))
-    x = x[:, :, :, ::-1]
-    x[0, :, :, 0] -= 103.939
-    x[0, :, :, 1] -= 116.779
-    x[0, :, :, 2] -= 123.68
+    x = np.random.uniform(0, 255, (1, img_width, img_height, 3)) - 128.
 
     if K.image_dim_ordering() == "th":
         x = x.transpose((0, 3, 1, 2))
@@ -342,7 +397,7 @@ if preserve_color:
     content = imresize(content, (img_width, img_height))
 
 num_iter = args.num_iter
-prev_min_val = np.inf
+prev_min_val = -1
 
 improvement_threshold = float(args.min_improvement)
 
@@ -352,12 +407,15 @@ for i in range(num_iter):
 
     x, min_val, info = fmin_l_bfgs_b(evaluator.loss, x.flatten(), fprime=evaluator.grads, maxfun=20)
 
+    if prev_min_val == -1:
+        prev_min_val = min_val
+
     improvement = (prev_min_val - min_val) / prev_min_val * 100
 
     print('Current loss value:', min_val, " Improvement : %0.3f" % improvement, "%")
     prev_min_val = min_val
     # save current generated image
-    img = deprocess_image(x.copy().reshape((3, img_width, img_height)))
+    img = deprocess_image(x.copy())
 
     if preserve_color and content is not None:
         img = original_color_transform(content, img)
@@ -378,7 +436,7 @@ for i in range(num_iter):
     print('Iteration %d completed in %ds' % (i + 1, end_time - start_time))
 
     if improvement_threshold is not 0.0:
-        if improvement < improvement_threshold and improvement is not np.nan:
+        if improvement < improvement_threshold and improvement is not 0.0:
             print("Improvement (%f) is less than improvement threshold (%f). Early stopping script." % (
                 improvement, improvement_threshold))
             exit()

@@ -43,6 +43,8 @@ parser.add_argument("--img_size", type=int, default=-1, help='Image size will be
 parser.add_argument("--num_iter", dest="num_iter", default=10, type=int, help="Number of iterations")
 parser.add_argument('--preserve_color', dest='color', default="False", type=str,
                     help='Preserve original color in image')
+parser.add_argument("--min_improvement", default=0.0, type=float,
+                    help="Minimum improvement required to continue training")
 
 parser.add_argument("--content_weight", dest="content_weight", default=0.1, type=float, help="Weight of content")
 parser.add_argument("--style_weight", dest="style_weight", default=1, type=float, help="Weight of content")
@@ -67,8 +69,8 @@ nb_colors = 3  # RGB
 ref_img = imread(target_mask_path)
 
 if args.img_size != -1:
-    aspect_ratio = ref_img.shape[1] / ref_img.shape[0]
-    ref_img = imresize(ref_img, (args.img_size, args.img_size * aspect_ratio))
+    aspect_ratio = float(ref_img.shape[1]) / float(ref_img.shape[0])
+    ref_img = imresize(ref_img, (int(args.img_size), int(args.img_size * aspect_ratio)))
 
 img_nrows, img_ncols = ref_img.shape[:2]
 
@@ -100,10 +102,12 @@ def deprocess_image(x):
         x = x.transpose((1, 2, 0))
     else:
         x = x.reshape((img_nrows, img_ncols, 3))
-    x = x[:, :, ::-1]
     x[:, :, 0] += 103.939
     x[:, :, 1] += 116.779
     x[:, :, 2] += 123.68
+
+    # BGR to RGB
+    x = x[:, :, ::-1]
     x = np.clip(x, 0, 255).astype('uint8')
     return x
 
@@ -230,14 +234,16 @@ def region_style_loss(style_image, target_image, style_mask, target_mask):
     if K.image_dim_ordering() == 'th':
         masked_style = style_image * style_mask
         masked_target = target_image * target_mask
+        nb_channels = K.shape(style_image)[0]
     else:
         masked_style = K.permute_dimensions(
             style_image, (2, 0, 1)) * style_mask
         masked_target = K.permute_dimensions(
             target_image, (2, 0, 1)) * target_mask
-    s = gram_matrix(masked_style) #* K.sum(style_mask) # Removed area weight of mask
-    c = gram_matrix(masked_target) #* K.sum(target_mask) # Removed area weight of mask
-    return K.sum(K.square(s - c))
+        nb_channels = K.shape(style_image)[-1]
+    s = gram_matrix(masked_style) / K.mean(style_mask) / nb_channels
+    c = gram_matrix(masked_target) / K.mean(target_mask) / nb_channels
+    return K.mean(K.square(s - c))
 
 
 def style_loss(style_image, target_image, style_masks, target_masks):
@@ -255,8 +261,7 @@ def style_loss(style_image, target_image, style_masks, target_masks):
             style_mask = style_masks[:, :, i]
             target_mask = target_masks[:, :, i]
         loss += region_style_weight * region_style_loss(style_image, target_image, style_mask, target_mask)
-    size = img_nrows * img_ncols
-    return loss / (4. * nb_colors ** 2 * size ** 2)
+    return loss
 
 
 def content_loss(content_image, target_image):
@@ -385,3 +390,11 @@ for i in range(args.num_iter):
     end_time = time.time()
     print('Image saved as', fname)
     print('Iteration %d completed in %ds' % (i + 1, end_time - start_time))
+
+    if args.min_improvement != 0.0:
+        if improvement < args.min_improvement and i > 1:
+            print("Script is early stopping since improvement (%0.2f) < min improvement (%0.2f)" %
+                  (improvement, args.min_improvement))
+            output_image = target_img_prefix + '.png'
+            imsave(output_image, img)
+            exit()

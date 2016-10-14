@@ -21,9 +21,9 @@ namespace Neural_Dream
         private string desktopPath = "";
 
         // Neural Style region
-        private double contentWeight, styleWeight, tvWeight, styleScale, minThreshold;
+        private double contentWeight, tvWeight, styleScale, minThreshold;
         private int imageSize, noIters;
-        private string rescaleAlgo, contentLayer, poolingType;
+        private string rescaleAlgo, contentLayer, poolingType, styleWeight;
         
         // Neural Doodle region
         private double contentWeightDoodle, styleWeightDoodle, tvWeightDoodle, regionWeightDoodle;
@@ -64,6 +64,7 @@ namespace Neural_Dream
 
         private void StyleBtn_Click_1(object sender, EventArgs e)
         {
+            openFileDialog1.Multiselect = true;
             openFileDialog1.FileName = "";
             openFileDialog1.InitialDirectory = desktopPath;
             openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
@@ -72,8 +73,14 @@ namespace Neural_Dream
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                StylePathLabel.Text = openFileDialog1.FileName;
-                StyleBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                StringBuilder pathBuilder = new StringBuilder(" ");
+
+                foreach (string fn in openFileDialog1.FileNames)
+                {
+                    pathBuilder.Append("\"").Append(fn).Append("\" ");
+                }
+                StylePathLabel.Text = pathBuilder.ToString();
+                StyleBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileNames[0]);
                 StyleBtn.Text = "";
             }
         }
@@ -187,7 +194,14 @@ namespace Neural_Dream
         {
             try
             {
-                styleWeight = Convert.ToDouble(StyleWeightText.Text);
+                if (StyleWeightText.Text.Contains(" "))
+                {
+                    styleWeight = StyleWeightText.Text.TrimEnd();
+                }
+                else
+                {
+                    styleWeight = StyleWeightText.Text;
+                }
                 return true;
             }
             catch (Exception)
@@ -402,7 +416,7 @@ namespace Neural_Dream
         {
             StringBuilder args = new StringBuilder();
             args.Append("\"" + SrcPathLabel.Text + "\" ");
-            args.Append("\"" + StylePathLabel.Text + "\" ");
+            args.Append(StylePathLabel.Text);
             args.Append("\"" + DstPathLabel.Text + "\" ");
 
             args.Append("--image_size " + imageSize + " ");
