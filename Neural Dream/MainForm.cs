@@ -76,7 +76,7 @@ namespace Neural_Dream
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                StringBuilder pathBuilder = new StringBuilder(" ");
+                StringBuilder pathBuilder = new StringBuilder();
 
                 foreach (string fn in openFileDialog1.FileNames)
                 {
@@ -111,7 +111,7 @@ namespace Neural_Dream
             openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
-            styleCount = 0;
+            maskCount = 0;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
