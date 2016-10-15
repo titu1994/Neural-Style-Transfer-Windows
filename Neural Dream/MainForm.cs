@@ -22,7 +22,7 @@ namespace Neural_Dream
 
         // Neural Style region
         private double contentWeight, tvWeight, styleScale, minThreshold;
-        private int imageSize, noIters, styleCount;
+        private int imageSize, noIters, styleCount, maskCount;
         private string rescaleAlgo, contentLayer, poolingType, styleWeight, modelType;
         
         // Neural Doodle region
@@ -103,6 +103,32 @@ namespace Neural_Dream
         }
 
 
+        private void MaskImagesBtn_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = desktopPath;
+            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+            styleCount = 0;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StringBuilder pathBuilder = new StringBuilder("--style_masks ");
+
+                foreach (string fn in openFileDialog1.FileNames)
+                {
+                    pathBuilder.Append("\"").Append(fn).Append("\" ");
+                    maskCount++;
+                }
+                MaskPathLabel.Text = pathBuilder.ToString();
+                MaskImagesBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileNames[0]);
+                MaskImagesBtn.Text = "";
+            }
+        }
+
+
         private void SourceImageDoodle_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "";
@@ -178,6 +204,18 @@ namespace Neural_Dream
             {
                 DestinationPrefixDoodleLabel.Text = saveFileDialog1.FileName;
             }
+        }
+
+        private bool CheckMasks()
+        {
+            if (maskCount <= 0) return true;
+            if (maskCount != styleCount)
+            {
+                MessageBox.Show("Number of style masks provided is not the same as the number of image masks",
+                    "Illegal number of masks");
+                return false;
+            }
+            return true;
         }
 
         private bool CheckContentWeignt()
@@ -320,6 +358,8 @@ namespace Neural_Dream
             }
             return true;
         }
+
+
         private bool CheckMinThreshold()
         {
             try
@@ -420,6 +460,7 @@ namespace Neural_Dream
 
         private bool PerformChecks()
         {
+            if (!CheckMasks()) return true;
             if (!CheckContentWeignt()) return true;
             if (!CheckStyleWeignt()) return true;
             if (!CheckTVWeignt()) return true;
@@ -440,6 +481,9 @@ namespace Neural_Dream
             args.Append("\"" + SrcPathLabel.Text + "\" ");
             args.Append(StylePathLabel.Text);
             args.Append("\"" + DstPathLabel.Text + "\" ");
+
+            if (maskCount > 0)
+                args.Append(MaskPathLabel.Text);
 
             args.Append("--image_size " + imageSize + " ");
             args.Append("--content_weight " + contentWeight + " ");

@@ -44,6 +44,8 @@
             this.PreserveColorDoodle = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ContentLossTypeBox = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.ModelTypeBox = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.MinThresholdText = new System.Windows.Forms.TextBox();
@@ -102,8 +104,8 @@
             this.DestinationPrefixDoodleBtn = new System.Windows.Forms.Button();
             this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
             this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.ContentLossTypeBox = new System.Windows.Forms.ComboBox();
+            this.MaskImagesBtn = new System.Windows.Forms.Button();
+            this.MaskPathLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -256,6 +258,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.MaskPathLabel);
+            this.tabPage1.Controls.Add(this.MaskImagesBtn);
             this.tabPage1.Controls.Add(this.ContentLossTypeBox);
             this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Controls.Add(this.ModelTypeBox);
@@ -303,6 +307,29 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Neural Style Transfer";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ContentLossTypeBox
+            // 
+            this.ContentLossTypeBox.BackColor = System.Drawing.Color.White;
+            this.ContentLossTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ContentLossTypeBox.FormattingEnabled = true;
+            this.ContentLossTypeBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2"});
+            this.ContentLossTypeBox.Location = new System.Drawing.Point(167, 604);
+            this.ContentLossTypeBox.Name = "ContentLossTypeBox";
+            this.ContentLossTypeBox.Size = new System.Drawing.Size(106, 24);
+            this.ContentLossTypeBox.TabIndex = 77;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(34, 611);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(127, 17);
+            this.label22.TabIndex = 76;
+            this.label22.Text = "Content Loss Type";
             // 
             // ModelTypeBox
             // 
@@ -606,7 +633,7 @@
             // HorizontalLine
             // 
             this.HorizontalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.HorizontalLine.Location = new System.Drawing.Point(-2, 256);
+            this.HorizontalLine.Location = new System.Drawing.Point(-7, 297);
             this.HorizontalLine.Name = "HorizontalLine";
             this.HorizontalLine.Size = new System.Drawing.Size(978, 2);
             this.HorizontalLine.TabIndex = 43;
@@ -885,28 +912,26 @@
             this.SrcImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.SrcImageDoodleLabel.TabIndex = 61;
             // 
-            // label22
+            // MaskImagesBtn
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(34, 611);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(127, 17);
-            this.label22.TabIndex = 76;
-            this.label22.Text = "Content Loss Type";
+            this.MaskImagesBtn.BackColor = System.Drawing.Color.White;
+            this.MaskImagesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MaskImagesBtn.Location = new System.Drawing.Point(44, 241);
+            this.MaskImagesBtn.Name = "MaskImagesBtn";
+            this.MaskImagesBtn.Size = new System.Drawing.Size(95, 53);
+            this.MaskImagesBtn.TabIndex = 78;
+            this.MaskImagesBtn.Text = "Style Mask Images";
+            this.SrcToolTip.SetToolTip(this.MaskImagesBtn, "Source Image\r\n");
+            this.MaskImagesBtn.UseVisualStyleBackColor = false;
+            this.MaskImagesBtn.Click += new System.EventHandler(this.MaskImagesBtn_Click);
             // 
-            // ContentLossTypeBox
+            // MaskPathLabel
             // 
-            this.ContentLossTypeBox.BackColor = System.Drawing.Color.White;
-            this.ContentLossTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ContentLossTypeBox.FormattingEnabled = true;
-            this.ContentLossTypeBox.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2"});
-            this.ContentLossTypeBox.Location = new System.Drawing.Point(167, 604);
-            this.ContentLossTypeBox.Name = "ContentLossTypeBox";
-            this.ContentLossTypeBox.Size = new System.Drawing.Size(106, 24);
-            this.ContentLossTypeBox.TabIndex = 77;
+            this.MaskPathLabel.AutoSize = true;
+            this.MaskPathLabel.Location = new System.Drawing.Point(159, 259);
+            this.MaskPathLabel.Name = "MaskPathLabel";
+            this.MaskPathLabel.Size = new System.Drawing.Size(0, 17);
+            this.MaskPathLabel.TabIndex = 79;
             // 
             // MainForm
             // 
@@ -1003,6 +1028,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox ContentLossTypeBox;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button MaskImagesBtn;
+        private System.Windows.Forms.Label MaskPathLabel;
     }
 }
 
