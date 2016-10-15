@@ -22,7 +22,7 @@ namespace Neural_Dream
 
         // Neural Style region
         private double contentWeight, tvWeight, styleScale, minThreshold;
-        private int imageSize, noIters;
+        private int imageSize, noIters, styleCount;
         private string rescaleAlgo, contentLayer, poolingType, styleWeight, modelType;
         
         // Neural Doodle region
@@ -72,6 +72,7 @@ namespace Neural_Dream
             openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
+            styleCount = 0;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -80,6 +81,7 @@ namespace Neural_Dream
                 foreach (string fn in openFileDialog1.FileNames)
                 {
                     pathBuilder.Append("\"").Append(fn).Append("\" ");
+                    styleCount++;
                 }
                 StylePathLabel.Text = pathBuilder.ToString();
                 StyleBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileNames[0]);
@@ -196,8 +198,26 @@ namespace Neural_Dream
         {
             try
             {
-                if (StyleWeightText.Text.Contains(" "))
+                if (styleCount > 1 && !StyleWeightText.Text.Contains(" "))
                 {
+                    MessageBox.Show(
+                        "Multiple styles chosen. Multiple style weights must be supplied with spaces in between.",
+                        "Multiple Styles Selected");
+                    return false;
+                }
+
+                if (styleCount > 1)
+                {
+                    int styleWeightsCount = StyleWeightText.Text.TrimEnd().Split(' ').Length;
+                    if (styleWeightsCount != styleCount)
+                    {
+                        MessageBox.Show(string.Format("Number of Styles selected = {0}, \n" +
+                                                      "Number of Style Weights provided = {1}, \n" +
+                                                      "Please provide correct number of style weights.", styleCount, styleWeightsCount),
+                                                      "Invalid number of Style Weights");
+                        return false;
+                    }
+
                     styleWeight = StyleWeightText.Text.TrimEnd();
                 }
                 else
