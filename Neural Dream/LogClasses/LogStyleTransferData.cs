@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Neural_Dream
 {
-    class LogInfo
+    class LogStyleTransferData
     {
         public string Time { get; set; }
         public string ScriptType { get; set; }

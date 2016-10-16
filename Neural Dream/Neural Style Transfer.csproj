@@ -67,8 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LogDoodleData.cs" />
-    <Compile Include="LogInfo.cs" />
+    <Compile Include="LogClasses\LogColorTransferData.cs" />
+    <Compile Include="LogClasses\LogDoodleData.cs" />
+    <Compile Include="LogClasses\LogStyleTransferData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Script\color_transfer.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Script\improved_neural_doodle.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

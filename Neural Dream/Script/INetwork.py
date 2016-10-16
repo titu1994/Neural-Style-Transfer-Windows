@@ -430,7 +430,6 @@ for i in range(len(feature_layers) - 1):
     style_reference_features = layer_features[1:nb_tensors - 1, :, :, :]
     sl1 = []
     for j in range(nb_style_images):
-        print("i = %d, Loading mask : %s with %d channels" % (i, style_masks[j], shape[channel_index]))
         sl1.append(style_loss(style_reference_features[j], combination_features, style_masks[j], shape))
 
     layer_features = outputs_dict[feature_layers[i + 1]]
@@ -439,7 +438,6 @@ for i in range(len(feature_layers) - 1):
     style_reference_features = layer_features[1:nb_tensors - 1, :, :, :]
     sl2 = []
     for j in range(nb_style_images):
-        print("i = %d, Loading mask : %s with %d channels" % (i + 1, style_masks[j], shape[channel_index]))
         sl2.append(style_loss(style_reference_features[j], combination_features, style_masks[j], shape))
 
     for j in range(nb_style_images):

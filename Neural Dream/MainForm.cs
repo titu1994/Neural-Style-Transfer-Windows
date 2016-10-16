@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Neural_Style_Transfer;
+using Neural_Style_Transfer.LogClasses;
 using Neural_Style_Transfer.Properties;
 using Newtonsoft.Json;
 
@@ -35,6 +36,7 @@ namespace Neural_Dream
         private const string INETWORK_PATH = "INetwork.py";
         private const string NEURAL_DOODLE_PATH = "neural_doodle.py";
         private const string INEURAL_DOODLE_PATH = "improved_neural_doodle.py";
+        private const string COLOR_TRANSFER_PATH = "color_transfer.py";
 
         public MainForm()
         {
@@ -206,6 +208,39 @@ namespace Neural_Dream
             }
         }
 
+        private void ContentColorTransferBtn_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = desktopPath;
+            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ContentColorTransferLabel.Text = openFileDialog1.FileName;
+                ContentColorTransferBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                ContentColorTransferBtn.Text = "";
+            }
+        }
+
+
+        private void GeneratedColorTransferBtn_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = desktopPath;
+            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                GeneratedColorTransferLabel.Text = openFileDialog1.FileName;
+                GeneratedColorTransferBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                GeneratedColorTransferBtn.Text = "";
+            }
+        }
+
         private bool CheckMasks()
         {
             if (maskCount <= 0) return true;
@@ -348,6 +383,8 @@ namespace Neural_Dream
             }
             return true;
         }
+
+
         private bool CheckPoolingLayer()
         {
             poolingType = PoolingTypeBox.Text;
@@ -374,7 +411,6 @@ namespace Neural_Dream
             }
         }
 
-
         private string GetNetworkPath()
         {
             if (NetworkCheckBox.Checked)
@@ -397,6 +433,12 @@ namespace Neural_Dream
             {
                 return NEURAL_DOODLE_PATH;
             }
+        }
+
+
+        private string GetColorTransferPath()
+        {
+            return COLOR_TRANSFER_PATH;
         }
 
         public void RunScript(string cmd, string args)
@@ -529,6 +571,16 @@ namespace Neural_Dream
             return args.ToString();
         }
 
+        private string BuildColorTransferArgs()
+        {
+            StringBuilder args = new StringBuilder();
+
+            args.Append("\"" + ContentColorTransferLabel.Text + "\" ");
+            args.Append("\"" + GeneratedColorTransferLabel.Text + "\"");
+
+            return args.ToString();
+        }
+
         private void ExecuteButton_Click_1(object sender, EventArgs e)
         {
             if (PerformChecks()) return;
@@ -553,6 +605,17 @@ namespace Neural_Dream
             RunScript(command, args);
         }
 
+        private void ExecuteColorTransferBtn_Click(object sender, EventArgs e)
+        {
+            string command = "Script/" + GetColorTransferPath();
+            string args = BuildColorTransferArgs();
+
+            Console.WriteLine(args);
+            LogColorTransferData(args);
+
+            RunScript(command, args);
+
+        }
 
         private void CopyArgumentsBtn_Click_1(object sender, EventArgs e)
         {
@@ -576,6 +639,15 @@ namespace Neural_Dream
         }
 
 
+        private void CopyArgumentsColorTransferBtn_Click(object sender, EventArgs e)
+        {
+            string args = BuildColorTransferArgs();
+            lastArgumentList = args;
+
+            Clipboard.SetText(args);
+        }
+
+
         private void LogData(string args)
         {
             string basePath = "Logs/";
@@ -589,7 +661,7 @@ namespace Neural_Dream
             
             using (StreamWriter writer = new StreamWriter(fileName, true))
             {
-                LogInfo info = new LogInfo()
+                LogStyleTransferData styleTransferData = new LogStyleTransferData()
                 {
                     Time = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss"),
                     ScriptType = GetNetworkPath(), 
@@ -599,7 +671,7 @@ namespace Neural_Dream
                     ParameterList = args
                 };
 
-                writer.WriteLine(JsonConvert.SerializeObject(info, Formatting.Indented));
+                writer.WriteLine(JsonConvert.SerializeObject(styleTransferData, Formatting.Indented));
             }
 
         }
@@ -631,8 +703,32 @@ namespace Neural_Dream
 
                 writer.WriteLine(JsonConvert.SerializeObject(info, Formatting.Indented));
             }
-
         }
 
+        private void LogColorTransferData(string args)
+        {
+            string basePath = "Logs-Color-Transfer/";
+            string folderName = DateTime.Now.ToString("dd-MMM-yyyy");
+
+            if (!Directory.Exists(basePath + folderName))
+                Directory.CreateDirectory(basePath + folderName);
+
+            string fileName = DateTime.Now.ToString("hh-mm-ss tt");
+            fileName = basePath + folderName + "/" + fileName + ".json";
+
+            using (StreamWriter writer = new StreamWriter(fileName, true))
+            {
+                LogColorTransferData data = new LogColorTransferData()
+                {
+                    Time = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss"),
+                    ContentFilePath = ContentColorTransferLabel.Text,
+                    GeneratedFilePath = GeneratedColorTransferLabel.Text,
+                    ParameterList = args,
+                };
+
+                writer.WriteLine(JsonConvert.SerializeObject(data, Formatting.Indented));
+            }
+
+        }
     }
 }
