@@ -37,12 +37,13 @@ namespace Neural_Dream
         private const string NEURAL_DOODLE_PATH = "neural_doodle.py";
         private const string INEURAL_DOODLE_PATH = "improved_neural_doodle.py";
         private const string COLOR_TRANSFER_PATH = "color_transfer.py";
+        private const string MASKED_TRANSFER_PATH = "mask_transfer.py";
 
         public MainForm()
         {
             InitializeComponent();
             desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            RescaleAlgoBox.Text = "bilinear";
+            RescaleAlgoBox.Text = "bicubic";
             ContentLayerBox.Text = "conv5_2";
             InitialLayerComboBox.Text = "content";
             PoolingTypeBox.Text = "max";
@@ -50,13 +51,19 @@ namespace Neural_Dream
             ContentLossTypeBox.Text = "0";
         }
 
-        private void SrcBtn_Click(object sender, EventArgs e)
+
+        private void SetUpOpenFileDialog()
         {
             openFileDialog1.FileName = "";
             openFileDialog1.InitialDirectory = desktopPath;
             openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
+        }
+
+        private void SrcBtn_Click(object sender, EventArgs e)
+        {
+            SetUpOpenFileDialog();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -65,15 +72,12 @@ namespace Neural_Dream
                 SrcBtn.Text = "";
             }
         }
+ 
 
         private void StyleBtn_Click_1(object sender, EventArgs e)
         {
             openFileDialog1.Multiselect = true;
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
             styleCount = 0;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -108,11 +112,7 @@ namespace Neural_Dream
         private void MaskImagesBtn_Click(object sender, EventArgs e)
         {
             openFileDialog1.Multiselect = true;
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
             maskCount = 0;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -133,11 +133,7 @@ namespace Neural_Dream
 
         private void SourceImageDoodle_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -149,11 +145,7 @@ namespace Neural_Dream
         
         private void StyleImageDoodle_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -165,11 +157,7 @@ namespace Neural_Dream
 
         private void StyleMaskDoodle_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -181,11 +169,7 @@ namespace Neural_Dream
         
         private void TargetMaskDoodle_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -210,11 +194,7 @@ namespace Neural_Dream
 
         private void ContentColorTransferBtn_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -227,17 +207,52 @@ namespace Neural_Dream
 
         private void GeneratedColorTransferBtn_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = desktopPath;
-            openFileDialog1.Filter = "Image (*.jpeg, *.jpg, *.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            SetUpOpenFileDialog();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 GeneratedColorTransferLabel.Text = openFileDialog1.FileName;
                 GeneratedColorTransferBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
                 GeneratedColorTransferBtn.Text = "";
+            }
+        }
+
+
+        private void ContentImageMaskedBtn_Click(object sender, EventArgs e)
+        {
+            SetUpOpenFileDialog();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ContentMaskedLabel.Text = openFileDialog1.FileName;
+                ContentImageMaskedBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                ContentImageMaskedBtn.Text = "";
+            }
+        }
+
+
+        private void GeneratedImageMaskedBtn_Click(object sender, EventArgs e)
+        {
+            SetUpOpenFileDialog();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                GeneratedMaskedLabel.Text = openFileDialog1.FileName;
+                GeneratedImageMaskedBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                GeneratedImageMaskedBtn.Text = "";
+            }
+        }
+
+
+        private void MaskedImageBtn_Click(object sender, EventArgs e)
+        {
+            SetUpOpenFileDialog();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                MaskedLable.Text = openFileDialog1.FileName;
+                MaskedImageBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                MaskedImageBtn.Text = "";
             }
         }
 
@@ -435,10 +450,14 @@ namespace Neural_Dream
             }
         }
 
-
         private string GetColorTransferPath()
         {
             return COLOR_TRANSFER_PATH;
+        }
+
+        private string GetMaskedTransferPath()
+        {
+            return MASKED_TRANSFER_PATH;
         }
 
         public void RunScript(string cmd, string args)
@@ -581,6 +600,17 @@ namespace Neural_Dream
             return args.ToString();
         }
 
+        private string BuildMaskedTransferArgs()
+        {
+            StringBuilder args = new StringBuilder();
+
+            args.Append("\"" + ContentMaskedLabel.Text + "\" ");
+            args.Append("\"" + GeneratedMaskedLabel.Text + "\" ");
+            args.Append("\"" + MaskedLable.Text + "\"");
+
+            return args.ToString();
+        }
+
         private void ExecuteButton_Click_1(object sender, EventArgs e)
         {
             if (PerformChecks()) return;
@@ -615,6 +645,17 @@ namespace Neural_Dream
 
             RunScript(command, args);
 
+        }
+
+        private void ExecuteMaskedTransferBtn_Click(object sender, EventArgs e)
+        {
+            string command = "Script/" + GetMaskedTransferPath();
+            string args = BuildMaskedTransferArgs();
+
+            Console.WriteLine(args);
+            LogMaskedTransferData(args);
+
+            RunScript(command, args);
         }
 
         private void CopyArgumentsBtn_Click_1(object sender, EventArgs e)
@@ -729,6 +770,32 @@ namespace Neural_Dream
                 writer.WriteLine(JsonConvert.SerializeObject(data, Formatting.Indented));
             }
 
+        }
+
+        private void LogMaskedTransferData(string args)
+        {
+            string basePath = "Logs-Maksed-Transfer/";
+            string folderName = DateTime.Now.ToString("dd-MMM-yyyy");
+
+            if (!Directory.Exists(basePath + folderName))
+                Directory.CreateDirectory(basePath + folderName);
+
+            string fileName = DateTime.Now.ToString("hh-mm-ss tt");
+            fileName = basePath + folderName + "/" + fileName + ".json";
+
+            using (StreamWriter writer = new StreamWriter(fileName, true))
+            {
+                LogMaskedTransferData data = new LogMaskedTransferData()
+                {
+                    Time = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss"),
+                    ContentFilePath = ContentMaskedLabel.Text,
+                    GeneratedFilePath = GeneratedMaskedLabel.Text,
+                    MaskFilePath = MaskedLable.Text,
+                    ParameterList = args,
+                };
+
+                writer.WriteLine(JsonConvert.SerializeObject(data, Formatting.Indented));
+            }
         }
     }
 }

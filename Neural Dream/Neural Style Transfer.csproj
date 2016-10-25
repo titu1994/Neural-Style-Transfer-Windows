@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="LogClasses\LogColorTransferData.cs" />
     <Compile Include="LogClasses\LogDoodleData.cs" />
+    <Compile Include="LogClasses\LogMaskedTransferData.cs" />
     <Compile Include="LogClasses\LogStyleTransferData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -82,6 +83,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Script\improved_neural_doodle.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Script\mask_transfer.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Script\neural_doodle.py">

@@ -109,15 +109,26 @@
             this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
             this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
             this.ColorTransfer = new System.Windows.Forms.TabPage();
-            this.GeneratedColorTransferLabel = new System.Windows.Forms.Label();
-            this.ContentColorTransferLabel = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.CopyArgumentsColorTransferBtn = new System.Windows.Forms.Button();
             this.ExecuteColorTransferBtn = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
+            this.GeneratedColorTransferLabel = new System.Windows.Forms.Label();
+            this.ContentColorTransferLabel = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
+            this.GeneratedMaskedLabel = new System.Windows.Forms.Label();
+            this.ContentMaskedLabel = new System.Windows.Forms.Label();
+            this.GeneratedImageMaskedBtn = new System.Windows.Forms.Button();
+            this.ContentImageMaskedBtn = new System.Windows.Forms.Button();
+            this.MaskedLable = new System.Windows.Forms.Label();
+            this.MaskedImageBtn = new System.Windows.Forms.Button();
+            this.CopyArgumentsMaskedTransferBtn = new System.Windows.Forms.Button();
+            this.ExecuteMaskedTransferBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.ColorTransfer.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -298,6 +309,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.ColorTransfer);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -982,8 +994,38 @@
             this.ColorTransfer.Name = "ColorTransfer";
             this.ColorTransfer.Size = new System.Drawing.Size(974, 824);
             this.ColorTransfer.TabIndex = 2;
-            this.ColorTransfer.Text = "ColorTransfer";
+            this.ColorTransfer.Text = "Color Transfer";
             this.ColorTransfer.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label23.Location = new System.Drawing.Point(-4, 213);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(978, 2);
+            this.label23.TabIndex = 66;
+            // 
+            // CopyArgumentsColorTransferBtn
+            // 
+            this.CopyArgumentsColorTransferBtn.BackColor = System.Drawing.Color.White;
+            this.CopyArgumentsColorTransferBtn.Location = new System.Drawing.Point(473, 441);
+            this.CopyArgumentsColorTransferBtn.Name = "CopyArgumentsColorTransferBtn";
+            this.CopyArgumentsColorTransferBtn.Size = new System.Drawing.Size(189, 67);
+            this.CopyArgumentsColorTransferBtn.TabIndex = 65;
+            this.CopyArgumentsColorTransferBtn.Text = "Copy Arguments to Clipboard";
+            this.CopyArgumentsColorTransferBtn.UseVisualStyleBackColor = false;
+            this.CopyArgumentsColorTransferBtn.Click += new System.EventHandler(this.CopyArgumentsColorTransferBtn_Click);
+            // 
+            // ExecuteColorTransferBtn
+            // 
+            this.ExecuteColorTransferBtn.BackColor = System.Drawing.Color.White;
+            this.ExecuteColorTransferBtn.Location = new System.Drawing.Point(214, 441);
+            this.ExecuteColorTransferBtn.Name = "ExecuteColorTransferBtn";
+            this.ExecuteColorTransferBtn.Size = new System.Drawing.Size(213, 67);
+            this.ExecuteColorTransferBtn.TabIndex = 64;
+            this.ExecuteColorTransferBtn.Text = "Transfer";
+            this.ExecuteColorTransferBtn.UseVisualStyleBackColor = false;
+            this.ExecuteColorTransferBtn.Click += new System.EventHandler(this.ExecuteColorTransferBtn_Click);
             // 
             // GeneratedColorTransferLabel
             // 
@@ -1001,35 +1043,115 @@
             this.ContentColorTransferLabel.Size = new System.Drawing.Size(0, 17);
             this.ContentColorTransferLabel.TabIndex = 42;
             // 
-            // CopyArgumentsColorTransferBtn
+            // tabPage3
             // 
-            this.CopyArgumentsColorTransferBtn.BackColor = System.Drawing.Color.White;
-            this.CopyArgumentsColorTransferBtn.Location = new System.Drawing.Point(483, 452);
-            this.CopyArgumentsColorTransferBtn.Name = "CopyArgumentsColorTransferBtn";
-            this.CopyArgumentsColorTransferBtn.Size = new System.Drawing.Size(189, 67);
-            this.CopyArgumentsColorTransferBtn.TabIndex = 65;
-            this.CopyArgumentsColorTransferBtn.Text = "Copy Arguments to Clipboard";
-            this.CopyArgumentsColorTransferBtn.UseVisualStyleBackColor = false;
-            this.CopyArgumentsColorTransferBtn.Click += new System.EventHandler(this.CopyArgumentsColorTransferBtn_Click);
+            this.tabPage3.Controls.Add(this.CopyArgumentsMaskedTransferBtn);
+            this.tabPage3.Controls.Add(this.ExecuteMaskedTransferBtn);
+            this.tabPage3.Controls.Add(this.MaskedLable);
+            this.tabPage3.Controls.Add(this.MaskedImageBtn);
+            this.tabPage3.Controls.Add(this.label24);
+            this.tabPage3.Controls.Add(this.GeneratedMaskedLabel);
+            this.tabPage3.Controls.Add(this.ContentMaskedLabel);
+            this.tabPage3.Controls.Add(this.GeneratedImageMaskedBtn);
+            this.tabPage3.Controls.Add(this.ContentImageMaskedBtn);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(974, 824);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Masked Transfer";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // ExecuteColorTransferBtn
+            // label24
             // 
-            this.ExecuteColorTransferBtn.BackColor = System.Drawing.Color.White;
-            this.ExecuteColorTransferBtn.Location = new System.Drawing.Point(224, 452);
-            this.ExecuteColorTransferBtn.Name = "ExecuteColorTransferBtn";
-            this.ExecuteColorTransferBtn.Size = new System.Drawing.Size(213, 67);
-            this.ExecuteColorTransferBtn.TabIndex = 64;
-            this.ExecuteColorTransferBtn.Text = "Transfer";
-            this.ExecuteColorTransferBtn.UseVisualStyleBackColor = false;
-            this.ExecuteColorTransferBtn.Click += new System.EventHandler(this.ExecuteColorTransferBtn_Click);
+            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label24.Location = new System.Drawing.Point(-12, 257);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(978, 2);
+            this.label24.TabIndex = 71;
             // 
-            // label23
+            // GeneratedMaskedLabel
             // 
-            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label23.Location = new System.Drawing.Point(-4, 213);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(978, 2);
-            this.label23.TabIndex = 66;
+            this.GeneratedMaskedLabel.AutoSize = true;
+            this.GeneratedMaskedLabel.Location = new System.Drawing.Point(177, 122);
+            this.GeneratedMaskedLabel.Name = "GeneratedMaskedLabel";
+            this.GeneratedMaskedLabel.Size = new System.Drawing.Size(0, 17);
+            this.GeneratedMaskedLabel.TabIndex = 70;
+            // 
+            // ContentMaskedLabel
+            // 
+            this.ContentMaskedLabel.AutoSize = true;
+            this.ContentMaskedLabel.Location = new System.Drawing.Point(177, 40);
+            this.ContentMaskedLabel.Name = "ContentMaskedLabel";
+            this.ContentMaskedLabel.Size = new System.Drawing.Size(0, 17);
+            this.ContentMaskedLabel.TabIndex = 69;
+            // 
+            // GeneratedImageMaskedBtn
+            // 
+            this.GeneratedImageMaskedBtn.BackColor = System.Drawing.Color.White;
+            this.GeneratedImageMaskedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GeneratedImageMaskedBtn.Location = new System.Drawing.Point(56, 104);
+            this.GeneratedImageMaskedBtn.Name = "GeneratedImageMaskedBtn";
+            this.GeneratedImageMaskedBtn.Size = new System.Drawing.Size(95, 53);
+            this.GeneratedImageMaskedBtn.TabIndex = 68;
+            this.GeneratedImageMaskedBtn.Text = "Generated Image";
+            this.SrcToolTip.SetToolTip(this.GeneratedImageMaskedBtn, "Style Image\r\n");
+            this.GeneratedImageMaskedBtn.UseVisualStyleBackColor = false;
+            this.GeneratedImageMaskedBtn.Click += new System.EventHandler(this.GeneratedImageMaskedBtn_Click);
+            // 
+            // ContentImageMaskedBtn
+            // 
+            this.ContentImageMaskedBtn.BackColor = System.Drawing.Color.White;
+            this.ContentImageMaskedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContentImageMaskedBtn.Location = new System.Drawing.Point(56, 22);
+            this.ContentImageMaskedBtn.Name = "ContentImageMaskedBtn";
+            this.ContentImageMaskedBtn.Size = new System.Drawing.Size(95, 53);
+            this.ContentImageMaskedBtn.TabIndex = 67;
+            this.ContentImageMaskedBtn.Text = "Content Image";
+            this.SrcToolTip.SetToolTip(this.ContentImageMaskedBtn, "Source Image\r\n");
+            this.ContentImageMaskedBtn.UseVisualStyleBackColor = false;
+            this.ContentImageMaskedBtn.Click += new System.EventHandler(this.ContentImageMaskedBtn_Click);
+            // 
+            // MaskedLable
+            // 
+            this.MaskedLable.AutoSize = true;
+            this.MaskedLable.Location = new System.Drawing.Point(177, 202);
+            this.MaskedLable.Name = "MaskedLable";
+            this.MaskedLable.Size = new System.Drawing.Size(0, 17);
+            this.MaskedLable.TabIndex = 73;
+            // 
+            // MaskedImageBtn
+            // 
+            this.MaskedImageBtn.BackColor = System.Drawing.Color.White;
+            this.MaskedImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MaskedImageBtn.Location = new System.Drawing.Point(56, 184);
+            this.MaskedImageBtn.Name = "MaskedImageBtn";
+            this.MaskedImageBtn.Size = new System.Drawing.Size(95, 53);
+            this.MaskedImageBtn.TabIndex = 72;
+            this.MaskedImageBtn.Text = "Mask Image";
+            this.SrcToolTip.SetToolTip(this.MaskedImageBtn, "Style Image\r\n");
+            this.MaskedImageBtn.UseVisualStyleBackColor = false;
+            this.MaskedImageBtn.Click += new System.EventHandler(this.MaskedImageBtn_Click);
+            // 
+            // CopyArgumentsMaskedTransferBtn
+            // 
+            this.CopyArgumentsMaskedTransferBtn.BackColor = System.Drawing.Color.White;
+            this.CopyArgumentsMaskedTransferBtn.Location = new System.Drawing.Point(463, 482);
+            this.CopyArgumentsMaskedTransferBtn.Name = "CopyArgumentsMaskedTransferBtn";
+            this.CopyArgumentsMaskedTransferBtn.Size = new System.Drawing.Size(189, 67);
+            this.CopyArgumentsMaskedTransferBtn.TabIndex = 75;
+            this.CopyArgumentsMaskedTransferBtn.Text = "Copy Arguments to Clipboard";
+            this.CopyArgumentsMaskedTransferBtn.UseVisualStyleBackColor = false;
+            // 
+            // ExecuteMaskedTransferBtn
+            // 
+            this.ExecuteMaskedTransferBtn.BackColor = System.Drawing.Color.White;
+            this.ExecuteMaskedTransferBtn.Location = new System.Drawing.Point(204, 482);
+            this.ExecuteMaskedTransferBtn.Name = "ExecuteMaskedTransferBtn";
+            this.ExecuteMaskedTransferBtn.Size = new System.Drawing.Size(213, 67);
+            this.ExecuteMaskedTransferBtn.TabIndex = 74;
+            this.ExecuteMaskedTransferBtn.Text = "Transfer";
+            this.ExecuteMaskedTransferBtn.UseVisualStyleBackColor = false;
+            this.ExecuteMaskedTransferBtn.Click += new System.EventHandler(this.ExecuteMaskedTransferBtn_Click);
             // 
             // MainForm
             // 
@@ -1048,6 +1170,8 @@
             this.tabPage2.PerformLayout();
             this.ColorTransfer.ResumeLayout(false);
             this.ColorTransfer.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1138,6 +1262,16 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button CopyArgumentsColorTransferBtn;
         private System.Windows.Forms.Button ExecuteColorTransferBtn;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button CopyArgumentsMaskedTransferBtn;
+        private System.Windows.Forms.Button ExecuteMaskedTransferBtn;
+        private System.Windows.Forms.Label MaskedLable;
+        private System.Windows.Forms.Button MaskedImageBtn;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label GeneratedMaskedLabel;
+        private System.Windows.Forms.Label ContentMaskedLabel;
+        private System.Windows.Forms.Button GeneratedImageMaskedBtn;
+        private System.Windows.Forms.Button ContentImageMaskedBtn;
     }
 }
 
