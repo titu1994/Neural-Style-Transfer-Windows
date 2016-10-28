@@ -49,8 +49,10 @@
             this.ContentImageMaskedBtn = new System.Windows.Forms.Button();
             this.MaskedImageBtn = new System.Windows.Forms.Button();
             this.MaskColorTransferBtn = new System.Windows.Forms.Button();
+            this.ColorMaskImageBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ColorMaskImageLabel = new System.Windows.Forms.Label();
             this.MaskPathLabel = new System.Windows.Forms.Label();
             this.ContentLossTypeBox = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -358,6 +360,19 @@
             this.MaskColorTransferBtn.UseVisualStyleBackColor = false;
             this.MaskColorTransferBtn.Click += new System.EventHandler(this.MaskColorTransferBtn_Click);
             // 
+            // ColorMaskImageBtn
+            // 
+            this.ColorMaskImageBtn.BackColor = System.Drawing.Color.White;
+            this.ColorMaskImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ColorMaskImageBtn.Location = new System.Drawing.Point(458, 230);
+            this.ColorMaskImageBtn.Name = "ColorMaskImageBtn";
+            this.ColorMaskImageBtn.Size = new System.Drawing.Size(95, 53);
+            this.ColorMaskImageBtn.TabIndex = 80;
+            this.ColorMaskImageBtn.Text = "Color Mask Image";
+            this.SrcToolTip.SetToolTip(this.ColorMaskImageBtn, "Source Image\r\n");
+            this.ColorMaskImageBtn.UseVisualStyleBackColor = false;
+            this.ColorMaskImageBtn.Click += new System.EventHandler(this.ColorMaskImageBtn_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -373,6 +388,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ColorMaskImageLabel);
+            this.tabPage1.Controls.Add(this.ColorMaskImageBtn);
             this.tabPage1.Controls.Add(this.MaskPathLabel);
             this.tabPage1.Controls.Add(this.MaskImagesBtn);
             this.tabPage1.Controls.Add(this.ContentLossTypeBox);
@@ -423,10 +440,20 @@
             this.tabPage1.Text = "Neural Style Transfer";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // ColorMaskImageLabel
+            // 
+            this.ColorMaskImageLabel.AutoSize = true;
+            this.ColorMaskImageLabel.Location = new System.Drawing.Point(579, 248);
+            this.ColorMaskImageLabel.MaximumSize = new System.Drawing.Size(300, 0);
+            this.ColorMaskImageLabel.Name = "ColorMaskImageLabel";
+            this.ColorMaskImageLabel.Size = new System.Drawing.Size(0, 17);
+            this.ColorMaskImageLabel.TabIndex = 81;
+            // 
             // MaskPathLabel
             // 
             this.MaskPathLabel.AutoSize = true;
             this.MaskPathLabel.Location = new System.Drawing.Point(140, 248);
+            this.MaskPathLabel.MaximumSize = new System.Drawing.Size(300, 0);
             this.MaskPathLabel.Name = "MaskPathLabel";
             this.MaskPathLabel.Size = new System.Drawing.Size(0, 17);
             this.MaskPathLabel.TabIndex = 79;
@@ -1299,6 +1326,8 @@
         private System.Windows.Forms.Button ContentImageMaskedBtn;
         private System.Windows.Forms.Label MaskedColorTransferLabel;
         private System.Windows.Forms.Button MaskColorTransferBtn;
+        private System.Windows.Forms.Label ColorMaskImageLabel;
+        private System.Windows.Forms.Button ColorMaskImageBtn;
     }
 }
 

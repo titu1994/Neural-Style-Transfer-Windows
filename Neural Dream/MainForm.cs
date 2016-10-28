@@ -130,6 +130,21 @@ namespace Neural_Dream
             }
         }
 
+        private void ColorMaskImageBtn_Click(object sender, EventArgs e)
+        {
+            SetUpOpenFileDialog();
+            colorMaskCount = 0;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ColorMaskImageLabel.Text = openFileDialog1.FileName;
+                ColorMaskImageBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                ColorMaskImageBtn.Text = "";
+
+                colorMaskCount = 1;
+            }
+        }
+
 
         private void SourceImageDoodle_Click(object sender, EventArgs e)
         {
@@ -561,6 +576,9 @@ namespace Neural_Dream
 
             if (maskCount > 0)
                 args.Append(MaskPathLabel.Text);
+
+            if (colorMaskCount > 0)
+                args.Append("--color_mask \"" + ColorMaskImageLabel.Text + "\" ");
 
             args.Append("--image_size " + imageSize + " ");
             args.Append("--content_weight " + contentWeight + " ");
