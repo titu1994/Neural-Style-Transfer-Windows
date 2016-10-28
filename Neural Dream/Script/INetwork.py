@@ -1,5 +1,3 @@
-from __future__ import print_function, division
-
 from scipy.misc import imread, imresize, imsave, fromimage, toimage
 from scipy.optimize import fmin_l_bfgs_b
 import numpy as np
@@ -44,7 +42,7 @@ parser.add_argument("--style_masks", type=str, default=None, nargs='+', help='Ma
 parser.add_argument("--image_size", dest="img_size", default=400, type=int, help='Output Image size')
 parser.add_argument("--content_weight", dest="content_weight", default=0.025, type=float,
                     help="Weight of content")  # 0.025
-parser.add_argument("--style_weight", dest="style_weight", nargs='+', default=1, type=float, help="Weight of content")  # 1.0
+parser.add_argument("--style_weight", dest="style_weight", nargs='+', default=[1], type=float, help="Weight of content")  # 1.0
 parser.add_argument("--style_scale", dest="style_scale", default=1.0, type=float,
                     help="Scale the weightage of the style")  # 1, 0.5, 2
 parser.add_argument("--total_variation_weight", dest="tv_weight", default=8.5e-5, type=float,
@@ -206,6 +204,13 @@ def load_mask(mask_path, shape):
 
     mask = imread(mask_path, mode="L") # Grayscale mask load
     mask = imresize(mask, (width, height)).astype('float32')
+
+    # Perform binarization of mask
+    mask[mask <= 127] = 0
+    mask[mask > 128] = 255
+
+    max = np.amax(mask)
+    mask /= max
 
     mask_shape = shape[1:]
 

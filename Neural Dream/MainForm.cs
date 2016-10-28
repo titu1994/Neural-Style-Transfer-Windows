@@ -23,7 +23,7 @@ namespace Neural_Dream
 
         // Neural Style region
         private double contentWeight, tvWeight, styleScale, minThreshold;
-        private int imageSize, noIters, styleCount, maskCount;
+        private int imageSize, noIters, styleCount, maskCount, colorMaskCount;
         private string rescaleAlgo, contentLayer, poolingType, styleWeight, modelType;
         
         // Neural Doodle region
@@ -214,6 +214,22 @@ namespace Neural_Dream
                 GeneratedColorTransferLabel.Text = openFileDialog1.FileName;
                 GeneratedColorTransferBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
                 GeneratedColorTransferBtn.Text = "";
+            }
+        }
+
+
+        private void MaskColorTransferBtn_Click(object sender, EventArgs e)
+        {
+            SetUpOpenFileDialog();
+            colorMaskCount = 0;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                MaskedColorTransferLabel.Text = openFileDialog1.FileName;
+                MaskColorTransferBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                MaskColorTransferBtn.Text = "";
+
+                colorMaskCount = 1;
             }
         }
 
@@ -596,6 +612,11 @@ namespace Neural_Dream
 
             args.Append("\"" + ContentColorTransferLabel.Text + "\" ");
             args.Append("\"" + GeneratedColorTransferLabel.Text + "\"");
+
+            if (colorMaskCount > 0)
+            {
+                args.Append(" --mask \"" + MaskedColorTransferLabel.Text + "\"");
+            }
 
             return args.ToString();
         }

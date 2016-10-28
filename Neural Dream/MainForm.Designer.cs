@@ -45,6 +45,10 @@
             this.MaskImagesBtn = new System.Windows.Forms.Button();
             this.ContentColorTransferBtn = new System.Windows.Forms.Button();
             this.GeneratedColorTransferBtn = new System.Windows.Forms.Button();
+            this.GeneratedImageMaskedBtn = new System.Windows.Forms.Button();
+            this.ContentImageMaskedBtn = new System.Windows.Forms.Button();
+            this.MaskedImageBtn = new System.Windows.Forms.Button();
+            this.MaskColorTransferBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.MaskPathLabel = new System.Windows.Forms.Label();
@@ -109,21 +113,19 @@
             this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
             this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
             this.ColorTransfer = new System.Windows.Forms.TabPage();
+            this.MaskedColorTransferLabel = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.CopyArgumentsColorTransferBtn = new System.Windows.Forms.Button();
             this.ExecuteColorTransferBtn = new System.Windows.Forms.Button();
             this.GeneratedColorTransferLabel = new System.Windows.Forms.Label();
             this.ContentColorTransferLabel = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.CopyArgumentsMaskedTransferBtn = new System.Windows.Forms.Button();
+            this.ExecuteMaskedTransferBtn = new System.Windows.Forms.Button();
+            this.MaskedLable = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.GeneratedMaskedLabel = new System.Windows.Forms.Label();
             this.ContentMaskedLabel = new System.Windows.Forms.Label();
-            this.GeneratedImageMaskedBtn = new System.Windows.Forms.Button();
-            this.ContentImageMaskedBtn = new System.Windows.Forms.Button();
-            this.MaskedLable = new System.Windows.Forms.Label();
-            this.MaskedImageBtn = new System.Windows.Forms.Button();
-            this.CopyArgumentsMaskedTransferBtn = new System.Windows.Forms.Button();
-            this.ExecuteMaskedTransferBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -191,7 +193,7 @@
             // 
             this.StyleImageDoodle.BackColor = System.Drawing.Color.White;
             this.StyleImageDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StyleImageDoodle.Location = new System.Drawing.Point(42, 91);
+            this.StyleImageDoodle.Location = new System.Drawing.Point(21, 94);
             this.StyleImageDoodle.Name = "StyleImageDoodle";
             this.StyleImageDoodle.Size = new System.Drawing.Size(95, 53);
             this.StyleImageDoodle.TabIndex = 60;
@@ -204,7 +206,7 @@
             // 
             this.SourceImageDoodle.BackColor = System.Drawing.Color.White;
             this.SourceImageDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SourceImageDoodle.Location = new System.Drawing.Point(42, 20);
+            this.SourceImageDoodle.Location = new System.Drawing.Point(21, 23);
             this.SourceImageDoodle.Name = "SourceImageDoodle";
             this.SourceImageDoodle.Size = new System.Drawing.Size(95, 53);
             this.SourceImageDoodle.TabIndex = 59;
@@ -217,7 +219,7 @@
             // 
             this.StyleMaskDoodle.BackColor = System.Drawing.Color.White;
             this.StyleMaskDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StyleMaskDoodle.Location = new System.Drawing.Point(42, 165);
+            this.StyleMaskDoodle.Location = new System.Drawing.Point(21, 168);
             this.StyleMaskDoodle.Name = "StyleMaskDoodle";
             this.StyleMaskDoodle.Size = new System.Drawing.Size(95, 53);
             this.StyleMaskDoodle.TabIndex = 65;
@@ -230,7 +232,7 @@
             // 
             this.TargetMaskDoodle.BackColor = System.Drawing.Color.White;
             this.TargetMaskDoodle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.TargetMaskDoodle.Location = new System.Drawing.Point(42, 235);
+            this.TargetMaskDoodle.Location = new System.Drawing.Point(21, 238);
             this.TargetMaskDoodle.Name = "TargetMaskDoodle";
             this.TargetMaskDoodle.Size = new System.Drawing.Size(95, 53);
             this.TargetMaskDoodle.TabIndex = 66;
@@ -282,7 +284,7 @@
             // 
             this.ContentColorTransferBtn.BackColor = System.Drawing.Color.White;
             this.ContentColorTransferBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContentColorTransferBtn.Location = new System.Drawing.Point(58, 34);
+            this.ContentColorTransferBtn.Location = new System.Drawing.Point(32, 19);
             this.ContentColorTransferBtn.Name = "ContentColorTransferBtn";
             this.ContentColorTransferBtn.Size = new System.Drawing.Size(95, 53);
             this.ContentColorTransferBtn.TabIndex = 39;
@@ -295,7 +297,7 @@
             // 
             this.GeneratedColorTransferBtn.BackColor = System.Drawing.Color.White;
             this.GeneratedColorTransferBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GeneratedColorTransferBtn.Location = new System.Drawing.Point(58, 116);
+            this.GeneratedColorTransferBtn.Location = new System.Drawing.Point(32, 101);
             this.GeneratedColorTransferBtn.Name = "GeneratedColorTransferBtn";
             this.GeneratedColorTransferBtn.Size = new System.Drawing.Size(95, 53);
             this.GeneratedColorTransferBtn.TabIndex = 40;
@@ -303,6 +305,58 @@
             this.SrcToolTip.SetToolTip(this.GeneratedColorTransferBtn, "Style Image\r\n");
             this.GeneratedColorTransferBtn.UseVisualStyleBackColor = false;
             this.GeneratedColorTransferBtn.Click += new System.EventHandler(this.GeneratedColorTransferBtn_Click);
+            // 
+            // GeneratedImageMaskedBtn
+            // 
+            this.GeneratedImageMaskedBtn.BackColor = System.Drawing.Color.White;
+            this.GeneratedImageMaskedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GeneratedImageMaskedBtn.Location = new System.Drawing.Point(32, 101);
+            this.GeneratedImageMaskedBtn.Name = "GeneratedImageMaskedBtn";
+            this.GeneratedImageMaskedBtn.Size = new System.Drawing.Size(95, 53);
+            this.GeneratedImageMaskedBtn.TabIndex = 68;
+            this.GeneratedImageMaskedBtn.Text = "Generated Image";
+            this.SrcToolTip.SetToolTip(this.GeneratedImageMaskedBtn, "Style Image\r\n");
+            this.GeneratedImageMaskedBtn.UseVisualStyleBackColor = false;
+            this.GeneratedImageMaskedBtn.Click += new System.EventHandler(this.GeneratedImageMaskedBtn_Click);
+            // 
+            // ContentImageMaskedBtn
+            // 
+            this.ContentImageMaskedBtn.BackColor = System.Drawing.Color.White;
+            this.ContentImageMaskedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContentImageMaskedBtn.Location = new System.Drawing.Point(32, 19);
+            this.ContentImageMaskedBtn.Name = "ContentImageMaskedBtn";
+            this.ContentImageMaskedBtn.Size = new System.Drawing.Size(95, 53);
+            this.ContentImageMaskedBtn.TabIndex = 67;
+            this.ContentImageMaskedBtn.Text = "Content Image";
+            this.SrcToolTip.SetToolTip(this.ContentImageMaskedBtn, "Source Image\r\n");
+            this.ContentImageMaskedBtn.UseVisualStyleBackColor = false;
+            this.ContentImageMaskedBtn.Click += new System.EventHandler(this.ContentImageMaskedBtn_Click);
+            // 
+            // MaskedImageBtn
+            // 
+            this.MaskedImageBtn.BackColor = System.Drawing.Color.White;
+            this.MaskedImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MaskedImageBtn.Location = new System.Drawing.Point(32, 181);
+            this.MaskedImageBtn.Name = "MaskedImageBtn";
+            this.MaskedImageBtn.Size = new System.Drawing.Size(95, 53);
+            this.MaskedImageBtn.TabIndex = 72;
+            this.MaskedImageBtn.Text = "Mask Image";
+            this.SrcToolTip.SetToolTip(this.MaskedImageBtn, "Style Image\r\n");
+            this.MaskedImageBtn.UseVisualStyleBackColor = false;
+            this.MaskedImageBtn.Click += new System.EventHandler(this.MaskedImageBtn_Click);
+            // 
+            // MaskColorTransferBtn
+            // 
+            this.MaskColorTransferBtn.BackColor = System.Drawing.Color.White;
+            this.MaskColorTransferBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MaskColorTransferBtn.Location = new System.Drawing.Point(32, 186);
+            this.MaskColorTransferBtn.Name = "MaskColorTransferBtn";
+            this.MaskColorTransferBtn.Size = new System.Drawing.Size(95, 53);
+            this.MaskColorTransferBtn.TabIndex = 74;
+            this.MaskColorTransferBtn.Text = "Mask Image";
+            this.SrcToolTip.SetToolTip(this.MaskColorTransferBtn, "Style Image\r\n");
+            this.MaskColorTransferBtn.UseVisualStyleBackColor = false;
+            this.MaskColorTransferBtn.Click += new System.EventHandler(this.MaskColorTransferBtn_Click);
             // 
             // tabControl1
             // 
@@ -933,7 +987,7 @@
             // DestinationPrefixDoodleLabel
             // 
             this.DestinationPrefixDoodleLabel.AutoSize = true;
-            this.DestinationPrefixDoodleLabel.Location = new System.Drawing.Point(165, 327);
+            this.DestinationPrefixDoodleLabel.Location = new System.Drawing.Point(144, 330);
             this.DestinationPrefixDoodleLabel.Name = "DestinationPrefixDoodleLabel";
             this.DestinationPrefixDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.DestinationPrefixDoodleLabel.TabIndex = 68;
@@ -941,7 +995,7 @@
             // TargetImageMaskDoodleLabel
             // 
             this.TargetImageMaskDoodleLabel.AutoSize = true;
-            this.TargetImageMaskDoodleLabel.Location = new System.Drawing.Point(165, 253);
+            this.TargetImageMaskDoodleLabel.Location = new System.Drawing.Point(144, 256);
             this.TargetImageMaskDoodleLabel.Name = "TargetImageMaskDoodleLabel";
             this.TargetImageMaskDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.TargetImageMaskDoodleLabel.TabIndex = 67;
@@ -949,7 +1003,7 @@
             // StyleMaskImageDoodleLabel
             // 
             this.StyleMaskImageDoodleLabel.AutoSize = true;
-            this.StyleMaskImageDoodleLabel.Location = new System.Drawing.Point(165, 183);
+            this.StyleMaskImageDoodleLabel.Location = new System.Drawing.Point(144, 186);
             this.StyleMaskImageDoodleLabel.Name = "StyleMaskImageDoodleLabel";
             this.StyleMaskImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.StyleMaskImageDoodleLabel.TabIndex = 64;
@@ -957,7 +1011,7 @@
             // DestinationPrefixDoodleBtn
             // 
             this.DestinationPrefixDoodleBtn.BackColor = System.Drawing.Color.White;
-            this.DestinationPrefixDoodleBtn.Location = new System.Drawing.Point(42, 303);
+            this.DestinationPrefixDoodleBtn.Location = new System.Drawing.Point(21, 306);
             this.DestinationPrefixDoodleBtn.Name = "DestinationPrefixDoodleBtn";
             this.DestinationPrefixDoodleBtn.Size = new System.Drawing.Size(95, 53);
             this.DestinationPrefixDoodleBtn.TabIndex = 63;
@@ -968,7 +1022,7 @@
             // StyleImageDoodleLabel
             // 
             this.StyleImageDoodleLabel.AutoSize = true;
-            this.StyleImageDoodleLabel.Location = new System.Drawing.Point(165, 109);
+            this.StyleImageDoodleLabel.Location = new System.Drawing.Point(144, 112);
             this.StyleImageDoodleLabel.Name = "StyleImageDoodleLabel";
             this.StyleImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.StyleImageDoodleLabel.TabIndex = 62;
@@ -976,13 +1030,15 @@
             // SrcImageDoodleLabel
             // 
             this.SrcImageDoodleLabel.AutoSize = true;
-            this.SrcImageDoodleLabel.Location = new System.Drawing.Point(165, 38);
+            this.SrcImageDoodleLabel.Location = new System.Drawing.Point(144, 41);
             this.SrcImageDoodleLabel.Name = "SrcImageDoodleLabel";
             this.SrcImageDoodleLabel.Size = new System.Drawing.Size(0, 17);
             this.SrcImageDoodleLabel.TabIndex = 61;
             // 
             // ColorTransfer
             // 
+            this.ColorTransfer.Controls.Add(this.MaskedColorTransferLabel);
+            this.ColorTransfer.Controls.Add(this.MaskColorTransferBtn);
             this.ColorTransfer.Controls.Add(this.label23);
             this.ColorTransfer.Controls.Add(this.CopyArgumentsColorTransferBtn);
             this.ColorTransfer.Controls.Add(this.ExecuteColorTransferBtn);
@@ -997,10 +1053,18 @@
             this.ColorTransfer.Text = "Color Transfer";
             this.ColorTransfer.UseVisualStyleBackColor = true;
             // 
+            // MaskedColorTransferLabel
+            // 
+            this.MaskedColorTransferLabel.AutoSize = true;
+            this.MaskedColorTransferLabel.Location = new System.Drawing.Point(153, 204);
+            this.MaskedColorTransferLabel.Name = "MaskedColorTransferLabel";
+            this.MaskedColorTransferLabel.Size = new System.Drawing.Size(0, 17);
+            this.MaskedColorTransferLabel.TabIndex = 75;
+            // 
             // label23
             // 
             this.label23.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label23.Location = new System.Drawing.Point(-4, 213);
+            this.label23.Location = new System.Drawing.Point(-4, 274);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(978, 2);
             this.label23.TabIndex = 66;
@@ -1030,7 +1094,7 @@
             // GeneratedColorTransferLabel
             // 
             this.GeneratedColorTransferLabel.AutoSize = true;
-            this.GeneratedColorTransferLabel.Location = new System.Drawing.Point(179, 134);
+            this.GeneratedColorTransferLabel.Location = new System.Drawing.Point(153, 119);
             this.GeneratedColorTransferLabel.Name = "GeneratedColorTransferLabel";
             this.GeneratedColorTransferLabel.Size = new System.Drawing.Size(0, 17);
             this.GeneratedColorTransferLabel.TabIndex = 43;
@@ -1038,7 +1102,7 @@
             // ContentColorTransferLabel
             // 
             this.ContentColorTransferLabel.AutoSize = true;
-            this.ContentColorTransferLabel.Location = new System.Drawing.Point(179, 52);
+            this.ContentColorTransferLabel.Location = new System.Drawing.Point(153, 37);
             this.ContentColorTransferLabel.Name = "ContentColorTransferLabel";
             this.ContentColorTransferLabel.Size = new System.Drawing.Size(0, 17);
             this.ContentColorTransferLabel.TabIndex = 42;
@@ -1061,77 +1125,6 @@
             this.tabPage3.Text = "Masked Transfer";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label24
-            // 
-            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label24.Location = new System.Drawing.Point(-12, 257);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(978, 2);
-            this.label24.TabIndex = 71;
-            // 
-            // GeneratedMaskedLabel
-            // 
-            this.GeneratedMaskedLabel.AutoSize = true;
-            this.GeneratedMaskedLabel.Location = new System.Drawing.Point(177, 122);
-            this.GeneratedMaskedLabel.Name = "GeneratedMaskedLabel";
-            this.GeneratedMaskedLabel.Size = new System.Drawing.Size(0, 17);
-            this.GeneratedMaskedLabel.TabIndex = 70;
-            // 
-            // ContentMaskedLabel
-            // 
-            this.ContentMaskedLabel.AutoSize = true;
-            this.ContentMaskedLabel.Location = new System.Drawing.Point(177, 40);
-            this.ContentMaskedLabel.Name = "ContentMaskedLabel";
-            this.ContentMaskedLabel.Size = new System.Drawing.Size(0, 17);
-            this.ContentMaskedLabel.TabIndex = 69;
-            // 
-            // GeneratedImageMaskedBtn
-            // 
-            this.GeneratedImageMaskedBtn.BackColor = System.Drawing.Color.White;
-            this.GeneratedImageMaskedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GeneratedImageMaskedBtn.Location = new System.Drawing.Point(56, 104);
-            this.GeneratedImageMaskedBtn.Name = "GeneratedImageMaskedBtn";
-            this.GeneratedImageMaskedBtn.Size = new System.Drawing.Size(95, 53);
-            this.GeneratedImageMaskedBtn.TabIndex = 68;
-            this.GeneratedImageMaskedBtn.Text = "Generated Image";
-            this.SrcToolTip.SetToolTip(this.GeneratedImageMaskedBtn, "Style Image\r\n");
-            this.GeneratedImageMaskedBtn.UseVisualStyleBackColor = false;
-            this.GeneratedImageMaskedBtn.Click += new System.EventHandler(this.GeneratedImageMaskedBtn_Click);
-            // 
-            // ContentImageMaskedBtn
-            // 
-            this.ContentImageMaskedBtn.BackColor = System.Drawing.Color.White;
-            this.ContentImageMaskedBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContentImageMaskedBtn.Location = new System.Drawing.Point(56, 22);
-            this.ContentImageMaskedBtn.Name = "ContentImageMaskedBtn";
-            this.ContentImageMaskedBtn.Size = new System.Drawing.Size(95, 53);
-            this.ContentImageMaskedBtn.TabIndex = 67;
-            this.ContentImageMaskedBtn.Text = "Content Image";
-            this.SrcToolTip.SetToolTip(this.ContentImageMaskedBtn, "Source Image\r\n");
-            this.ContentImageMaskedBtn.UseVisualStyleBackColor = false;
-            this.ContentImageMaskedBtn.Click += new System.EventHandler(this.ContentImageMaskedBtn_Click);
-            // 
-            // MaskedLable
-            // 
-            this.MaskedLable.AutoSize = true;
-            this.MaskedLable.Location = new System.Drawing.Point(177, 202);
-            this.MaskedLable.Name = "MaskedLable";
-            this.MaskedLable.Size = new System.Drawing.Size(0, 17);
-            this.MaskedLable.TabIndex = 73;
-            // 
-            // MaskedImageBtn
-            // 
-            this.MaskedImageBtn.BackColor = System.Drawing.Color.White;
-            this.MaskedImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MaskedImageBtn.Location = new System.Drawing.Point(56, 184);
-            this.MaskedImageBtn.Name = "MaskedImageBtn";
-            this.MaskedImageBtn.Size = new System.Drawing.Size(95, 53);
-            this.MaskedImageBtn.TabIndex = 72;
-            this.MaskedImageBtn.Text = "Mask Image";
-            this.SrcToolTip.SetToolTip(this.MaskedImageBtn, "Style Image\r\n");
-            this.MaskedImageBtn.UseVisualStyleBackColor = false;
-            this.MaskedImageBtn.Click += new System.EventHandler(this.MaskedImageBtn_Click);
-            // 
             // CopyArgumentsMaskedTransferBtn
             // 
             this.CopyArgumentsMaskedTransferBtn.BackColor = System.Drawing.Color.White;
@@ -1152,6 +1145,38 @@
             this.ExecuteMaskedTransferBtn.Text = "Transfer";
             this.ExecuteMaskedTransferBtn.UseVisualStyleBackColor = false;
             this.ExecuteMaskedTransferBtn.Click += new System.EventHandler(this.ExecuteMaskedTransferBtn_Click);
+            // 
+            // MaskedLable
+            // 
+            this.MaskedLable.AutoSize = true;
+            this.MaskedLable.Location = new System.Drawing.Point(145, 199);
+            this.MaskedLable.Name = "MaskedLable";
+            this.MaskedLable.Size = new System.Drawing.Size(0, 17);
+            this.MaskedLable.TabIndex = 73;
+            // 
+            // label24
+            // 
+            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label24.Location = new System.Drawing.Point(-12, 257);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(978, 2);
+            this.label24.TabIndex = 71;
+            // 
+            // GeneratedMaskedLabel
+            // 
+            this.GeneratedMaskedLabel.AutoSize = true;
+            this.GeneratedMaskedLabel.Location = new System.Drawing.Point(153, 119);
+            this.GeneratedMaskedLabel.Name = "GeneratedMaskedLabel";
+            this.GeneratedMaskedLabel.Size = new System.Drawing.Size(0, 17);
+            this.GeneratedMaskedLabel.TabIndex = 70;
+            // 
+            // ContentMaskedLabel
+            // 
+            this.ContentMaskedLabel.AutoSize = true;
+            this.ContentMaskedLabel.Location = new System.Drawing.Point(153, 37);
+            this.ContentMaskedLabel.Name = "ContentMaskedLabel";
+            this.ContentMaskedLabel.Size = new System.Drawing.Size(0, 17);
+            this.ContentMaskedLabel.TabIndex = 69;
             // 
             // MainForm
             // 
@@ -1272,6 +1297,8 @@
         private System.Windows.Forms.Label ContentMaskedLabel;
         private System.Windows.Forms.Button GeneratedImageMaskedBtn;
         private System.Windows.Forms.Button ContentImageMaskedBtn;
+        private System.Windows.Forms.Label MaskedColorTransferLabel;
+        private System.Windows.Forms.Button MaskColorTransferBtn;
     }
 }
 
