@@ -147,8 +147,8 @@
             this.PreserveColorBox.Size = new System.Drawing.Size(124, 21);
             this.PreserveColorBox.TabIndex = 71;
             this.PreserveColorBox.Text = "Preserve Color";
-            this.SrcToolTip.SetToolTip(this.PreserveColorBox, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
-        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
+            this.SrcToolTip.SetToolTip(this.PreserveColorBox, "If checked, preserves the original color of the content. Else, does not apply col" +
+        "or preservation.");
             this.PreserveColorBox.UseVisualStyleBackColor = true;
             // 
             // NetworkCheckBox
@@ -226,7 +226,7 @@
             this.StyleMaskDoodle.Size = new System.Drawing.Size(95, 53);
             this.StyleMaskDoodle.TabIndex = 65;
             this.StyleMaskDoodle.Text = "Style Mask Image";
-            this.SrcToolTip.SetToolTip(this.StyleMaskDoodle, "Style Image\r\n");
+            this.SrcToolTip.SetToolTip(this.StyleMaskDoodle, "Style Image Mask\r\n");
             this.StyleMaskDoodle.UseVisualStyleBackColor = false;
             this.StyleMaskDoodle.Click += new System.EventHandler(this.StyleMaskDoodle_Click);
             // 
@@ -239,7 +239,7 @@
             this.TargetMaskDoodle.Size = new System.Drawing.Size(95, 53);
             this.TargetMaskDoodle.TabIndex = 66;
             this.TargetMaskDoodle.Text = "Target Mask Image";
-            this.SrcToolTip.SetToolTip(this.TargetMaskDoodle, "Style Image\r\n");
+            this.SrcToolTip.SetToolTip(this.TargetMaskDoodle, "Optional : Target Mask Image");
             this.TargetMaskDoodle.UseVisualStyleBackColor = false;
             this.TargetMaskDoodle.Click += new System.EventHandler(this.TargetMaskDoodle_Click);
             // 
@@ -265,8 +265,8 @@
             this.PreserveColorDoodle.Size = new System.Drawing.Size(124, 21);
             this.PreserveColorDoodle.TabIndex = 72;
             this.PreserveColorDoodle.Text = "Preserve Color";
-            this.SrcToolTip.SetToolTip(this.PreserveColorDoodle, "If checked, uses the INetwork.py script which is an improved version of the netwo" +
-        "rk.\r\nElse, uses the original Network.py script without any improvements.\r\n");
+            this.SrcToolTip.SetToolTip(this.PreserveColorDoodle, "If checked, preserves the original color of the content. Else, does not apply col" +
+        "or preservation.");
             this.PreserveColorDoodle.UseVisualStyleBackColor = true;
             // 
             // MaskImagesBtn
@@ -278,7 +278,7 @@
             this.MaskImagesBtn.Size = new System.Drawing.Size(95, 53);
             this.MaskImagesBtn.TabIndex = 78;
             this.MaskImagesBtn.Text = "Style Mask Images";
-            this.SrcToolTip.SetToolTip(this.MaskImagesBtn, "Source Image\r\n");
+            this.SrcToolTip.SetToolTip(this.MaskImagesBtn, "Optional : Style Masks");
             this.MaskImagesBtn.UseVisualStyleBackColor = false;
             this.MaskImagesBtn.Click += new System.EventHandler(this.MaskImagesBtn_Click);
             // 
@@ -304,7 +304,7 @@
             this.GeneratedColorTransferBtn.Size = new System.Drawing.Size(95, 53);
             this.GeneratedColorTransferBtn.TabIndex = 40;
             this.GeneratedColorTransferBtn.Text = "Generated Image";
-            this.SrcToolTip.SetToolTip(this.GeneratedColorTransferBtn, "Style Image\r\n");
+            this.SrcToolTip.SetToolTip(this.GeneratedColorTransferBtn, "Generated Image\r\n");
             this.GeneratedColorTransferBtn.UseVisualStyleBackColor = false;
             this.GeneratedColorTransferBtn.Click += new System.EventHandler(this.GeneratedColorTransferBtn_Click);
             // 
@@ -317,7 +317,7 @@
             this.GeneratedImageMaskedBtn.Size = new System.Drawing.Size(95, 53);
             this.GeneratedImageMaskedBtn.TabIndex = 68;
             this.GeneratedImageMaskedBtn.Text = "Generated Image";
-            this.SrcToolTip.SetToolTip(this.GeneratedImageMaskedBtn, "Style Image\r\n");
+            this.SrcToolTip.SetToolTip(this.GeneratedImageMaskedBtn, "Generated Image");
             this.GeneratedImageMaskedBtn.UseVisualStyleBackColor = false;
             this.GeneratedImageMaskedBtn.Click += new System.EventHandler(this.GeneratedImageMaskedBtn_Click);
             // 
@@ -343,7 +343,7 @@
             this.MaskedImageBtn.Size = new System.Drawing.Size(95, 53);
             this.MaskedImageBtn.TabIndex = 72;
             this.MaskedImageBtn.Text = "Mask Image";
-            this.SrcToolTip.SetToolTip(this.MaskedImageBtn, "Style Image\r\n");
+            this.SrcToolTip.SetToolTip(this.MaskedImageBtn, "Content Mask Image");
             this.MaskedImageBtn.UseVisualStyleBackColor = false;
             this.MaskedImageBtn.Click += new System.EventHandler(this.MaskedImageBtn_Click);
             // 
@@ -356,7 +356,7 @@
             this.MaskColorTransferBtn.Size = new System.Drawing.Size(95, 53);
             this.MaskColorTransferBtn.TabIndex = 74;
             this.MaskColorTransferBtn.Text = "Mask Image";
-            this.SrcToolTip.SetToolTip(this.MaskColorTransferBtn, "Style Image\r\n");
+            this.SrcToolTip.SetToolTip(this.MaskColorTransferBtn, "Optional : Color Mask Image");
             this.MaskColorTransferBtn.UseVisualStyleBackColor = false;
             this.MaskColorTransferBtn.Click += new System.EventHandler(this.MaskColorTransferBtn_Click);
             // 
@@ -369,7 +369,7 @@
             this.ColorMaskImageBtn.Size = new System.Drawing.Size(95, 53);
             this.ColorMaskImageBtn.TabIndex = 80;
             this.ColorMaskImageBtn.Text = "Color Mask Image";
-            this.SrcToolTip.SetToolTip(this.ColorMaskImageBtn, "Source Image\r\n");
+            this.SrcToolTip.SetToolTip(this.ColorMaskImageBtn, "Optional : Color Mask");
             this.ColorMaskImageBtn.UseVisualStyleBackColor = false;
             this.ColorMaskImageBtn.Click += new System.EventHandler(this.ColorMaskImageBtn_Click);
             // 
@@ -480,6 +480,9 @@
             this.label22.Size = new System.Drawing.Size(127, 17);
             this.label22.TabIndex = 76;
             this.label22.Text = "Content Loss Type";
+            this.SrcToolTip.SetToolTip(this.label22, "Scaling applied to content loss. \r\n\r\n- 0 = 0 does not add any scaling of the loss" +
+        ". \r\n- 1 = 1 / (2 * sqrt(channels) * sqrt(width * height))\r\n- 2 = 1 / (channels *" +
+        " width * height)");
             // 
             // ModelTypeBox
             // 
@@ -502,6 +505,7 @@
             this.label21.Size = new System.Drawing.Size(82, 17);
             this.label21.TabIndex = 74;
             this.label21.Text = "Model Type";
+            this.SrcToolTip.SetToolTip(this.label21, "Use either VGG 16 or VGG 19 architecture");
             // 
             // MinThresholdText
             // 
@@ -519,6 +523,8 @@
             this.label12.Size = new System.Drawing.Size(148, 17);
             this.label12.TabIndex = 72;
             this.label12.Text = "Minimum Improvement";
+            this.SrcToolTip.SetToolTip(this.label12, "Minimum improvement required at each iteration. If improvement is less than minim" +
+        "um specified here, it stops the script");
             // 
             // PoolingTypeBox
             // 
@@ -541,6 +547,7 @@
             this.label11.Size = new System.Drawing.Size(91, 17);
             this.label11.TabIndex = 68;
             this.label11.Text = "Pooling Type";
+            this.SrcToolTip.SetToolTip(this.label11, "Type of pooling that should be used in the VGG network");
             // 
             // label10
             // 
@@ -550,6 +557,8 @@
             this.label10.Size = new System.Drawing.Size(80, 17);
             this.label10.TabIndex = 67;
             this.label10.Text = "Initial Layer";
+            this.SrcToolTip.SetToolTip(this.label10, "Initialise the generated image with either the content image itself, with noise o" +
+        "r with a gray scale version of the content image");
             // 
             // InitialLayerComboBox
             // 
@@ -573,6 +582,7 @@
             this.label9.Size = new System.Drawing.Size(97, 17);
             this.label9.TabIndex = 65;
             this.label9.Text = "Content Layer";
+            this.SrcToolTip.SetToolTip(this.label9, "Content layer used for style transfer");
             // 
             // ContentLayerBox
             // 
@@ -595,6 +605,8 @@
             this.CopyArgumentsBtn.Size = new System.Drawing.Size(189, 67);
             this.CopyArgumentsBtn.TabIndex = 63;
             this.CopyArgumentsBtn.Text = "Copy Arguments to Clipboard";
+            this.SrcToolTip.SetToolTip(this.CopyArgumentsBtn, "Copy the script arguments, so that you can open the terminal and paste the comman" +
+        "d");
             this.CopyArgumentsBtn.UseVisualStyleBackColor = false;
             this.CopyArgumentsBtn.Click += new System.EventHandler(this.CopyArgumentsBtn_Click_1);
             // 
@@ -608,6 +620,7 @@
             this.MaintainAspectRatioCheckBox.Size = new System.Drawing.Size(167, 21);
             this.MaintainAspectRatioCheckBox.TabIndex = 62;
             this.MaintainAspectRatioCheckBox.Text = "Maintain Aspect Ratio";
+            this.SrcToolTip.SetToolTip(this.MaintainAspectRatioCheckBox, "Maintain the aspect ratio of output image");
             this.MaintainAspectRatioCheckBox.UseVisualStyleBackColor = true;
             // 
             // RescaleAlgoBox
@@ -633,6 +646,7 @@
             this.label8.Size = new System.Drawing.Size(91, 17);
             this.label8.TabIndex = 60;
             this.label8.Text = "Rescale Algo";
+            this.SrcToolTip.SetToolTip(this.label8, "Algorithm used for rescaling generated image to original size");
             // 
             // RescaleCheck
             // 
@@ -642,6 +656,8 @@
             this.RescaleCheck.Size = new System.Drawing.Size(229, 21);
             this.RescaleCheck.TabIndex = 59;
             this.RescaleCheck.Text = "Rescale To Original Dimentions";
+            this.SrcToolTip.SetToolTip(this.RescaleCheck, "Upscale the generated image using bicubic interpolation to the original size of t" +
+        "he content image. Not recommended as it introduces noise.");
             this.RescaleCheck.UseVisualStyleBackColor = true;
             // 
             // DstPathLabel
@@ -660,6 +676,7 @@
             this.DstBtn.Size = new System.Drawing.Size(95, 53);
             this.DstBtn.TabIndex = 57;
             this.DstBtn.Text = "Destination Image";
+            this.SrcToolTip.SetToolTip(this.DstBtn, "Path and prefix of output image");
             this.DstBtn.UseVisualStyleBackColor = false;
             this.DstBtn.Click += new System.EventHandler(this.DstBtn_Click_1);
             // 
@@ -679,6 +696,7 @@
             this.label7.Size = new System.Drawing.Size(139, 17);
             this.label7.TabIndex = 55;
             this.label7.Text = "Number Of Iterations";
+            this.SrcToolTip.SetToolTip(this.label7, "Number of iterations to process the image");
             // 
             // StyleScaleText
             // 
@@ -696,6 +714,7 @@
             this.label6.Size = new System.Drawing.Size(78, 17);
             this.label6.TabIndex = 53;
             this.label6.Text = "Style Scale";
+            this.SrcToolTip.SetToolTip(this.label6, "Style weight multiplier");
             // 
             // TotalVariationWeightText
             // 
@@ -713,6 +732,8 @@
             this.label5.Size = new System.Drawing.Size(148, 17);
             this.label5.TabIndex = 51;
             this.label5.Text = "Total Variation Weight";
+            this.SrcToolTip.SetToolTip(this.label5, "Smoothness weight. Increase to obtain a smoother image. Decrease to increase shar" +
+        "pness.");
             // 
             // StyleWeightText
             // 
@@ -730,6 +751,7 @@
             this.label4.Size = new System.Drawing.Size(94, 17);
             this.label4.TabIndex = 49;
             this.label4.Text = "Style Weights";
+            this.SrcToolTip.SetToolTip(this.label4, "Weight for Style Image/s. Pass multiple style weights, seperated by spaces.");
             // 
             // ContentWeightText
             // 
@@ -747,6 +769,7 @@
             this.label3.Size = new System.Drawing.Size(105, 17);
             this.label3.TabIndex = 47;
             this.label3.Text = "Content Weight";
+            this.SrcToolTip.SetToolTip(this.label3, "Weight for Content Image");
             // 
             // ImageSizeBox
             // 
@@ -771,6 +794,8 @@
             this.label2.Size = new System.Drawing.Size(77, 17);
             this.label2.TabIndex = 45;
             this.label2.Text = "Image Size";
+            this.SrcToolTip.SetToolTip(this.label2, "Gram matrix size. Use small values for speed and upscale later using upscaling pr" +
+        "ograms");
             // 
             // label1
             // 
@@ -796,6 +821,7 @@
             this.ExecuteButton.Size = new System.Drawing.Size(213, 67);
             this.ExecuteButton.TabIndex = 42;
             this.ExecuteButton.Text = "Compute";
+            this.SrcToolTip.SetToolTip(this.ExecuteButton, "Start style transfer");
             this.ExecuteButton.UseVisualStyleBackColor = false;
             this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click_1);
             // 
@@ -870,6 +896,8 @@
             this.label20.Size = new System.Drawing.Size(101, 17);
             this.label20.TabIndex = 87;
             this.label20.Text = "Region Weight";
+            this.SrcToolTip.SetToolTip(this.label20, "Weightage given to individual regions. Do not change unless you know what you are" +
+        " doing!");
             // 
             // NumColorsText
             // 
@@ -887,6 +915,7 @@
             this.label19.Size = new System.Drawing.Size(81, 17);
             this.label19.TabIndex = 85;
             this.label19.Text = "Num Colors";
+            this.SrcToolTip.SetToolTip(this.label19, "Number of colors in mask image");
             // 
             // CopyArgsDoodle
             // 
@@ -896,6 +925,8 @@
             this.CopyArgsDoodle.Size = new System.Drawing.Size(189, 67);
             this.CopyArgsDoodle.TabIndex = 84;
             this.CopyArgsDoodle.Text = "Copy Arguments to Clipboard";
+            this.SrcToolTip.SetToolTip(this.CopyArgsDoodle, "Copy the script arguments, so that you can open the terminal and paste the comman" +
+        "d");
             this.CopyArgsDoodle.UseVisualStyleBackColor = false;
             this.CopyArgsDoodle.Click += new System.EventHandler(this.CopyArgsDoodle_Click);
             // 
@@ -907,6 +938,7 @@
             this.ExecuteDoodle.Size = new System.Drawing.Size(213, 67);
             this.ExecuteDoodle.TabIndex = 83;
             this.ExecuteDoodle.Text = "Compute";
+            this.SrcToolTip.SetToolTip(this.ExecuteDoodle, "Start neural doodle script");
             this.ExecuteDoodle.UseVisualStyleBackColor = false;
             this.ExecuteDoodle.Click += new System.EventHandler(this.ExecuteDoodle_Click);
             // 
@@ -926,6 +958,7 @@
             this.label17.Size = new System.Drawing.Size(139, 17);
             this.label17.TabIndex = 81;
             this.label17.Text = "Number Of Iterations";
+            this.SrcToolTip.SetToolTip(this.label17, "Number of iterations to process the image");
             // 
             // ImageSizeBoxDoodle
             // 
@@ -951,6 +984,7 @@
             this.label18.Size = new System.Drawing.Size(77, 17);
             this.label18.TabIndex = 79;
             this.label18.Text = "Image Size";
+            this.SrcToolTip.SetToolTip(this.label18, "Resize the image to certain size. -1 indicates do not scale image");
             // 
             // TVWeightBoxDoodle
             // 
@@ -968,6 +1002,8 @@
             this.label16.Size = new System.Drawing.Size(148, 17);
             this.label16.TabIndex = 77;
             this.label16.Text = "Total Variation Weight";
+            this.SrcToolTip.SetToolTip(this.label16, "Smoothness weight. Increase to obtain a smoother image. Decrease to increase shar" +
+        "pness.");
             // 
             // StyleWeightBoxDoodle
             // 
@@ -985,6 +1021,7 @@
             this.label15.Size = new System.Drawing.Size(87, 17);
             this.label15.TabIndex = 75;
             this.label15.Text = "Style Weight";
+            this.SrcToolTip.SetToolTip(this.label15, "Weight for Style Image");
             // 
             // ContentWeightBoxDoodle
             // 
@@ -1002,6 +1039,7 @@
             this.label14.Size = new System.Drawing.Size(105, 17);
             this.label14.TabIndex = 73;
             this.label14.Text = "Content Weight";
+            this.SrcToolTip.SetToolTip(this.label14, "Weight for Content Image");
             // 
             // label13
             // 
@@ -1043,6 +1081,7 @@
             this.DestinationPrefixDoodleBtn.Size = new System.Drawing.Size(95, 53);
             this.DestinationPrefixDoodleBtn.TabIndex = 63;
             this.DestinationPrefixDoodleBtn.Text = "Destination Image";
+            this.SrcToolTip.SetToolTip(this.DestinationPrefixDoodleBtn, "Path and prefix of output image");
             this.DestinationPrefixDoodleBtn.UseVisualStyleBackColor = false;
             this.DestinationPrefixDoodleBtn.Click += new System.EventHandler(this.DestinationPathDoodle_Click);
             // 
@@ -1104,6 +1143,8 @@
             this.CopyArgumentsColorTransferBtn.Size = new System.Drawing.Size(189, 67);
             this.CopyArgumentsColorTransferBtn.TabIndex = 65;
             this.CopyArgumentsColorTransferBtn.Text = "Copy Arguments to Clipboard";
+            this.SrcToolTip.SetToolTip(this.CopyArgumentsColorTransferBtn, "Copy the script arguments, so that you can open the terminal and paste the comman" +
+        "d");
             this.CopyArgumentsColorTransferBtn.UseVisualStyleBackColor = false;
             this.CopyArgumentsColorTransferBtn.Click += new System.EventHandler(this.CopyArgumentsColorTransferBtn_Click);
             // 
@@ -1115,6 +1156,7 @@
             this.ExecuteColorTransferBtn.Size = new System.Drawing.Size(213, 67);
             this.ExecuteColorTransferBtn.TabIndex = 64;
             this.ExecuteColorTransferBtn.Text = "Transfer";
+            this.SrcToolTip.SetToolTip(this.ExecuteColorTransferBtn, "Start color transfer script");
             this.ExecuteColorTransferBtn.UseVisualStyleBackColor = false;
             this.ExecuteColorTransferBtn.Click += new System.EventHandler(this.ExecuteColorTransferBtn_Click);
             // 
@@ -1160,6 +1202,8 @@
             this.CopyArgumentsMaskedTransferBtn.Size = new System.Drawing.Size(189, 67);
             this.CopyArgumentsMaskedTransferBtn.TabIndex = 75;
             this.CopyArgumentsMaskedTransferBtn.Text = "Copy Arguments to Clipboard";
+            this.SrcToolTip.SetToolTip(this.CopyArgumentsMaskedTransferBtn, "Copy the script arguments, so that you can open the terminal and paste the comman" +
+        "d");
             this.CopyArgumentsMaskedTransferBtn.UseVisualStyleBackColor = false;
             // 
             // ExecuteMaskedTransferBtn
@@ -1170,6 +1214,7 @@
             this.ExecuteMaskedTransferBtn.Size = new System.Drawing.Size(213, 67);
             this.ExecuteMaskedTransferBtn.TabIndex = 74;
             this.ExecuteMaskedTransferBtn.Text = "Transfer";
+            this.SrcToolTip.SetToolTip(this.ExecuteMaskedTransferBtn, "Start masked style transfer script");
             this.ExecuteMaskedTransferBtn.UseVisualStyleBackColor = false;
             this.ExecuteMaskedTransferBtn.Click += new System.EventHandler(this.ExecuteMaskedTransferBtn_Click);
             // 
