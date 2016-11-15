@@ -32,6 +32,24 @@ namespace Neural_Dream
 
         private string lastArgumentList;
 
+        private static readonly string[] VGG_16_Layer_Names = new string[]
+        {
+            "conv5_3", "conv5_2", "conv5_1",
+            "conv4_3", "conv4_2", "conv4_1",
+            "conv3_3", "conv3_2", "conv3_1",
+            "conv2_2", "conv2_1", 
+            "conv1_2", "conv2_1"
+        };
+
+        private static readonly  string[] VGG_19_Layer_Names = new string[]
+        {
+            "conv5_4", "conv5_3", "conv5_2", "conv5_1",
+            "conv4_4", "conv4_3", "conv4_2", "conv4_1",
+            "conv3_4", "conv3_3", "conv3_2", "conv3_1",
+            "conv2_2", "conv2_1",
+            "conv1_2", "conv1_1"
+        };
+
         private const string NETWORK_PATH = "Network.py";
         private const string INETWORK_PATH = "INetwork.py";
         private const string NEURAL_DOODLE_PATH = "neural_doodle.py";
@@ -44,6 +62,7 @@ namespace Neural_Dream
             InitializeComponent();
             desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             RescaleAlgoBox.Text = "bicubic";
+            ContentLayerBox.Items.AddRange(VGG_16_Layer_Names);
             ContentLayerBox.Text = "conv5_2";
             InitialLayerComboBox.Text = "content";
             PoolingTypeBox.Text = "max";
@@ -455,6 +474,26 @@ namespace Neural_Dream
                 MessageBox.Show("Minimum Threshold must be a Double value.", "Minimum Threshold Value Error");
                 return false;
             }
+        }
+
+        private void ModelTypeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = ModelTypeBox.SelectedItem as string;
+
+            switch (selectedValue)
+            {
+                case "vgg16":
+                    ContentLayerBox.Items.Clear();
+                    ContentLayerBox.Items.AddRange(VGG_16_Layer_Names);
+                    ContentLayerBox.SelectedIndex = 1;
+                    break;
+                case "vgg19":
+                    ContentLayerBox.Items.Clear();
+                    ContentLayerBox.Items.AddRange(VGG_19_Layer_Names);
+                    ContentLayerBox.SelectedIndex = 2;
+                    break;
+            }
+
         }
 
         private string GetNetworkPath()
