@@ -128,6 +128,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.GeneratedMaskedLabel = new System.Windows.Forms.Label();
             this.ContentMaskedLabel = new System.Windows.Forms.Label();
+            this.ColorTransferHistMatchCheck = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1150,6 +1151,7 @@
             // 
             // ColorTransfer
             // 
+            this.ColorTransfer.Controls.Add(this.ColorTransferHistMatchCheck);
             this.ColorTransfer.Controls.Add(this.MaskedColorTransferLabel);
             this.ColorTransfer.Controls.Add(this.MaskColorTransferBtn);
             this.ColorTransfer.Controls.Add(this.label23);
@@ -1247,6 +1249,16 @@
             this.ContentMaskedLabel.Name = "ContentMaskedLabel";
             this.ContentMaskedLabel.Size = new System.Drawing.Size(0, 17);
             this.ContentMaskedLabel.TabIndex = 69;
+            // 
+            // ColorTransferHistMatchCheck
+            // 
+            this.ColorTransferHistMatchCheck.AutoSize = true;
+            this.ColorTransferHistMatchCheck.Location = new System.Drawing.Point(32, 308);
+            this.ColorTransferHistMatchCheck.Name = "ColorTransferHistMatchCheck";
+            this.ColorTransferHistMatchCheck.Size = new System.Drawing.Size(155, 21);
+            this.ColorTransferHistMatchCheck.TabIndex = 77;
+            this.ColorTransferHistMatchCheck.Text = "Histogram Matching";
+            this.ColorTransferHistMatchCheck.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1371,6 +1383,7 @@
         private System.Windows.Forms.Button MaskColorTransferBtn;
         private System.Windows.Forms.Label ColorMaskImageLabel;
         private System.Windows.Forms.Button ColorMaskImageBtn;
+        private System.Windows.Forms.CheckBox ColorTransferHistMatchCheck;
     }
 }
 

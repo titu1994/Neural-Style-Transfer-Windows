@@ -668,12 +668,15 @@ namespace Neural_Dream
             StringBuilder args = new StringBuilder();
 
             args.Append("\"" + ContentColorTransferLabel.Text + "\" ");
-            args.Append("\"" + GeneratedColorTransferLabel.Text + "\"");
+            args.Append("\"" + GeneratedColorTransferLabel.Text + "\" ");
+
+            args.Append("--hist_match " + (ColorTransferHistMatchCheck.Checked? 1 : 0) + "");
 
             if (colorMaskCount > 0)
             {
                 args.Append(" --mask \"" + MaskedColorTransferLabel.Text + "\"");
             }
+
 
             return args.ToString();
         }
