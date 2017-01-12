@@ -117,6 +117,7 @@
     <Content Include="Script\INetwork.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Script\MRFNetwork.py" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

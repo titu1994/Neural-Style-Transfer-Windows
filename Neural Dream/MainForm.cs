@@ -591,6 +591,9 @@ namespace Neural_Dream
 
         private bool PerformChecks()
         {
+            // Localization Fix for all countries where decimal point is represented by ',' instead of '.'
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+
             if (!CheckMasks()) return true;
             if (!CheckContentWeignt()) return true;
             if (!CheckStyleWeignt()) return true;
