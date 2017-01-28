@@ -119,6 +119,7 @@
             this.StyleImageDoodleLabel = new System.Windows.Forms.Label();
             this.SrcImageDoodleLabel = new System.Windows.Forms.Label();
             this.ColorTransfer = new System.Windows.Forms.TabPage();
+            this.ColorTransferHistMatchCheck = new System.Windows.Forms.CheckBox();
             this.MaskedColorTransferLabel = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.GeneratedColorTransferLabel = new System.Windows.Forms.Label();
@@ -128,7 +129,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.GeneratedMaskedLabel = new System.Windows.Forms.Label();
             this.ContentMaskedLabel = new System.Windows.Forms.Label();
-            this.ColorTransferHistMatchCheck = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -872,11 +872,13 @@
             this.InitialLayerComboBox.Items.AddRange(new object[] {
             "content",
             "noise",
-            "gray"});
+            "gray",
+            "<choose image>"});
             this.InitialLayerComboBox.Location = new System.Drawing.Point(458, 546);
             this.InitialLayerComboBox.Name = "InitialLayerComboBox";
             this.InitialLayerComboBox.Size = new System.Drawing.Size(121, 24);
             this.InitialLayerComboBox.TabIndex = 66;
+            this.InitialLayerComboBox.SelectedIndexChanged += new System.EventHandler(this.InitialLayerComboBox_SelectedIndexChanged);
             // 
             // ContentLayerBox
             // 
@@ -1168,6 +1170,16 @@
             this.ColorTransfer.Text = "Color Transfer";
             this.ColorTransfer.UseVisualStyleBackColor = true;
             // 
+            // ColorTransferHistMatchCheck
+            // 
+            this.ColorTransferHistMatchCheck.AutoSize = true;
+            this.ColorTransferHistMatchCheck.Location = new System.Drawing.Point(32, 308);
+            this.ColorTransferHistMatchCheck.Name = "ColorTransferHistMatchCheck";
+            this.ColorTransferHistMatchCheck.Size = new System.Drawing.Size(155, 21);
+            this.ColorTransferHistMatchCheck.TabIndex = 77;
+            this.ColorTransferHistMatchCheck.Text = "Histogram Matching";
+            this.ColorTransferHistMatchCheck.UseVisualStyleBackColor = true;
+            // 
             // MaskedColorTransferLabel
             // 
             this.MaskedColorTransferLabel.AutoSize = true;
@@ -1249,16 +1261,6 @@
             this.ContentMaskedLabel.Name = "ContentMaskedLabel";
             this.ContentMaskedLabel.Size = new System.Drawing.Size(0, 17);
             this.ContentMaskedLabel.TabIndex = 69;
-            // 
-            // ColorTransferHistMatchCheck
-            // 
-            this.ColorTransferHistMatchCheck.AutoSize = true;
-            this.ColorTransferHistMatchCheck.Location = new System.Drawing.Point(32, 308);
-            this.ColorTransferHistMatchCheck.Name = "ColorTransferHistMatchCheck";
-            this.ColorTransferHistMatchCheck.Size = new System.Drawing.Size(155, 21);
-            this.ColorTransferHistMatchCheck.TabIndex = 77;
-            this.ColorTransferHistMatchCheck.Text = "Histogram Matching";
-            this.ColorTransferHistMatchCheck.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

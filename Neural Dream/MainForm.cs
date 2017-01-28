@@ -24,7 +24,8 @@ namespace Neural_Dream
         // Neural Style region
         private double contentWeight, tvWeight, styleScale, minThreshold;
         private int imageSize, noIters, styleCount, maskCount, colorMaskCount;
-        private string rescaleAlgo, contentLayer, poolingType, styleWeight, modelType;
+        private string rescaleAlgo, contentLayer, poolingType, styleWeight, modelType, initImagePath;
+        private bool initLayerImage;
         
         // Neural Doodle region
         private double contentWeightDoodle, styleWeightDoodle, tvWeightDoodle, regionWeightDoodle;
@@ -303,6 +304,25 @@ namespace Neural_Dream
                 MaskedLable.Text = openFileDialog1.FileName;
                 MaskedImageBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
                 MaskedImageBtn.Text = "";
+            }
+        }
+
+
+        private void InitialLayerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (InitialLayerComboBox.SelectedIndex == 3)
+            {
+                SetUpOpenFileDialog();
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    initLayerImage = true;
+                    initImagePath = openFileDialog1.FileName;
+                }
+            }
+            else
+            {
+                initLayerImage = false;
             }
         }
 
@@ -609,6 +629,7 @@ namespace Neural_Dream
             return false;
         }
 
+
         private string BuildCommandArgs()
         {
             StringBuilder args = new StringBuilder();
@@ -632,7 +653,7 @@ namespace Neural_Dream
             args.Append("--rescale_method \"" + RescaleAlgoBox.Text + "\" ");
             args.Append("--maintain_aspect_ratio \"" + MaintainAspectRatioCheckBox.Checked + "\" ");
             args.Append("--content_layer \"" + ContentLayerBox.Text + "\" ");
-            args.Append("--init_image \"" + InitialLayerComboBox.Text + "\" ");
+            args.Append("--init_image \"" + ((initLayerImage)? initImagePath : InitialLayerComboBox.Text) + "\" ");
             args.Append("--pool_type \"" + PoolingTypeBox.Text + "\" ");
             args.Append("--preserve_color \"" + PreserveColorBox.Checked + "\" ");
             args.Append("--min_improvement " + minThreshold + " ");
