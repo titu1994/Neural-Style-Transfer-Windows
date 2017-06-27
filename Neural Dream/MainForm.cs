@@ -25,7 +25,7 @@ namespace Neural_Dream
         private double contentWeight, tvWeight, styleScale, minThreshold;
         private int imageSize, noIters, styleCount, maskCount, colorMaskCount;
         private string rescaleAlgo, contentLayer, poolingType, styleWeight, modelType, initImagePath;
-        private bool initLayerImage;
+        private bool initLayerImage, contentMaskAvailable;
         
         // Neural Doodle region
         private double contentWeightDoodle, styleWeightDoodle, tvWeightDoodle, regionWeightDoodle;
@@ -125,6 +125,25 @@ namespace Neural_Dream
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 DstPathLabel.Text = saveFileDialog1.FileName;
+            }
+        }
+
+
+        private void ContentMaskImageBtn_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Multiselect = false;
+            SetUpOpenFileDialog();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    ContentMaskPathLabel.Text = openFileDialog1.FileName;
+                    ContentMaskImageBtn.BackgroundImage = Image.FromFile(openFileDialog1.FileName);
+                    ContentMaskImageBtn.Text = "";
+
+                    contentMaskAvailable = true;
+                }
             }
         }
 
@@ -609,6 +628,7 @@ namespace Neural_Dream
             }
         }
 
+
         private bool PerformChecks()
         {
             // Localization Fix for all countries where decimal point is represented by ',' instead of '.'
@@ -636,6 +656,9 @@ namespace Neural_Dream
             args.Append("\"" + SrcPathLabel.Text + "\" ");
             args.Append(StylePathLabel.Text);
             args.Append("\"" + DstPathLabel.Text + "\" ");
+
+            if (contentMaskAvailable)
+                args.Append("--content_mask \"" + ContentMaskPathLabel.Text + "\" ");
 
             if (maskCount > 0)
                 args.Append(MaskPathLabel.Text);

@@ -129,6 +129,8 @@
             this.label24 = new System.Windows.Forms.Label();
             this.GeneratedMaskedLabel = new System.Windows.Forms.Label();
             this.ContentMaskedLabel = new System.Windows.Forms.Label();
+            this.ContentMaskPathLabel = new System.Windows.Forms.Label();
+            this.ContentMaskImageBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -274,7 +276,7 @@
             // 
             this.MaskImagesBtn.BackColor = System.Drawing.Color.White;
             this.MaskImagesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MaskImagesBtn.Location = new System.Drawing.Point(25, 230);
+            this.MaskImagesBtn.Location = new System.Drawing.Point(458, 87);
             this.MaskImagesBtn.Name = "MaskImagesBtn";
             this.MaskImagesBtn.Size = new System.Drawing.Size(95, 53);
             this.MaskImagesBtn.TabIndex = 78;
@@ -365,7 +367,7 @@
             // 
             this.ColorMaskImageBtn.BackColor = System.Drawing.Color.White;
             this.ColorMaskImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ColorMaskImageBtn.Location = new System.Drawing.Point(458, 230);
+            this.ColorMaskImageBtn.Location = new System.Drawing.Point(25, 229);
             this.ColorMaskImageBtn.Name = "ColorMaskImageBtn";
             this.ColorMaskImageBtn.Size = new System.Drawing.Size(95, 53);
             this.ColorMaskImageBtn.TabIndex = 80;
@@ -745,6 +747,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ContentMaskPathLabel);
+            this.tabPage1.Controls.Add(this.ContentMaskImageBtn);
             this.tabPage1.Controls.Add(this.ColorMaskImageLabel);
             this.tabPage1.Controls.Add(this.ColorMaskImageBtn);
             this.tabPage1.Controls.Add(this.MaskPathLabel);
@@ -800,7 +804,7 @@
             // ColorMaskImageLabel
             // 
             this.ColorMaskImageLabel.AutoSize = true;
-            this.ColorMaskImageLabel.Location = new System.Drawing.Point(579, 248);
+            this.ColorMaskImageLabel.Location = new System.Drawing.Point(146, 247);
             this.ColorMaskImageLabel.MaximumSize = new System.Drawing.Size(300, 0);
             this.ColorMaskImageLabel.Name = "ColorMaskImageLabel";
             this.ColorMaskImageLabel.Size = new System.Drawing.Size(0, 17);
@@ -809,7 +813,7 @@
             // MaskPathLabel
             // 
             this.MaskPathLabel.AutoSize = true;
-            this.MaskPathLabel.Location = new System.Drawing.Point(140, 248);
+            this.MaskPathLabel.Location = new System.Drawing.Point(573, 105);
             this.MaskPathLabel.MaximumSize = new System.Drawing.Size(300, 0);
             this.MaskPathLabel.Name = "MaskPathLabel";
             this.MaskPathLabel.Size = new System.Drawing.Size(0, 17);
@@ -1262,6 +1266,28 @@
             this.ContentMaskedLabel.Size = new System.Drawing.Size(0, 17);
             this.ContentMaskedLabel.TabIndex = 69;
             // 
+            // ContentMaskPathLabel
+            // 
+            this.ContentMaskPathLabel.AutoSize = true;
+            this.ContentMaskPathLabel.Location = new System.Drawing.Point(573, 34);
+            this.ContentMaskPathLabel.MaximumSize = new System.Drawing.Size(300, 0);
+            this.ContentMaskPathLabel.Name = "ContentMaskPathLabel";
+            this.ContentMaskPathLabel.Size = new System.Drawing.Size(0, 17);
+            this.ContentMaskPathLabel.TabIndex = 83;
+            // 
+            // ContentMaskImageBtn
+            // 
+            this.ContentMaskImageBtn.BackColor = System.Drawing.Color.White;
+            this.ContentMaskImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContentMaskImageBtn.Location = new System.Drawing.Point(458, 16);
+            this.ContentMaskImageBtn.Name = "ContentMaskImageBtn";
+            this.ContentMaskImageBtn.Size = new System.Drawing.Size(95, 53);
+            this.ContentMaskImageBtn.TabIndex = 82;
+            this.ContentMaskImageBtn.Text = "Content Mask Image";
+            this.SrcToolTip.SetToolTip(this.ContentMaskImageBtn, "Optional : Style Masks");
+            this.ContentMaskImageBtn.UseVisualStyleBackColor = false;
+            this.ContentMaskImageBtn.Click += new System.EventHandler(this.ContentMaskImageBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1386,6 +1412,8 @@
         private System.Windows.Forms.Label ColorMaskImageLabel;
         private System.Windows.Forms.Button ColorMaskImageBtn;
         private System.Windows.Forms.CheckBox ColorTransferHistMatchCheck;
+        private System.Windows.Forms.Label ContentMaskPathLabel;
+        private System.Windows.Forms.Button ContentMaskImageBtn;
     }
 }
 

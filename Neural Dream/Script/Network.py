@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 from scipy.misc import imread, imresize, imsave, fromimage, toimage
 from scipy.optimize import fmin_l_bfgs_b
@@ -14,7 +17,7 @@ from keras.utils.data_utils import get_file
 from keras.utils.layer_utils import convert_all_kernels_in_model
 
 """
-Neural Style Transfer with Keras 1.1.2
+Neural Style Transfer with Keras 1.2.2
 
 Based on:
 https://github.com/fchollet/keras/blob/master/examples/neural_style_transfer.py
@@ -41,6 +44,9 @@ parser.add_argument('result_prefix', metavar='res_prefix', type=str,
 
 parser.add_argument("--style_masks", type=str, default=None, nargs='+',
                     help='Masks for style images')
+
+parser.add_argument("--content_mask", type=str, default=None,
+                    help='Masks for the content image')
 
 parser.add_argument("--color_mask", type=str, default=None,
                     help='Mask for color preservation')
@@ -120,6 +126,10 @@ if style_masks_present:
                                                       "Number of style images = %d, \n" \
                                                       "Number of style mask paths = %d." % \
                                                       (len(style_image_paths), len(style_masks_present))
+
+content_mask_present = args.content_mask is not None
+content_mask_path = args.content_mask
+
 
 color_mask_present = args.color_mask is not None
 
@@ -311,36 +321,36 @@ if K.image_dim_ordering() == "th":
 else:
     shape = (nb_tensors, img_width, img_height, 3)
 
-ip = Input(tensor=input_tensor, shape=shape)
+ip = Input(tensor=input_tensor, batch_shape=shape)
 
 # build the VGG16 network with our 3 images as input
-x = Convolution2D(64, 3, 3, activation='relu', name='conv1_1', border_mode='same')(ip)
-x = Convolution2D(64, 3, 3, activation='relu', name='conv1_2', border_mode='same')(x)
+x = Convolution2D(64, (3, 3), activation='relu', name='conv1_1', padding='same')(ip)
+x = Convolution2D(64, (3, 3), activation='relu', name='conv1_2', padding='same')(x)
 x = pooling_func(x)
 
-x = Convolution2D(128, 3, 3, activation='relu', name='conv2_1', border_mode='same')(x)
-x = Convolution2D(128, 3, 3, activation='relu', name='conv2_2', border_mode='same')(x)
+x = Convolution2D(128, (3, 3), activation='relu', name='conv2_1', padding='same')(x)
+x = Convolution2D(128, (3, 3), activation='relu', name='conv2_2', padding='same')(x)
 x = pooling_func(x)
 
-x = Convolution2D(256, 3, 3, activation='relu', name='conv3_1', border_mode='same')(x)
-x = Convolution2D(256, 3, 3, activation='relu', name='conv3_2', border_mode='same')(x)
-x = Convolution2D(256, 3, 3, activation='relu', name='conv3_3', border_mode='same')(x)
+x = Convolution2D(256, (3, 3), activation='relu', name='conv3_1', padding='same')(x)
+x = Convolution2D(256, (3, 3), activation='relu', name='conv3_2', padding='same')(x)
+x = Convolution2D(256, (3, 3), activation='relu', name='conv3_3', padding='same')(x)
 if args.model == "vgg19":
-    x = Convolution2D(256, 3, 3, activation='relu', name='conv3_4', border_mode='same')(x)
+    x = Convolution2D(256, (3, 3), activation='relu', name='conv3_4', padding='same')(x)
 x = pooling_func(x)
 
-x = Convolution2D(512, 3, 3, activation='relu', name='conv4_1', border_mode='same')(x)
-x = Convolution2D(512, 3, 3, activation='relu', name='conv4_2', border_mode='same')(x)
-x = Convolution2D(512, 3, 3, activation='relu', name='conv4_3', border_mode='same')(x)
+x = Convolution2D(512, (3, 3), activation='relu', name='conv4_1', padding='same')(x)
+x = Convolution2D(512, (3, 3), activation='relu', name='conv4_2', padding='same')(x)
+x = Convolution2D(512, (3, 3), activation='relu', name='conv4_3', padding='same')(x)
 if args.model == "vgg19":
-    x = Convolution2D(512, 3, 3, activation='relu', name='conv4_4', border_mode='same')(x)
+    x = Convolution2D(512, (3, 3), activation='relu', name='conv4_4', padding='same')(x)
 x = pooling_func(x)
 
-x = Convolution2D(512, 3, 3, activation='relu', name='conv5_1', border_mode='same')(x)
-x = Convolution2D(512, 3, 3, activation='relu', name='conv5_2', border_mode='same')(x)
-x = Convolution2D(512, 3, 3, activation='relu', name='conv5_3', border_mode='same')(x)
+x = Convolution2D(512, (3, 3), activation='relu', name='conv5_1', padding='same')(x)
+x = Convolution2D(512, (3, 3), activation='relu', name='conv5_2', padding='same')(x)
+x = Convolution2D(512, (3, 3), activation='relu', name='conv5_3', padding='same')(x)
 if args.model == "vgg19":
-    x = Convolution2D(512, 3, 3, activation='relu', name='conv5_4', border_mode='same')(x)
+    x = Convolution2D(512, (3, 3), activation='relu', name='conv5_4', padding='same')(x)
 x = pooling_func(x)
 
 model = Model(ip, x)
@@ -398,12 +408,16 @@ def style_loss(style, combination, mask_path=None, nb_channels=None):
     assert K.ndim(style) == 3
     assert K.ndim(combination) == 3
 
+    if content_mask_path is not None:
+        content_mask = K.variable(load_mask(content_mask_path, nb_channels))
+        combination = combination * K.stop_gradient(content_mask)
+        del content_mask
+
     if mask_path is not None:
-        style_mask = load_mask(mask_path, nb_channels)
-
-        style = style * style_mask
-        combination = combination * style_mask
-
+        style_mask = K.variable(load_mask(mask_path, nb_channels))
+        style = style * K.stop_gradient(style_mask)
+        if content_mask_path is None:
+            combination = combination * K.stop_gradient(style_mask)
         del style_mask
 
     S = gram_matrix(style)
@@ -419,13 +433,13 @@ def style_loss(style, combination, mask_path=None, nb_channels=None):
 def content_loss(base, combination):
     channel_dim = 0 if K.image_dim_ordering() == "th" else -1
 
-    channels = K.shape(base)[channel_dim]
+    channels = K.int_shape(base)[channel_dim]
     size = img_width * img_height
 
     if args.content_loss_type == 1:
-        multiplier = 1 / (2. * channels ** 0.5 * size ** 0.5)
+        multiplier = 1. / (2. * (channels ** 0.5) * (size ** 0.5))
     elif args.content_loss_type == 2:
-        multiplier = 1 / (channels * size)
+        multiplier = 1. / (channels * size)
     else:
         multiplier = 1.
 
