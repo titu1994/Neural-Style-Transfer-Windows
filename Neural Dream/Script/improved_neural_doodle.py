@@ -1,3 +1,7 @@
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
+
 import time
 import argparse
 import numpy as np
@@ -11,7 +15,7 @@ from keras.preprocessing.image import load_img, img_to_array
 from keras.applications import vgg16
 
 """
-Neural Doodle in Keras using Keras 1.0.8+
+Neural Doodle in Keras using Keras 1.2.2
 
 Based on the original script available at : https://github.com/fchollet/keras/blob/master/examples/neural_doodle.py
 
