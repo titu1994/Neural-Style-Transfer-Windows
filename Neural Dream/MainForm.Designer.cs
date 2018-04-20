@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SrcToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -83,8 +82,10 @@
             this.ExecuteColorTransferBtn = new System.Windows.Forms.Button();
             this.CopyArgumentsMaskedTransferBtn = new System.Windows.Forms.Button();
             this.ExecuteMaskedTransferBtn = new System.Windows.Forms.Button();
+            this.ContentMaskImageBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ContentMaskPathLabel = new System.Windows.Forms.Label();
             this.ColorMaskImageLabel = new System.Windows.Forms.Label();
             this.MaskPathLabel = new System.Windows.Forms.Label();
             this.ContentLossTypeBox = new System.Windows.Forms.ComboBox();
@@ -130,8 +131,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.GeneratedMaskedLabel = new System.Windows.Forms.Label();
             this.ContentMaskedLabel = new System.Windows.Forms.Label();
-            this.ContentMaskPathLabel = new System.Windows.Forms.Label();
-            this.ContentMaskImageBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -733,6 +732,19 @@
             this.ExecuteMaskedTransferBtn.UseVisualStyleBackColor = false;
             this.ExecuteMaskedTransferBtn.Click += new System.EventHandler(this.ExecuteMaskedTransferBtn_Click);
             // 
+            // ContentMaskImageBtn
+            // 
+            this.ContentMaskImageBtn.BackColor = System.Drawing.Color.White;
+            this.ContentMaskImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContentMaskImageBtn.Location = new System.Drawing.Point(458, 16);
+            this.ContentMaskImageBtn.Name = "ContentMaskImageBtn";
+            this.ContentMaskImageBtn.Size = new System.Drawing.Size(95, 53);
+            this.ContentMaskImageBtn.TabIndex = 82;
+            this.ContentMaskImageBtn.Text = "Content Mask Image";
+            this.SrcToolTip.SetToolTip(this.ContentMaskImageBtn, "Optional : Style Masks");
+            this.ContentMaskImageBtn.UseVisualStyleBackColor = false;
+            this.ContentMaskImageBtn.Click += new System.EventHandler(this.ContentMaskImageBtn_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -801,6 +813,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Neural Style Transfer";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ContentMaskPathLabel
+            // 
+            this.ContentMaskPathLabel.AutoSize = true;
+            this.ContentMaskPathLabel.Location = new System.Drawing.Point(573, 34);
+            this.ContentMaskPathLabel.MaximumSize = new System.Drawing.Size(300, 0);
+            this.ContentMaskPathLabel.Name = "ContentMaskPathLabel";
+            this.ContentMaskPathLabel.Size = new System.Drawing.Size(0, 17);
+            this.ContentMaskPathLabel.TabIndex = 83;
             // 
             // ColorMaskImageLabel
             // 
@@ -1267,28 +1288,6 @@
             this.ContentMaskedLabel.Size = new System.Drawing.Size(0, 17);
             this.ContentMaskedLabel.TabIndex = 69;
             // 
-            // ContentMaskPathLabel
-            // 
-            this.ContentMaskPathLabel.AutoSize = true;
-            this.ContentMaskPathLabel.Location = new System.Drawing.Point(573, 34);
-            this.ContentMaskPathLabel.MaximumSize = new System.Drawing.Size(300, 0);
-            this.ContentMaskPathLabel.Name = "ContentMaskPathLabel";
-            this.ContentMaskPathLabel.Size = new System.Drawing.Size(0, 17);
-            this.ContentMaskPathLabel.TabIndex = 83;
-            // 
-            // ContentMaskImageBtn
-            // 
-            this.ContentMaskImageBtn.BackColor = System.Drawing.Color.White;
-            this.ContentMaskImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContentMaskImageBtn.Location = new System.Drawing.Point(458, 16);
-            this.ContentMaskImageBtn.Name = "ContentMaskImageBtn";
-            this.ContentMaskImageBtn.Size = new System.Drawing.Size(95, 53);
-            this.ContentMaskImageBtn.TabIndex = 82;
-            this.ContentMaskImageBtn.Text = "Content Mask Image";
-            this.SrcToolTip.SetToolTip(this.ContentMaskImageBtn, "Optional : Style Masks");
-            this.ContentMaskImageBtn.UseVisualStyleBackColor = false;
-            this.ContentMaskImageBtn.Click += new System.EventHandler(this.ContentMaskImageBtn_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1296,7 +1295,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(982, 853);
             this.Controls.Add(this.tabControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neural Art";
