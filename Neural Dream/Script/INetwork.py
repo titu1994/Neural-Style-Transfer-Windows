@@ -129,8 +129,6 @@ def str_to_bool(v):
 args = parser.parse_args()
 if (args.cpu):
     os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-else:
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     
 
 base_image_path = args.base_image_path
