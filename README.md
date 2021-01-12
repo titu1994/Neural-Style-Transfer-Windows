@@ -29,22 +29,18 @@ Windows Form application written in C# to allow easy changing of Neural Style Tr
 --rescale_method : Rescaling algorithm. Default is bilinear. Options are nearest, bilinear, bicubic and cubic.
 --maintain_aspect_ratio : Rescale the image just to the original aspect ratio. Size will be (gram_matrix_size, gram_matrix_size * aspect_ratio). Default is True
 --content_layer : Selects the content layer. Paper suggests conv4_2, but better results can be obtained from conv5_2. Default is conv5_2.
+--cpu: Works on CPU if True. Default is False.
 ```
 
 ## Requirements
 Windows .NET 4.5 and above to run. 
 
 Script requirements : 
-- Theano
+- TensorFlow/Theano
 - Keras
 - CUDA (GPU)
 - CUDNN (GPU)
 - Scipy + PIL
 - Numpy
 
-## Speed
-On a 980M GPU, the time required for each epoch depends on mainly image size (gram matrix size) :
-
-For a 400x400 gram matrix, each epoch takes approximately 8-10 seconds. <br>
-For a 512x512 gram matrix, each epoch takes approximately 15-18 seconds. <br>
-For a 600x600 gram matrix, each epoch takes approximately 24-28 seconds. <br>
+Tested on Windows 10, Python 3.8, TensorFlow 2.4, CUDA 11.2, CuDNN 8.0.5.

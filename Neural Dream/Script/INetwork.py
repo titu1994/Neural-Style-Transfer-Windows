@@ -10,13 +10,18 @@ import numpy as np
 import time
 import argparse
 import warnings
+import os
 
+import tensorflow as tf
 from keras.models import Model
 from keras.layers import Input
 from keras.layers.convolutional import Convolution2D, AveragePooling2D, MaxPooling2D
 from keras import backend as K
+from tensorflow.python.keras import backend as K
 from keras.utils.data_utils import get_file
 from keras.utils.layer_utils import convert_all_kernels_in_model
+
+
 
 """
 Neural Style Transfer with Keras 2.0.5
@@ -29,6 +34,14 @@ Contains few improvements suggested in the paper Improving the Neural Algorithm 
 
 -----------------------------------------------------------------------------------------------------------------------
 """
+
+if K.backend() == 'tensorflow':
+    tf.compat.v1.disable_eager_execution()
+    # config = tf.compat.v1.ConfigProto(
+    #     device_count={'GPU': 0}
+    # )
+    # session = tf.compat.v1.Session(config=config)
+    # tf.compat.v1.set_session(session)
 
 THEANO_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_th_dim_ordering_th_kernels_notop.h5'
 TF_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
@@ -104,6 +117,9 @@ parser.add_argument('--preserve_color', dest='color', default="False", type=str,
 parser.add_argument('--min_improvement', default=0.0, type=float,
                     help='Defines minimum improvement required to continue script')
 
+parser.add_argument('--cpu', default="False", type=str,
+                    help='Run on CPU')
+
 
 def str_to_bool(v):
     return v.lower() in ("true", "yes", "t", "1")
@@ -111,6 +127,10 @@ def str_to_bool(v):
 ''' Arguments '''
 
 args = parser.parse_args()
+if (args.cpu):
+    os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+    
+
 base_image_path = args.base_image_path
 style_reference_image_paths = args.syle_image_paths
 result_prefix = args.result_prefix
@@ -215,7 +235,7 @@ def preprocess_image(image_path, load_dims=False, read_mode="color"):
     img[:, :, 1] -= 116.779
     img[:, :, 2] -= 123.68
 
-    if K.image_dim_ordering() == "th":
+    if K.image_data_format() == "th":
         img = img.transpose((2, 0, 1)).astype('float32')
 
     img = np.expand_dims(img, axis=0)
@@ -224,7 +244,7 @@ def preprocess_image(image_path, load_dims=False, read_mode="color"):
 
 # util function to convert a tensor into a valid image
 def deprocess_image(x):
-    if K.image_dim_ordering() == "th":
+    if K.image_data_format() == "th":
         x = x.reshape((3, img_width, img_height))
         x = x.transpose((1, 2, 0))
     else:
@@ -260,7 +280,7 @@ def original_color_transform(content, generated, mask=None):
 
 
 def load_mask(mask_path, shape, return_mask_img=False):
-    if K.image_dim_ordering() == "th":
+    if K.image_data_format() == "th":
         _, channels, width, height = shape
     else:
         _, width, height, channels = shape
@@ -282,7 +302,7 @@ def load_mask(mask_path, shape, return_mask_img=False):
     mask_tensor = np.empty(mask_shape)
 
     for i in range(channels):
-        if K.image_dim_ordering() == "th":
+        if K.image_data_format() == "th":
             mask_tensor[i, :, :] = mask
         else:
             mask_tensor[:, :, i] = mask
@@ -305,7 +325,7 @@ for style_path in style_image_paths:
     style_reference_images.append(K.variable(preprocess_image(style_path)))
 
 # this will contain our generated image
-if K.image_dim_ordering() == 'th':
+if K.image_data_format() == 'th':
     combination_image = K.placeholder((1, 3, img_width, img_height))
 else:
     combination_image = K.placeholder((1, img_width, img_height, 3))
@@ -321,7 +341,7 @@ nb_style_images = nb_tensors - 2 # Content and Output image not considered
 # combine the various images into a single Keras tensor
 input_tensor = K.concatenate(image_tensors, axis=0)
 
-if K.image_dim_ordering() == "th":
+if K.image_data_format() == "th":
     shape = (nb_tensors, 3, img_width, img_height)
 else:
     shape = (nb_tensors, img_width, img_height, 3)
@@ -360,7 +380,7 @@ x = pooling_func(x)
 
 model = Model(ip, x)
 
-if K.image_dim_ordering() == "th":
+if K.image_data_format() == "th":
     if args.model == "vgg19":
         weights = get_file('vgg19_weights_th_dim_ordering_th_kernels_notop.h5', TH_19_WEIGHTS_PATH_NO_TOP, cache_subdir='models')
     else:
@@ -373,13 +393,13 @@ else:
 
 model.load_weights(weights)
 
-if K.backend() == 'tensorflow' and K.image_dim_ordering() == "th":
+if K.backend() == 'tensorflow' and K.image_data_format() == "th":
     warnings.warn('You are using the TensorFlow backend, yet you '
                   'are using the Theano '
                   'image dimension ordering convention '
-                  '(`image_dim_ordering="th"`). '
+                  '(`image_data_format()="th"`). '
                   'For best performance, set '
-                  '`image_dim_ordering="tf"` in '
+                  '`image_data_format()="tf"` in '
                   'your Keras config '
                   'at ~/.keras/keras.json.')
     convert_all_kernels_in_model(model)
@@ -397,7 +417,7 @@ shape_dict = dict([(layer.name, layer.output_shape) for layer in model.layers])
 # the gram matrix of an image tensor (feature-wise outer product) using shifted activations
 def gram_matrix(x):
     assert K.ndim(x) == 3
-    if K.image_dim_ordering() == "th":
+    if K.image_data_format() == "th":
         features = K.batch_flatten(x)
     else:
         features = K.batch_flatten(K.permute_dimensions(x, (2, 0, 1)))
@@ -437,7 +457,7 @@ def style_loss(style, combination, mask_path=None, nb_channels=None):
 # designed to maintain the "content" of the
 # base image in the generated image
 def content_loss(base, combination):
-    channel_dim = 0 if K.image_dim_ordering() == "th" else -1
+    channel_dim = 0 if K.image_data_format() == "th" else -1
 
     try:
         channels = K.int_shape(base)[channel_dim]
@@ -459,7 +479,7 @@ def content_loss(base, combination):
 # designed to keep the generated image locally coherent
 def total_variation_loss(x):
     assert K.ndim(x) == 4
-    if K.image_dim_ordering() == 'th':
+    if K.image_data_format() == 'th':
         a = K.square(x[:, :, :img_width - 1, :img_height - 1] - x[:, :, 1:, :img_height - 1])
         b = K.square(x[:, :, :img_width - 1, :img_height - 1] - x[:, :, :img_width - 1, 1:])
     else:
@@ -491,7 +511,7 @@ if style_masks_present:
 else:
     style_masks = [None for _ in range(nb_style_images)] # If masks not present, pass None to the style loss
 
-channel_index = 1 if K.image_dim_ordering() == "th" else -1
+channel_index = 1 if K.image_data_format() == "th" else -1
 
 # Improvement 3 : Chained Inference without blurring
 for i in range(len(feature_layers) - 1):
@@ -533,7 +553,7 @@ f_outputs = K.function([combination_image], outputs)
 
 
 def eval_loss_and_grads(x):
-    if K.image_dim_ordering() == 'th':
+    if K.image_data_format() == 'th':
         x = x.reshape((1, 3, img_width, img_height))
     else:
         x = x.reshape((1, img_width, img_height, 3))
@@ -583,7 +603,7 @@ if "content" in args.init_image or "gray" in args.init_image:
 elif "noise" in args.init_image:
     x = np.random.uniform(0, 255, (1, img_width, img_height, 3)) - 128.
 
-    if K.image_dim_ordering() == "th":
+    if K.image_data_format() == "th":
         x = x.transpose((0, 3, 1, 2))
 else:
     print("Using initial image : ", args.init_image)
@@ -595,7 +615,7 @@ if preserve_color:
     content = imresize(content, (img_width, img_height))
 
     if color_mask_present:
-        if K.image_dim_ordering() == "th":
+        if K.image_data_format() == "th":
             color_mask_shape = (None, None, img_width, img_height)
         else:
             color_mask_shape = (None, img_width, img_height, None)
@@ -645,8 +665,8 @@ for i in range(num_iter):
     print("Image saved as", fname)
     print("Iteration %d completed in %ds" % (i + 1, end_time - start_time))
 
-    if improvement_threshold is not 0.0:
-        if improvement < improvement_threshold and improvement is not 0.0:
+    if improvement_threshold != 0.0:
+        if improvement < improvement_threshold and improvement != 0.0:
             print("Improvement (%f) is less than improvement threshold (%f). Early stopping script." %
                   (improvement, improvement_threshold))
             exit()

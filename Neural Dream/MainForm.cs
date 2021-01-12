@@ -617,8 +617,8 @@ namespace Neural_Dream
                 }
             }
 
-            start.FileName = Settings.Default.PythonPath;
-            start.Arguments = string.Format("{0} {1}", cmd, args);
+            start.FileName = "cmd.exe";
+            start.Arguments = $"/k {Settings.Default.PythonPath} {cmd} {args}";
             start.UseShellExecute = true;
             start.ErrorDialog = true;
 
@@ -681,7 +681,8 @@ namespace Neural_Dream
             args.Append("--preserve_color \"" + PreserveColorBox.Checked + "\" ");
             args.Append("--min_improvement " + minThreshold + " ");
             args.Append("--model \"" + ModelTypeBox.Text + "\" ");
-            args.Append("--content_loss_type " + ContentLossTypeBox.Text + "");
+            args.Append("--content_loss_type " + ContentLossTypeBox.Text + " ");
+            args.Append("--cpu \"" + cbCPU.Checked + "\" ");
 
             return args.ToString();
         }
