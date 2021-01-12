@@ -29,7 +29,7 @@ Windows Form application written in C# to allow easy changing of Neural Style Tr
 --rescale_method : Rescaling algorithm. Default is bilinear. Options are nearest, bilinear, bicubic and cubic.
 --maintain_aspect_ratio : Rescale the image just to the original aspect ratio. Size will be (gram_matrix_size, gram_matrix_size * aspect_ratio). Default is True
 --content_layer : Selects the content layer. Paper suggests conv4_2, but better results can be obtained from conv5_2. Default is conv5_2.
---cpu: Works on CPU if True
+--cpu: Works on CPU if True. Default is False.
 ```
 
 ## Requirements
